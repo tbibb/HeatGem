@@ -7,6 +7,7 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.SimpleCheckBox;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
 
 public class LoginView extends Composite {
 	public LoginView() {
@@ -49,5 +50,11 @@ public class LoginView extends Composite {
 		layoutPanel.add(loginNewButton);
 		layoutPanel.setWidgetLeftWidth(loginNewButton, 133.0, Unit.PX, 81.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(loginNewButton, 174.0, Unit.PX, 30.0, Unit.PX);
+		
+		Label headerLabel = new Label("Login");
+		headerLabel.setStyleName("h1");
+		layoutPanel.add(headerLabel);
+		layoutPanel.setWidgetLeftWidth(headerLabel, 168.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(headerLabel, 19.0, Unit.PX, 18.0, Unit.PX);
 	}
 }
