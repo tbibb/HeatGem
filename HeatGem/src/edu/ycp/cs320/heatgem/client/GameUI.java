@@ -1,4 +1,4 @@
-package edu.ycp.cs320.heatgem.game;
+package edu.ycp.cs320.heatgem.client;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +20,8 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 
 import com.google.gwt.user.client.ui.Widget;
+
+import edu.ycp.cs320.heatgem.shared.Game;
 
 
 public class GameUI {
