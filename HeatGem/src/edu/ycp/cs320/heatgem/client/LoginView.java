@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.SimpleCheckBox;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public class LoginView extends Composite {
 	public LoginView() {
@@ -24,6 +26,7 @@ public class LoginView extends Composite {
 		layoutPanel.add(usernameTextBox);
 		layoutPanel.setWidgetLeftWidth(usernameTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(usernameTextBox, 43.0, Unit.PX, 34.0, Unit.PX);
+		String username =  usernameTextBox.toString();
 		
 		InlineLabel passwordLabel = new InlineLabel("Password");
 		layoutPanel.add(passwordLabel);
@@ -34,6 +37,7 @@ public class LoginView extends Composite {
 		layoutPanel.add(passwordTextBox);
 		layoutPanel.setWidgetLeftWidth(passwordTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(passwordTextBox, 97.0, Unit.PX, 34.0, Unit.PX);
+		String password = passwordTextBox.toString();
 		
 		SimpleCheckBox simpleCheckBox = new SimpleCheckBox();
 		layoutPanel.add(simpleCheckBox);
@@ -46,6 +50,16 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetTopHeight(rememberMeNextLabel, 226.0, Unit.PX, 18.0, Unit.PX);
 		
 		Button loginNewButton = new Button("New button");
+		loginNewButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				//send username and password to server and validate login
+				
+				
+				
+				
+				
+			}
+		});
 		loginNewButton.setText("Login!");
 		layoutPanel.add(loginNewButton);
 		layoutPanel.setWidgetLeftWidth(loginNewButton, 133.0, Unit.PX, 81.0, Unit.PX);
