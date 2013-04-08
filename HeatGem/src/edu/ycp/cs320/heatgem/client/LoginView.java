@@ -61,8 +61,6 @@ public class LoginView extends Composite {
 				
 				handleLogin();
 				
-				
-				
 			}
 		});
 		loginNewButton.setText("Login!");
