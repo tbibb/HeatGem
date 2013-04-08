@@ -99,6 +99,7 @@ public class LoginView extends Composite {
 				} else {
 					// TODO: switch to home page
 					errorLabel.setText("Success! Should switch to home page");
+					HeatGem.setView(new HomePage());
 				}
 			}
 		});

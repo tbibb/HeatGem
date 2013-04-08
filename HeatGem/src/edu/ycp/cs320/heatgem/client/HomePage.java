@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.DecoratedTabBar;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.user.client.ui.Hyperlink;
 
 
 public class HomePage extends Composite {
@@ -42,10 +43,10 @@ public class HomePage extends Composite {
 		layoutPanel.setWidgetLeftWidth(WelcomeLabel, 47.0, Unit.PX, 305.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(WelcomeLabel, 99.0, Unit.PX, 18.0, Unit.PX);
 		
-		InlineLabel LogInLabel = new InlineLabel("Log out!");
-		layoutPanel.add(LogInLabel);
-		layoutPanel.setWidgetLeftWidth(LogInLabel, 619.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(LogInLabel, 14.0, Unit.PX, 18.0, Unit.PX);
+		Hyperlink hprlnkLogOut = new Hyperlink("Log out!", false, "newHistoryToken");
+		layoutPanel.add(hprlnkLogOut);
+		layoutPanel.setWidgetLeftWidth(hprlnkLogOut, 605.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(hprlnkLogOut, 22.0, Unit.PX, 18.0, Unit.PX);
 		
 	}
 }

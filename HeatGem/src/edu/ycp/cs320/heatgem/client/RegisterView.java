@@ -1,5 +1,6 @@
 package edu.ycp.cs320.heatgem.client;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
@@ -10,6 +11,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+
+import edu.ycp.cs320.heatgem.shared.User;
 
 public class RegisterView extends Composite {
 	private TextBox registerUsernameTextBox;
@@ -27,10 +30,10 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetLeftWidth(usernameRegisterLabel, 12.0, Unit.PX, 90.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(usernameRegisterLabel, 57.0, Unit.PX, 18.0, Unit.PX);
 		
-		InlineLabel registerHeadingLabel = new InlineLabel("Create Your New Account");
+		InlineLabel registerHeadingLabel = new InlineLabel("Create A New Account");
 		layoutPanel.add(registerHeadingLabel);
-		layoutPanel.setWidgetLeftWidth(registerHeadingLabel, 151.0, Unit.PX, 158.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(registerHeadingLabel, 22.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(registerHeadingLabel, 146.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(registerHeadingLabel, 23.0, Unit.PX, 18.0, Unit.PX);
 		
 		registerUsernameTextBox = new TextBox();
 		layoutPanel.add(registerUsernameTextBox);
@@ -68,8 +71,6 @@ public class RegisterView extends Composite {
 				
 				//implement event handler
 				handleRegister();
-		
-				
 			}
 		});
 		RegisterButton.setText("Register!");
@@ -96,7 +97,24 @@ public class RegisterView extends Composite {
 		String email = this.registerEmailTextBox.getText();
 		
 		
-		
+		RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(Void result) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+			
+			
+		});
 		
 		
 	}
