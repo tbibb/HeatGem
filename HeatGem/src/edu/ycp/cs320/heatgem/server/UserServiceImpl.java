@@ -12,5 +12,11 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public User logIn(String username, String password) {
 		return DB.instance().logIn(username, password);
 	}
+	
+	@Override
+	public void addUser(String username, String password, String confirmPassword, String email){
+		
+		
+	}
 
 }

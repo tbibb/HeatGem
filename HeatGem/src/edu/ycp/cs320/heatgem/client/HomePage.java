@@ -10,9 +10,10 @@ import com.google.gwt.event.logical.shared.SelectionEvent;
 
 
 public class HomePage extends Composite {
+	private LayoutPanel layoutPanel;
 	public HomePage(){
 		
-		LayoutPanel layoutPanel = new LayoutPanel();
+		layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
 		layoutPanel.setSize("709px", "571px");
 		
@@ -29,12 +30,22 @@ public class HomePage extends Composite {
 		decoratedTabBar.addTab("Leader Boards");
 		layoutPanel.add(decoratedTabBar);
 		layoutPanel.setWidgetRightWidth(decoratedTabBar, 0.0, Unit.PX, 300.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(decoratedTabBar, 28.0, Unit.PX, 31.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(decoratedTabBar, 51.0, Unit.PX, 31.0, Unit.PX);
 		
 		InlineLabel HeatGemLabel = new InlineLabel("HEAT GEM");
 		layoutPanel.add(HeatGemLabel);
 		layoutPanel.setWidgetLeftWidth(HeatGemLabel, 13.0, Unit.PX, 145.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(HeatGemLabel, 0.0, Unit.PX, 31.0, Unit.PX);
+		
+		InlineLabel WelcomeLabel = new InlineLabel("Welcome to Heat Gem, the interactive game site!");
+		layoutPanel.add(WelcomeLabel);
+		layoutPanel.setWidgetLeftWidth(WelcomeLabel, 47.0, Unit.PX, 305.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(WelcomeLabel, 99.0, Unit.PX, 18.0, Unit.PX);
+		
+		InlineLabel LogInLabel = new InlineLabel("Log out!");
+		layoutPanel.add(LogInLabel);
+		layoutPanel.setWidgetLeftWidth(LogInLabel, 619.0, Unit.PX, 90.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(LogInLabel, 14.0, Unit.PX, 18.0, Unit.PX);
 		
 	}
 }
