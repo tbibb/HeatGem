@@ -12,5 +12,6 @@ public interface IDatabase {
 	 */
 	public User logIn(String username, String password);
 	
-	public User addUser(String username, String password);
+	public void addUser(String username, String password, String confirmPassword,
+			String email);
 }

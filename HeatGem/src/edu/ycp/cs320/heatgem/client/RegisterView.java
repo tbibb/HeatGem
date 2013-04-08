@@ -90,7 +90,14 @@ public class RegisterView extends Composite {
 	}
 	
 	public void handleRegister(){
-		//String username = this.usernameTextBox.getText();
-		//String password = this.passwordTextBox.getText();
+		String username = this.registerUsernameTextBox.getText();
+		String password = this.passwordRegisterTextBox.getText();
+		String confirmPassword = this.confirmationPasswordRegisterTextBox.getText();
+		String email = this.registerEmailTextBox.getText();
+		
+		
+		
+		
+		
 	}
 }

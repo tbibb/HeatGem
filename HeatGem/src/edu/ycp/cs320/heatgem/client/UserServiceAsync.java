@@ -8,4 +8,9 @@ public interface UserServiceAsync {
 
 	void logIn(String username, String password, AsyncCallback<User> callback);
 
+	void addUser(String username, String password, String confirmPassword,
+			String email, AsyncCallback<Void> callback);
+	
+
+
 }
