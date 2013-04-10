@@ -19,6 +19,7 @@ public class RegisterView extends Composite {
 	private PasswordTextBox confirmationPasswordRegisterTextBox;
 	private TextBox registerEmailTextBox;
 	private PasswordTextBox passwordRegisterTextBox;
+	private Label errorLabel2;
 
 	public RegisterView(){
 		
@@ -69,7 +70,7 @@ public class RegisterView extends Composite {
 		RegisterButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				
-				//implement event handler
+				//call method to handle the registration process
 				handleRegister();
 			}
 		});
@@ -88,6 +89,10 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetLeftWidth(confirmationPasswordRegisterTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(confirmationPasswordRegisterTextBox, 138.0, Unit.PX, 26.0, Unit.PX);
 		
+		errorLabel2 = new Label("");
+		layoutPanel.add(errorLabel2);
+		layoutPanel.setWidgetLeftWidth(errorLabel2, 120.0, Unit.PX, 307.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(errorLabel2, 259.0, Unit.PX, 18.0, Unit.PX);
 	}
 	
 	public void handleRegister(){
@@ -101,13 +106,14 @@ public class RegisterView extends Composite {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
+				// show error message
+				errorLabel2.setText("Could not communicate with server?");
 				
 			}
 
 			@Override
 			public void onSuccess(Void result) {
-				// TODO Auto-generated method stub
+				// TODO add user to server--make tables
 				
 			}
 			

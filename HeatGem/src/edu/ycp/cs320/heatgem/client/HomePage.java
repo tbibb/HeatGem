@@ -22,7 +22,7 @@ public class HomePage extends Composite {
 		decoratedTabBar.addSelectionHandler(new SelectionHandler<Integer>() {
 			public void onSelection(SelectionEvent<Integer> event) {
 				
-				//implement event handler
+				//implement event handler-->selecting a tab
 			}
 		});
 		decoratedTabBar.addTab("Home");

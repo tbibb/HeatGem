@@ -58,7 +58,6 @@ public class LoginView extends Composite {
 		loginNewButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				//send username and password to server and validate login
-				
 				handleLogin();
 				
 			}
