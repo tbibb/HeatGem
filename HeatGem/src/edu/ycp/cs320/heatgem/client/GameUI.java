@@ -45,38 +45,45 @@ public class GameUI extends Composite {
 	// The game object contains all of the game state data.
 	private Game game;
 	
-	public void startGame() {
+	public GameUI() {
 		
 		//FocusPanel
-				FocusPanel panel = new FocusPanel();
-				panel.setSize(Game.Height + "px", Game.Height + "px");
-				
-				//"buffer" canvas
-				this.buffer = Canvas.createIfSupported();
-				buffer.setSize(Game.Width + "px", Game.Height + "px");
-				buffer.setCoordinateSpaceWidth(Game.Width);
-				buffer.setCoordinateSpaceHeight(Game.Height);
-				this.bufCtx = buffer.getContext2d();
-				
-				// The visible canvas
-				this.canvas = Canvas.createIfSupported();
-				canvas.setSize(Game.Width + "px", Game.Height + "px");
-				canvas.setCoordinateSpaceWidth(Game.Width);
-				canvas.setCoordinateSpaceHeight(Game.Height);
-				this.ctx = canvas.getContext2d();
-				panel.add(canvas);
-				
-				
-		// Add a listener for mouse motion.
-		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
-		// will be called.
+		FocusPanel panel = new FocusPanel();
+		panel.setSize(Game.Height + "px", Game.Height + "px");
+		
+		//"buffer" canvas
+		this.buffer = Canvas.createIfSupported();
+		buffer.setSize(Game.Width + "px", Game.Height + "px");
+		buffer.setCoordinateSpaceWidth(Game.Width);
+		buffer.setCoordinateSpaceHeight(Game.Height);
+		this.bufCtx = buffer.getContext2d();
+		
+		// The visible canvas
+		this.canvas = Canvas.createIfSupported();
+		canvas.setSize(Game.Width + "px", Game.Height + "px");
+		canvas.setCoordinateSpaceWidth(Game.Width);
+		canvas.setCoordinateSpaceHeight(Game.Height);
+		this.ctx = canvas.getContext2d();
+		panel.add(canvas);
+
 		this.timer = new Timer() {
 			@Override
 			public void run() {
 				Draw();
 			}
 		};
+				
+		initWidget(panel);		
+	}
+	
+	public void startGame() {
+		// get background and sprite images that will be used for painting
+		background = HeatGem.getImage("RoughBattle.jpg");
 		
+		// Add a listener for mouse motion.
+		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
+		// will be called.
+		timer.scheduleRepeating(1000/10);
 	}
 		public void onMouseDown(Widget sender, int x, int y)
 	    {
@@ -104,6 +111,10 @@ public class GameUI extends Composite {
 		game.timerTick();
 		
 	}
+	
+//	public void setBackground(Image RoughBattle) {
+//		this.background = RoughBattle;
+//	}
 	
 	protected void Draw() {
 		// Draw onto buffer

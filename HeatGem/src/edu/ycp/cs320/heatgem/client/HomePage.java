@@ -73,16 +73,36 @@ public class HomePage extends Composite {
 			}
 			
 			IsWidget nextTabView = null;
+			
+			//Game Tab
 			if (tabCurrentSelection == 2){
 				nextTabView = new GameUI();
 			}
 			
-			// FIXME: other tabs
-			if (nextTabView == null) {
+			//Home Tab
+			else if (tabCurrentSelection == 0) {
 				nextTabView = new FlowPanel();
 			}
 			
-			tabViewLayoutPanel.add(nextTabView);
+			//Profile Tab
+			else if (tabCurrentSelection == 1) {
+				nextTabView = new FlowPanel();
+			}
+			
+			//Leaderboards Tab
+			else if (tabCurrentSelection == 3) {
+				nextTabView = new FlowPanel();
+			}
+			
+			currentTabView = nextTabView;
+			if (nextTabView != null) {
+				tabViewLayoutPanel.add(nextTabView);
+				
+				// FIXME: think of a better way to do this
+				if (nextTabView instanceof GameUI) {
+					((GameUI)nextTabView).startGame();
+				}
+			}
 		}
 	}
 }
