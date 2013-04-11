@@ -91,7 +91,7 @@ public class HomePage extends Composite {
 			
 			//Leaderboards Tab
 			else if (tabCurrentSelection == 3) {
-				nextTabView = new FlowPanel();
+				nextTabView = new LeaderBoard();
 			}
 			
 			currentTabView = nextTabView;
