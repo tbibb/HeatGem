@@ -24,7 +24,7 @@ public class HomePage extends Composite {
 		
 		layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
-		layoutPanel.setSize("709px", "571px");
+		layoutPanel.setSize("800px", "571px");
 		
 		decoratedTabBar = new DecoratedTabBar();
 		decoratedTabBar.addSelectionHandler(new SelectionHandler<Integer>() {
@@ -58,7 +58,8 @@ public class HomePage extends Composite {
 		
 		tabViewLayoutPanel = new LayoutPanel();
 		layoutPanel.add(tabViewLayoutPanel);
-		layoutPanel.setWidgetLeftRight(tabViewLayoutPanel, 0.0, Unit.PX, 0.0, Unit.PX);
+		tabViewLayoutPanel.setSize("800", "480");
+		layoutPanel.setWidgetLeftRight(tabViewLayoutPanel, 0.0, Unit.PX, -91.0, Unit.PX);
 		layoutPanel.setWidgetTopBottom(tabViewLayoutPanel, 88.0, Unit.PX, 0.0, Unit.PX);
 		
 	}

@@ -22,6 +22,16 @@ public class HeatGem implements EntryPoint {
 		"Attack.png",
 		"CriticalAttack.png",
 		"RoughBattle.jpg",
+		"Defeat.png",
+		"DoubleDamage.png",
+		"FullHealth.png",
+		"Heal.png",
+		"logoT.png",
+		"LowHealth.png",
+		"TBAR.jpg",
+		"UserInfo.png",
+		"Victory.png",
+		"YellowHealth.png"
 	};
 	private static Map<String, Image> imageMap = new HashMap<String, Image>();
 	
