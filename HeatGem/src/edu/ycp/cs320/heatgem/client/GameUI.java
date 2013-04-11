@@ -47,6 +47,7 @@ public class GameUI extends Composite {
 	private Image EnemyFace;
 	private Image Attack;
 	private Image Heal;
+	private Image Defeat;
 	
 	// The game object contains all of the game state data.
 	private Game game;
@@ -91,6 +92,7 @@ public class GameUI extends Composite {
 		EnemyFace = HeatGem.getImage("YellowHealth.png");
 		Attack = HeatGem.getImage("Attack.png");
 		Heal = HeatGem.getImage("Heal.png");
+		Defeat = HeatGem.getImage("Defeat.png");
 		
 		// Add a listener for mouse motion.
 		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
@@ -156,12 +158,12 @@ public class GameUI extends Composite {
 				100);
 		//Draw Attack Button
 		bufCtx.drawImage((ImageElement) Attack.getElement().cast(),
-				280,
-				350);
+				380,
+				360);
 		//Draw Heal Button
 		bufCtx.drawImage((ImageElement) Heal.getElement().cast(),
-				280,
-				400);
+				380,
+				410);
 
 		
 		// Copy buffer onto main canvas
