@@ -17,7 +17,7 @@ import java.net.*;
  * that is handled by the GameUI class.
  */
 public class Game {
-	public static final int Width = 640;
+	public static final int Width = 800;
 	public static final int Height = 480;
 	
 	boolean collision;
