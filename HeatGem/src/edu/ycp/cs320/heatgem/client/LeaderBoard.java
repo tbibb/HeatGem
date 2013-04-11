@@ -13,6 +13,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 
 public class LeaderBoard extends Composite {
 	private TextBox LeaderBoardTextBox;
@@ -22,9 +25,5 @@ public class LeaderBoard extends Composite {
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
 		
-		InlineLabel usernameRegisterLabel = new InlineLabel("  Yo dawg imma leaderboard ");
-		layoutPanel.add(usernameRegisterLabel);
-		
 	}
-		
 }
