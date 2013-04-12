@@ -31,13 +31,15 @@ public class ProfileView extends Composite {
 		layoutPanel.setSize("568px", "472px");
 		
 		Button btnNewButton = new Button("New button");
+		btnNewButton.setText("Delete Profile");
 		layoutPanel.add(btnNewButton);
-		layoutPanel.setWidgetLeftWidth(btnNewButton, 72.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(btnNewButton, 72.0, Unit.PX, 151.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(btnNewButton, 384.0, Unit.PX, 30.0, Unit.PX);
 		
 		Button btnNewButton_1 = new Button("New button");
+		btnNewButton_1.setText("New Profile");
 		layoutPanel.add(btnNewButton_1);
-		layoutPanel.setWidgetLeftWidth(btnNewButton_1, 402.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(btnNewButton_1, 337.0, Unit.PX, 146.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(btnNewButton_1, 384.0, Unit.PX, 30.0, Unit.PX);
 		
 		Label lblProfileView = new Label("Profile View");
@@ -105,6 +107,17 @@ public class ProfileView extends Composite {
 		layoutPanel.add(integerBox_2);
 		layoutPanel.setWidgetLeftWidth(integerBox_2, 72.0, Unit.PX, 151.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(integerBox_2, 284.0, Unit.PX, 26.0, Unit.PX);
+		
+		Label lblRank = new Label("Rank");
+		layoutPanel.add(lblRank);
+		layoutPanel.setWidgetLeftWidth(lblRank, 20.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblRank, 340.0, Unit.PX, 18.0, Unit.PX);
+		
+		IntegerBox integerBox_3 = new IntegerBox();
+		integerBox_3.setText("3");
+		layoutPanel.add(integerBox_3);
+		layoutPanel.setWidgetLeftWidth(integerBox_3, 72.0, Unit.PX, 151.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(integerBox_3, 332.0, Unit.PX, 26.0, Unit.PX);
 		
 		
 	}
