@@ -73,7 +73,12 @@ public class HomePage extends Composite {
 				tabViewLayoutPanel.remove(currentTabView);
 			}
 			
-			IsWidget nextTabView = null;
+			
+			//nextTabView = new HomeView();
+			
+			//IsWidget nextTabView = null;
+			
+			IsWidget nextTabView = new HomeView();
 			
 			//Game Tab
 			if (tabCurrentSelection == 2){
@@ -82,7 +87,7 @@ public class HomePage extends Composite {
 			
 			//Home Tab
 			else if (tabCurrentSelection == 0) {
-				nextTabView = new FlowPanel();
+				nextTabView = new HomeView();
 			}
 			
 			//Profile Tab

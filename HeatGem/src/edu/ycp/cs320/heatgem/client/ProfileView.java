@@ -65,7 +65,7 @@ public class ProfileView extends Composite {
 		
 		Label lblExperience = new Label("Experience");
 		layoutPanel.add(lblExperience);
-		layoutPanel.setWidgetLeftWidth(lblExperience, 17.0, Unit.PX, 70.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(lblExperience, 17.0, Unit.PX, 76.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblExperience, 181.0, Unit.PX, 18.0, Unit.PX);
 		
 		Label lblWins = new Label("Wins");
@@ -81,14 +81,14 @@ public class ProfileView extends Composite {
 		TextBox txtbxAlice = new TextBox();
 		txtbxAlice.setText("Alice");
 		layoutPanel.add(txtbxAlice);
-		layoutPanel.setWidgetLeftWidth(txtbxAlice, 72.0, Unit.PX, 138.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(txtbxAlice, 85.0, Unit.PX, 138.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(txtbxAlice, 70.0, Unit.PX, 30.0, Unit.PX);
 		
 		IntegerBox integerBox = new IntegerBox();
 		integerBox.setText("10");
 		layoutPanel.add(integerBox);
-		layoutPanel.setWidgetLeftWidth(integerBox, 72.0, Unit.PX, 151.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(integerBox, 120.0, Unit.PX, 26.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(integerBox, 93.0, Unit.PX, 151.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(integerBox, 128.0, Unit.PX, 26.0, Unit.PX);
 		
 		LongBox longBox = new LongBox();
 		longBox.setText("4258764049");
@@ -99,14 +99,14 @@ public class ProfileView extends Composite {
 		IntegerBox integerBox_1 = new IntegerBox();
 		integerBox_1.setText("2456");
 		layoutPanel.add(integerBox_1);
-		layoutPanel.setWidgetLeftWidth(integerBox_1, 72.0, Unit.PX, 151.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(integerBox_1, 93.0, Unit.PX, 151.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(integerBox_1, 228.0, Unit.PX, 26.0, Unit.PX);
 		
 		IntegerBox integerBox_2 = new IntegerBox();
 		integerBox_2.setText("326");
 		layoutPanel.add(integerBox_2);
-		layoutPanel.setWidgetLeftWidth(integerBox_2, 72.0, Unit.PX, 151.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(integerBox_2, 284.0, Unit.PX, 26.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(integerBox_2, 93.0, Unit.PX, 151.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(integerBox_2, 276.0, Unit.PX, 26.0, Unit.PX);
 		
 		Label lblRank = new Label("Rank");
 		layoutPanel.add(lblRank);
@@ -116,7 +116,7 @@ public class ProfileView extends Composite {
 		IntegerBox integerBox_3 = new IntegerBox();
 		integerBox_3.setText("3");
 		layoutPanel.add(integerBox_3);
-		layoutPanel.setWidgetLeftWidth(integerBox_3, 72.0, Unit.PX, 151.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(integerBox_3, 93.0, Unit.PX, 151.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(integerBox_3, 332.0, Unit.PX, 26.0, Unit.PX);
 		
 		
