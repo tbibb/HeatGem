@@ -87,7 +87,7 @@ public class HomePage extends Composite {
 			
 			//Profile Tab
 			else if (tabCurrentSelection == 1) {
-				nextTabView = new FlowPanel();
+				nextTabView = new ProfileView();
 			}
 			
 			//Leaderboards Tab
