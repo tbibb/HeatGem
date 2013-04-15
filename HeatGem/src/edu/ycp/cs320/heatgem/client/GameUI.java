@@ -41,42 +41,63 @@ public class GameUI extends Composite {
 	private Context2d ctx;
 	private Timer timer;
 	private Image background;
+	private Image PlayerHealth;
+	private Image EnemyHealth;
+	private Image PlayerFace;
+	private Image EnemyFace;
+	private Image Attack;
+	private Image Heal;
+	private Image Defeat;
 	
 	// The game object contains all of the game state data.
 	private Game game;
 	
-	public void startGame() {
+	public GameUI() {
 		
 		//FocusPanel
-				FocusPanel panel = new FocusPanel();
-				panel.setSize(Game.Height + "px", Game.Height + "px");
-				
-				//"buffer" canvas
-				this.buffer = Canvas.createIfSupported();
-				buffer.setSize(Game.Width + "px", Game.Height + "px");
-				buffer.setCoordinateSpaceWidth(Game.Width);
-				buffer.setCoordinateSpaceHeight(Game.Height);
-				this.bufCtx = buffer.getContext2d();
-				
-				// The visible canvas
-				this.canvas = Canvas.createIfSupported();
-				canvas.setSize(Game.Width + "px", Game.Height + "px");
-				canvas.setCoordinateSpaceWidth(Game.Width);
-				canvas.setCoordinateSpaceHeight(Game.Height);
-				this.ctx = canvas.getContext2d();
-				panel.add(canvas);
-				
-				
-		// Add a listener for mouse motion.
-		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
-		// will be called.
+		FocusPanel panel = new FocusPanel();
+		panel.setSize(Game.Height + "px", Game.Height + "px");
+		
+		//"buffer" canvas
+		this.buffer = Canvas.createIfSupported();
+		buffer.setSize(Game.Width + "px", Game.Height + "px");
+		buffer.setCoordinateSpaceWidth(Game.Width);
+		buffer.setCoordinateSpaceHeight(Game.Height);
+		this.bufCtx = buffer.getContext2d();
+		
+		// The visible canvas
+		this.canvas = Canvas.createIfSupported();
+		canvas.setSize(Game.Width + "px", Game.Height + "px");
+		canvas.setCoordinateSpaceWidth(Game.Width);
+		canvas.setCoordinateSpaceHeight(Game.Height);
+		this.ctx = canvas.getContext2d();
+		panel.add(canvas);
+
 		this.timer = new Timer() {
 			@Override
 			public void run() {
 				Draw();
 			}
 		};
+				
+		initWidget(panel);		
+	}
+	
+	public void startGame() {
+		// get background and sprite images that will be used for painting
+		background = HeatGem.getImage("RoughBattle.jpg");
+		PlayerHealth = HeatGem.getImage("TBAR.jpg");
+		EnemyHealth = HeatGem.getImage("TBAR.jpg");
+		PlayerFace = HeatGem.getImage("FullHealth.png");
+		EnemyFace = HeatGem.getImage("YellowHealth.png");
+		Attack = HeatGem.getImage("Attack.png");
+		Heal = HeatGem.getImage("Heal.png");
+		Defeat = HeatGem.getImage("Defeat.png");
 		
+		// Add a listener for mouse motion.
+		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
+		// will be called.
+		timer.scheduleRepeating(1000/10);
 	}
 		public void onMouseDown(Widget sender, int x, int y)
 	    {
@@ -105,16 +126,44 @@ public class GameUI extends Composite {
 		
 	}
 	
+//	public void setBackground(Image RoughBattle) {
+//		this.background = RoughBattle;
+//	}
+	
 	protected void Draw() {
 		// Draw onto buffer
 		
 		// Draw background
 
 		
-		// Draw player ship
+		// Draw background
 		bufCtx.drawImage((ImageElement) background.getElement().cast(),
 				0,
 				0);
+		//Draw PlayerHealth Bar
+		bufCtx.drawImage((ImageElement) PlayerHealth.getElement().cast(),
+				30,
+				430);
+		//Draw EnemyHealth Bar
+		bufCtx.drawImage((ImageElement) EnemyHealth.getElement().cast(),
+				450,
+				35);
+		//Draw Sprite for character
+		bufCtx.drawImage((ImageElement) PlayerFace.getElement().cast(),
+				50,
+				200);
+		//Draw Sprite for Enemy
+		bufCtx.drawImage((ImageElement) EnemyFace.getElement().cast(),
+				580,
+				100);
+		//Draw Attack Button
+		bufCtx.drawImage((ImageElement) Attack.getElement().cast(),
+				380,
+				360);
+		//Draw Heal Button
+		bufCtx.drawImage((ImageElement) Heal.getElement().cast(),
+				380,
+				410);
 
 		
 		// Copy buffer onto main canvas
