@@ -11,6 +11,9 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 
 import edu.ycp.cs320.heatgem.shared.User;
 
@@ -40,12 +43,21 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetTopHeight(passwordLabel, 108.0, Unit.PX, 18.0, Unit.PX);
 		
 		passwordTextBox = new TextBox();
+		passwordTextBox.addKeyPressHandler(new KeyPressHandler() {
+			@Override
+			public void onKeyPress(KeyPressEvent event) {
+				if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER) {
+					handleLogin();
+				}
+			}
+		});
 		layoutPanel.add(passwordTextBox);
 		layoutPanel.setWidgetLeftWidth(passwordTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(passwordTextBox, 97.0, Unit.PX, 34.0, Unit.PX);
 		
 		SimpleCheckBox simpleCheckBox = new SimpleCheckBox();
 		layoutPanel.add(simpleCheckBox);
+		
 		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 55.0, Unit.PX, 20.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(simpleCheckBox, 226.0, Unit.PX, 19.0, Unit.PX);
 		
@@ -61,8 +73,11 @@ public class LoginView extends Composite {
 				
 				handleLogin();
 				
-			}
+			}		
 		});
+		
+		
+		
 		loginNewButton.setText("Login!");
 		layoutPanel.add(loginNewButton);
 		layoutPanel.setWidgetLeftWidth(loginNewButton, 133.0, Unit.PX, 81.0, Unit.PX);
@@ -99,7 +114,9 @@ public class LoginView extends Composite {
 				} else {
 					// TODO: switch to home page
 					errorLabel.setText("Success! Should switch to home page");
-					HeatGem.setView(new HomePage());
+					HomePage view = new HomePage();
+					HeatGem.setView(view);
+					view.activate(); // do any required dynamic initialization
 				}
 			}
 		});

@@ -17,7 +17,7 @@ public class HomePage extends Composite {
 	private LayoutPanel layoutPanel;
 	private DecoratedTabBar decoratedTabBar;
 	private LayoutPanel tabViewLayoutPanel;
-	private int tabCurrentSelection= 0;
+	private int tabCurrentSelection= -1;
 	private IsWidget currentTabView;
 	
 	public HomePage(){
@@ -64,6 +64,10 @@ public class HomePage extends Composite {
 		
 	}
 	
+	public void activate() {
+		decoratedTabBar.selectTab(0);
+	}
+	
 	protected void handleTabSelection(SelectionEvent<Integer> event) {
 		GWT.log("Tab selection: " + event.getSelectedItem());
 		if (event.getSelectedItem().intValue() != tabCurrentSelection) {
@@ -79,6 +83,8 @@ public class HomePage extends Composite {
 			//IsWidget nextTabView = null;
 			
 			IsWidget nextTabView = new HomeView();
+			
+			
 			
 			//Game Tab
 			if (tabCurrentSelection == 2){
@@ -100,9 +106,13 @@ public class HomePage extends Composite {
 				nextTabView = new FlowPanel();
 			}
 			
+			
+			
 			currentTabView = nextTabView;
 			if (nextTabView != null) {
+				GWT.log("Adding a " + nextTabView.getClass().getName() + " to the tab view layout panel");
 				tabViewLayoutPanel.add(nextTabView);
+				
 				
 				// FIXME: think of a better way to do this
 				if (nextTabView instanceof GameUI) {
