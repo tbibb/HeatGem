@@ -34,7 +34,8 @@ import edu.ycp.cs320.heatgem.shared.Game;
 public class GameUI extends Composite {
 
 
-	public static double MouseX, MouseY;
+	public static int MouseX;
+	public static int MouseY;
 	private Canvas buffer;
 	private Context2d bufCtx;
 	private Canvas canvas;
@@ -111,9 +112,12 @@ public class GameUI extends Composite {
 	    {
 	        
 	    }
-	    public void onMouseMove(Widget sender, int x, int y)
+	    public void onClick(Widget sender, int x, int y)
 	    {
-	       
+	       canvas.getElement().cast();
+	       int LocX = MouseX;
+	       int LocY= MouseY;
+
 	    }
 	    public void onMouseUp(Widget sender, int x, int y)
 	    {
