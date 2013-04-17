@@ -10,7 +10,7 @@ public class BattleTest {
 
 	@Before
 	public void setUp() {
-		battle = new Battle();
+		battle = new Battle(null, null);
 	}
 	@Test
 	public void testSomething() {
