@@ -46,7 +46,7 @@ public class GameUI extends Composite {
 	private Image EnemyHealth;
 	private Image PlayerFace;
 	private Image EnemyFace;
-	private Image Attack;
+	private Image Attack; 
 	private Image Heal;
 	private Image Defeat;
 	
