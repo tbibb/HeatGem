@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class LogicTest {
-	private Logic
+	
 	
 	@Test
-	public void test() {
+	public void testDoBattle() {
 		fail("Not yet implemented");
 	}
 

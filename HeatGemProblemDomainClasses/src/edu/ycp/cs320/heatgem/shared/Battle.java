@@ -34,13 +34,11 @@ public class Battle {
              return 0; // no one is dead
      }
 
-     public int getHealth1()
+     public int getHealth(Player player)
      {
-         return One.getHealth();
+         return player.getHealth();
      }
 
-     public int getHealth2()
-     {
-         return Two.getHealth();
-     }
+    
+     
  }

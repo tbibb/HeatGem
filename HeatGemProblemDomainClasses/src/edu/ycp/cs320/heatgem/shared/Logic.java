@@ -12,8 +12,8 @@ public class Logic {
              //cUI.waitForAttack();
             // cUI.parseInput();
              skirmish.turn();
-             Player1.setHealth(skirmish.getHealth1());
-             Monster.setHealth(skirmish.getHealth2());
+             Player1.setHealth(skirmish.getHealth(Player1));
+             Monster.setHealth(skirmish.getHealth(Monster));
              if (skirmish.battleState() != 0)
                  break;
          }
