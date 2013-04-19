@@ -10,4 +10,6 @@ public interface UserService extends RemoteService {
 	public User logIn(String username, String password);
 	
 	public void addUser(String username, String password, String confirmPassword, String email);
+	
+	//public void updateBoard();
 }

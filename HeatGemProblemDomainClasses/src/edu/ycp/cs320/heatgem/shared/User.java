@@ -9,6 +9,7 @@ public class User implements Serializable {
 	
 	private String username;
 	private String password;
+	private int highScore;
 	
 	public User() {
 		
@@ -28,6 +29,14 @@ public class User implements Serializable {
 	
 	public String getPassword() {
 		return password;
+	}
+	
+	public void setHighScore(int highScore) {
+		this.highScore = highScore;
+	}
+	
+	public int getHighScore() {
+		return highScore;
 	}
 	
 }

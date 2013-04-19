@@ -18,5 +18,10 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		
 		
 	}
+	
+//	@Override
+//	public void updateBoard() {
+//		
+//	}
 
 }

@@ -11,6 +11,6 @@ public interface UserServiceAsync {
 	void addUser(String username, String password, String confirmPassword,
 			String email, AsyncCallback<Void> callback);
 	
-
+	//void updateBoard();
 
 }
