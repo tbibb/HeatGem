@@ -17,16 +17,18 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 
 public class LoginView extends Composite {
 	private TextBox usernameTextBox;
 	private TextBox passwordTextBox;
-	private Label errorLabel;
 	private SimpleCheckBox simpleCheckBox;	
+	private InlineLabel errorLabel;
 	public LoginView() {
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
+		layoutPanel.setSize("433px", "395px");
 		
 		InlineLabel usernameLabel = new InlineLabel("Username:");
 		layoutPanel.add(usernameLabel);
@@ -61,8 +63,8 @@ public class LoginView extends Composite {
 		layoutPanel.add(simpleCheckBox);
 		
 		
-		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 55.0, Unit.PX, 20.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(simpleCheckBox, 226.0, Unit.PX, 19.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 74.0, Unit.PX, 20.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(simpleCheckBox, 290.0, Unit.PX, 19.0, Unit.PX);
 		
 		if (simpleCheckBox.getValue() == true) {
 			GWT.log("Checkbox is checked");
@@ -72,8 +74,8 @@ public class LoginView extends Composite {
 		
 		InlineLabel rememberMeNextLabel = new InlineLabel("Remember me next time.");
 		layoutPanel.add(rememberMeNextLabel);
-		layoutPanel.setWidgetLeftWidth(rememberMeNextLabel, 120.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(rememberMeNextLabel, 226.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(rememberMeNextLabel, 139.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(rememberMeNextLabel, 290.0, Unit.PX, 18.0, Unit.PX);
 		
 		Button loginNewButton = new Button("New button");
 		loginNewButton.addClickHandler(new ClickHandler() {
@@ -89,8 +91,8 @@ public class LoginView extends Composite {
 		
 		loginNewButton.setText("Login!");
 		layoutPanel.add(loginNewButton);
-		layoutPanel.setWidgetLeftWidth(loginNewButton, 133.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(loginNewButton, 174.0, Unit.PX, 30.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(loginNewButton, 155.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(loginNewButton, 166.0, Unit.PX, 30.0, Unit.PX);
 		
 		Label headerLabel = new Label("Login");
 		headerLabel.setStyleName("h1");
@@ -98,10 +100,32 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetLeftWidth(headerLabel, 168.0, Unit.PX, 56.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(headerLabel, 19.0, Unit.PX, 18.0, Unit.PX);
 		
-		errorLabel = new Label("");
+		Button btnCreateAccount = new Button("Create Account");
+		layoutPanel.add(btnCreateAccount);
+		layoutPanel.setWidgetLeftWidth(btnCreateAccount, 133.0, Unit.PX, 126.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(btnCreateAccount, 232.0, Unit.PX, 30.0, Unit.PX);
+		btnCreateAccount.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				
+				
+				//HomePage view = new HomePage();
+				AddUserView view = new AddUserView();
+				HeatGem.setView(view);
+				view.activate();
+				
+			}		
+		});
+		
+		Label lblOr = new Label("or");
+		lblOr.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		layoutPanel.add(lblOr);
+		layoutPanel.setWidgetLeftWidth(lblOr, 155.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblOr, 202.0, Unit.PX, 24.0, Unit.PX);
+		
+		errorLabel = new InlineLabel("");
 		layoutPanel.add(errorLabel);
-		layoutPanel.setWidgetLeftWidth(errorLabel, 120.0, Unit.PX, 307.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(errorLabel, 259.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftRight(errorLabel, 10.0, Unit.PX, 11.0, Unit.PX);
+		layoutPanel.setWidgetBottomHeight(errorLabel, 43.0, Unit.PX, 18.0, Unit.PX);
 	}
 	
 	protected void handleLogin() {
