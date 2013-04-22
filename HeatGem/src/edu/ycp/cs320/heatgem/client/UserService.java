@@ -4,6 +4,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import edu.ycp.cs320.heatgem.shared.UserProfile;
 
 @RemoteServiceRelativePath("user")
 public interface UserService extends RemoteService {
@@ -11,5 +12,9 @@ public interface UserService extends RemoteService {
 	
 	public void addUser(String username, String password, String confirmPassword, String email);
 	
-	//public void updateBoard();
+	public void deleteUserAccount(String username);
+	
+	public UserProfile getUserProfile(String username);
+	
+	public Boolean updateUserProfile(String username, UserProfile updatedProfile);
 }

@@ -19,6 +19,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.LongBox;
 import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.TextBoxBase;
 
 public class HomeView extends Composite {
 
@@ -32,6 +33,8 @@ public class HomeView extends Composite {
 		layoutPanel.setSize("629px", "516px");
 		
 		TextArea txtrHeatGemIs = new TextArea();
+		txtrHeatGemIs.setDirectionEstimator(true);
+		txtrHeatGemIs.setTextAlignment(TextBoxBase.ALIGN_CENTER);
 		txtrHeatGemIs.setText("Heat Gem is a great game, which is in seriously pre-alpha develoment status.\r\n\r\n\r\nMore coming soon....");
 		layoutPanel.add(txtrHeatGemIs);
 		layoutPanel.setWidgetLeftWidth(txtrHeatGemIs, 15.0, Unit.PX, 458.0, Unit.PX);

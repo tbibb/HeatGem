@@ -19,7 +19,13 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.LongBox;
 
+import edu.ycp.cs320.heatgem.shared.UserProfile;
+
 public class ProfileView extends Composite {
+	
+	private Image UserFace;
+	
+	private UserProfile model;
 
 	/**
 	 * @param args
@@ -45,11 +51,13 @@ public class ProfileView extends Composite {
 		layoutPanel.setWidgetLeftWidth(lblProfileView, 244.0, Unit.PX, 99.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblProfileView, 23.0, Unit.PX, 18.0, Unit.PX);
 		
-		Image image = new Image("Defeat.png");
-		image.setAltText("you");
-		layoutPanel.add(image);
-		layoutPanel.setWidgetLeftWidth(image, 337.0, Unit.PX, 179.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(image, 81.0, Unit.PX, 197.0, Unit.PX);
+		//Image image = new Image("Defeat.png");
+		UserFace = HeatGem.getImage("Defeat.png");
+		
+		UserFace.setAltText("you");
+		layoutPanel.add(UserFace);
+		layoutPanel.setWidgetLeftWidth(UserFace, 337.0, Unit.PX, 179.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(UserFace, 81.0, Unit.PX, 197.0, Unit.PX);
 		
 		Label lblName = new Label("Name");
 		layoutPanel.add(lblName);
