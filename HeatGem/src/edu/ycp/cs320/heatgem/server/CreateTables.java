@@ -11,9 +11,5 @@ public class CreateTables {
 		System.out.println("Successfully created tables");
 		//le comment
 	}
+}
 
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> refs/remotes/tbibb/master

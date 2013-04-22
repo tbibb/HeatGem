@@ -8,24 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.ycp.cs320.heatgem.shared.User;
-<<<<<<< HEAD
-=======
+
 import edu.ycp.cs320.heatgem.shared.UserProfile;
->>>>>>> refs/remotes/tbibb/master
+
 import edu.ycp.cs320.heatgem.server.DB;
 import edu.ycp.cs320.heatgem.server.ITransaction;
 import edu.ycp.cs320.heatgem.server.FakeDatabase;
 
 public class FakeDatabase implements IDatabase {
 	private List<User> userList;
-<<<<<<< HEAD
-	
-	private static final String DATASTORE = "/home/kpike/heatgemdb";
-=======
+
 	private List<UserProfile> userProfileList;
 	
 	private static final String DATASTORE = "/home/heatgemdb";
->>>>>>> refs/remotes/tbibb/master
+
 	
 	public FakeDatabase() {
 		userList = new ArrayList<User>();
@@ -80,7 +76,6 @@ public class FakeDatabase implements IDatabase {
 		doAddUser(user);
 	}
 
-<<<<<<< HEAD
 	private class DatabaseConnection {
 		public Connection conn;
 		public int refCount;
@@ -163,9 +158,8 @@ public class FakeDatabase implements IDatabase {
 		}
 		
 		
-	}
 
-=======
+
 	/*
 	private class DatabaseConnection {
 		public Connection conn;
@@ -302,11 +296,8 @@ public class FakeDatabase implements IDatabase {
 		return true;
 	}
 
-	public void createTables() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 		
 }
->>>>>>> refs/remotes/tbibb/master
+
 

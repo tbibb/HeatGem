@@ -30,9 +30,5 @@ public class DB {
 			}
 		}
 	}
-	
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> refs/remotes/tbibb/master
