@@ -15,8 +15,12 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import com.google.gwt.user.client.ui.Hyperlink;
+import com.google.gwt.user.client.ui.InlineHyperlink;
 
 public class LoginView extends Composite {
 	private TextBox usernameTextBox;
@@ -102,8 +106,30 @@ public class LoginView extends Composite {
 		layoutPanel.add(errorLabel);
 		layoutPanel.setWidgetLeftWidth(errorLabel, 120.0, Unit.PX, 307.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(errorLabel, 259.0, Unit.PX, 18.0, Unit.PX);
+		
+		Label lblNewUserClick = new Label("New user? Click here to register!");
+		layoutPanel.add(lblNewUserClick);
+		layoutPanel.setWidgetLeftWidth(lblNewUserClick, 120.0, Unit.PX, 193.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblNewUserClick, 250.0, Unit.PX, 18.0, Unit.PX);
+		lblNewUserClick.addMouseMoveHandler(new MouseMoveHandler() {
+			public void onMouseMove(MouseMoveEvent event) {
+				//change color of text for when mouse hovers over link
+			}
+		});
+		lblNewUserClick.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				handleRegister();
+			}
+			
+		});
+		
 	}
 	
+	protected void handleRegister() {
+		RegisterView view = new RegisterView();
+		HeatGem.setView(view);
+	}
+
 	protected void handleLogin() {
 		String username = this.usernameTextBox.getText();
 		String password = this.passwordTextBox.getText();

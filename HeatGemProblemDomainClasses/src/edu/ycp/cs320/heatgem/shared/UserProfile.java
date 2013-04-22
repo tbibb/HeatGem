@@ -9,6 +9,7 @@ public class UserProfile implements Serializable {
 	private String name;
 	private int level;
 	private int experience;
+	private int highScore;
 	// etc.
 	
 	private int photoId;
@@ -42,5 +43,12 @@ public class UserProfile implements Serializable {
 	public int getLevel() {
 		return level;
 	}
+	
+	public void setHighScore(int highScore) {
+		this.highScore = highScore;
+	}
 
+	public int getHighScore() {
+		return highScore;
+	}
 }

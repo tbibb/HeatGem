@@ -24,6 +24,7 @@ public class RegisterView extends Composite {
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
+		layoutPanel.setSize("450px", "350px");
 		
 		InlineLabel usernameRegisterLabel = new InlineLabel("  Username ");
 		layoutPanel.add(usernameRegisterLabel);
@@ -102,13 +103,14 @@ public class RegisterView extends Composite {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
+				// tell user that he/she/it failed to register
 			}
 
 			@Override
 			public void onSuccess(Void result) {
 				// TODO Auto-generated method stub
-				
+				LoginView view = new LoginView();
+				HeatGem.setView(view);
 			}
 			
 			
