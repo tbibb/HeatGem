@@ -20,6 +20,7 @@ public class LeaderBoard extends Composite {
 		// Put some text at the table's extremes.  This forces the table to be
 	    // 3 by 3.
 	    t.setText(0, 0, "Username");
+<<<<<<< HEAD
 	    t.setText(1, 0, "lolname");
 	    t.setText(0, 1, "Score");
 	    t.setText(0, 2, "Time");
@@ -27,3 +28,11 @@ public class LeaderBoard extends Composite {
 		
 	}
 }
+=======
+	    t.setText(0, 1, "Score");
+	    t.setText(0, 2, "Time");
+	    t.setBorderWidth(1);
+		
+	}
+}
+>>>>>>> refs/remotes/tbibb/master

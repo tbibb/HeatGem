@@ -12,4 +12,8 @@ public class CreateTables {
 		//le comment
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/tbibb/master

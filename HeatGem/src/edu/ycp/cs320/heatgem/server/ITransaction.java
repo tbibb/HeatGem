@@ -7,4 +7,8 @@ public interface ITransaction<E> {
 	
 	public E run(Connection conn) throws SQLException;
 	//le comment2
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/tbibb/master
