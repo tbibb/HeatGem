@@ -7,15 +7,31 @@ import org.junit.Test;
 
 public class BattleTest {
 	private Battle battle;
+	private Player player1;
+	private Player player2;
+	
 
 	@Before
 	public void setUp() {
-		battle = new Battle();
+		
+		player1 = new Player("alice");
+		player2 = new Player("bob");
+		battle = new Battle(player1, player2);
 	}
 	@Test
-	public void testSomething() {
+	public void testTurn() {
 		//fail("Not yet implemented");
 		assertTrue(true);
+		
+	}
+	
+	@Test
+	public void testBattleState(){
+		
+	}
+	
+	@Test
+	public void testGetHealth(){
 		
 	}
 
