@@ -20,12 +20,14 @@ import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.LongBox;
 
 import edu.ycp.cs320.heatgem.shared.UserProfile;
+import com.google.gwt.user.client.ui.NumberLabel;
 
 public class ProfileView extends Composite {
 	
 	private Image UserFace;
 	
 	private UserProfile model;
+	private Label lblAlice;
 
 	/**
 	 * @param args
@@ -40,11 +42,6 @@ public class ProfileView extends Composite {
 		layoutPanel.add(btnNewButton);
 		layoutPanel.setWidgetLeftWidth(btnNewButton, 72.0, Unit.PX, 81.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(btnNewButton, 384.0, Unit.PX, 30.0, Unit.PX);
-		
-		Button btnNewButton_1 = new Button("New button");
-		layoutPanel.add(btnNewButton_1);
-		layoutPanel.setWidgetLeftWidth(btnNewButton_1, 402.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(btnNewButton_1, 384.0, Unit.PX, 30.0, Unit.PX);
 		
 		Label lblProfileView = new Label("Profile View");
 		layoutPanel.add(lblProfileView);
@@ -84,12 +81,6 @@ public class ProfileView extends Composite {
 		layoutPanel.setWidgetLeftWidth(lblLosses, 20.0, Unit.PX, 56.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblLosses, 284.0, Unit.PX, 18.0, Unit.PX);
 		
-		TextBox txtbxAlice = new TextBox();
-		txtbxAlice.setText("Alice");
-		layoutPanel.add(txtbxAlice);
-		layoutPanel.setWidgetLeftWidth(txtbxAlice, 72.0, Unit.PX, 138.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(txtbxAlice, 70.0, Unit.PX, 30.0, Unit.PX);
-		
 		IntegerBox integerBox = new IntegerBox();
 		integerBox.setText("10");
 		layoutPanel.add(integerBox);
@@ -113,6 +104,11 @@ public class ProfileView extends Composite {
 		layoutPanel.add(integerBox_2);
 		layoutPanel.setWidgetLeftWidth(integerBox_2, 72.0, Unit.PX, 151.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(integerBox_2, 284.0, Unit.PX, 26.0, Unit.PX);
+		
+		lblAlice = new Label("Alice");
+		layoutPanel.add(lblAlice);
+		layoutPanel.setWidgetLeftWidth(lblAlice, 82.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblAlice, 81.0, Unit.PX, 18.0, Unit.PX);
 		
 		
 	}

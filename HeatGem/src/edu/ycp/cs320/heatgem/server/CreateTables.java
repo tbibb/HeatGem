@@ -9,7 +9,7 @@ public class CreateTables {
 		FakeDatabase db = new FakeDatabase();
 		db.createTables();
 		System.out.println("Successfully created tables");
-		//le comment
+		
 	}
 }
 

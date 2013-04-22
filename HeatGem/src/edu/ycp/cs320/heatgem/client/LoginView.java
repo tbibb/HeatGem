@@ -17,12 +17,13 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class LoginView extends Composite {
 	private TextBox usernameTextBox;
-	private TextBox passwordTextBox;
 	private Label errorLabel;
 	private SimpleCheckBox simpleCheckBox;	
+	private PasswordTextBox passwordTextBox;
 	public LoginView() {
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -37,36 +38,27 @@ public class LoginView extends Composite {
 		layoutPanel.add(usernameTextBox);
 		layoutPanel.setWidgetLeftWidth(usernameTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(usernameTextBox, 43.0, Unit.PX, 34.0, Unit.PX);
-		//String username =  usernameTextBox.toString();
+		
 		
 		InlineLabel passwordLabel = new InlineLabel("Password");
 		layoutPanel.add(passwordLabel);
 		layoutPanel.setWidgetLeftWidth(passwordLabel, 24.0, Unit.PX, 90.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(passwordLabel, 108.0, Unit.PX, 18.0, Unit.PX);
 		
-		passwordTextBox = new TextBox();
-		passwordTextBox.addKeyPressHandler(new KeyPressHandler() {
-			@Override
-			public void onKeyPress(KeyPressEvent event) {
-				if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER) {
-					handleLogin();
-				}
-			}
-		});
+		passwordTextBox = new PasswordTextBox();
 		layoutPanel.add(passwordTextBox);
 		layoutPanel.setWidgetLeftWidth(passwordTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordTextBox, 97.0, Unit.PX, 34.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordTextBox, 94.0, Unit.PX, 32.0, Unit.PX);
 		
 		simpleCheckBox = new SimpleCheckBox();
 		layoutPanel.add(simpleCheckBox);
-		
 		
 		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 55.0, Unit.PX, 20.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(simpleCheckBox, 226.0, Unit.PX, 19.0, Unit.PX);
 		
 		if (simpleCheckBox.getValue() == true) {
 			GWT.log("Checkbox is checked");
-			System.out.println("Hi");
+			System.out.println("Box is checked");
 		
 		}
 		
@@ -102,6 +94,8 @@ public class LoginView extends Composite {
 		layoutPanel.add(errorLabel);
 		layoutPanel.setWidgetLeftWidth(errorLabel, 120.0, Unit.PX, 307.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(errorLabel, 259.0, Unit.PX, 18.0, Unit.PX);
+		
+
 	}
 	
 	protected void handleLogin() {
@@ -131,4 +125,3 @@ public class LoginView extends Composite {
 		});
 	}
 }
-// hi
