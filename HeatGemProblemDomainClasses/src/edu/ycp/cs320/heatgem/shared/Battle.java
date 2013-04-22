@@ -38,7 +38,4 @@ public class Battle {
      {
          return player.getHealth();
      }
-
-    
-     
  }

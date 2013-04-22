@@ -20,13 +20,18 @@ public class BattleTest {
 	}
 	@Test
 	public void testTurn() {
-		//fail("Not yet implemented");
+		
 		assertTrue(true);
 		
 	}
 	
 	@Test
 	public void testBattleState(){
+		
+	}
+	
+	@Test
+	public void testSetHealth(){
 		
 	}
 	

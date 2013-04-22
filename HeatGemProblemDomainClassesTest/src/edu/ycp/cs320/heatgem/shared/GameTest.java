@@ -14,7 +14,12 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testSomething() {
-		assertTrue(true);
+	public void testRunTime()  {
+	
+	}
+	
+	@Test
+	public void testTimerTick(){
+		
 	}
 }

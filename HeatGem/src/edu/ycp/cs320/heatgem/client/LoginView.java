@@ -40,7 +40,7 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetTopHeight(usernameTextBox, 43.0, Unit.PX, 34.0, Unit.PX);
 		
 		
-		InlineLabel passwordLabel = new InlineLabel("Password");
+		InlineLabel passwordLabel = new InlineLabel("Password:");
 		layoutPanel.add(passwordLabel);
 		layoutPanel.setWidgetLeftWidth(passwordLabel, 24.0, Unit.PX, 90.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(passwordLabel, 108.0, Unit.PX, 18.0, Unit.PX);

@@ -14,11 +14,17 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void testName() {
+	public void testGetPlayerName() {
 		//assertTrue(Player.getPlayerName() = "test");
 		assertTrue(true);
 	}
 
+	@Test
+	public void testSetHealth(){
+		
+	}
+	
+	@Test
 	public void testGetHealth() {
 		//assertTrue(getHealth("") = 100);
 	}

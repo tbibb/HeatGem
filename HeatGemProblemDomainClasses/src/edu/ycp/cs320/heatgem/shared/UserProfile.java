@@ -9,8 +9,6 @@ public class UserProfile implements Serializable {
 	private String name;
 	private int level;
 	private int experience;
-	// etc.
-	
 	private int photoId;
 	
 	// methods

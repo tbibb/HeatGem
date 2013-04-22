@@ -35,7 +35,7 @@ public class HomeView extends Composite {
 		TextArea txtrHeatGemIs = new TextArea();
 		txtrHeatGemIs.setDirectionEstimator(true);
 		txtrHeatGemIs.setTextAlignment(TextBoxBase.ALIGN_CENTER);
-		txtrHeatGemIs.setText("Heat Gem is a great game, which is in seriously pre-alpha develoment status.\r\n\r\n\r\nMore coming soon....");
+		txtrHeatGemIs.setText("Heat Gem is a great game, which is in serious pre-alpha development status.\r\n\r\n\r\nMore coming soon....");
 		layoutPanel.add(txtrHeatGemIs);
 		layoutPanel.setWidgetLeftWidth(txtrHeatGemIs, 15.0, Unit.PX, 458.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(txtrHeatGemIs, 28.0, Unit.PX, 346.0, Unit.PX);

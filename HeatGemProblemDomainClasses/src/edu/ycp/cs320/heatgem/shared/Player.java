@@ -11,11 +11,6 @@ public class Player {
         health = 100;
     }
 
-    public int getHealth()
-    {
-        return health;
-    }
-
     public String getPlayerName()
     {
         return playerName;
@@ -24,5 +19,10 @@ public class Player {
     public void setHealth(int health)
     {
         this.health = health;
+    }
+    
+    public int getHealth()
+    {
+        return health;
     }
 }

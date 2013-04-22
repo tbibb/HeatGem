@@ -20,6 +20,7 @@ public class HomePage extends Composite {
 	private LayoutPanel tabViewLayoutPanel;
 	private int tabCurrentSelection= -1;
 	private IsWidget currentTabView;
+	private Hyperlink hprlnkLogOut;
 	
 	public HomePage(){
 		
@@ -51,11 +52,14 @@ public class HomePage extends Composite {
 		layoutPanel.add(WelcomeLabel);
 		layoutPanel.setWidgetLeftWidth(WelcomeLabel, 13.0, Unit.PX, 305.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(WelcomeLabel, 51.0, Unit.PX, 18.0, Unit.PX);
+	
 		
-		Hyperlink hprlnkLogOut = new Hyperlink("Log out!", false, "newHistoryToken");
+		
+		hprlnkLogOut = new Hyperlink("Log out!", false, "newHistoryToken");
 		layoutPanel.add(hprlnkLogOut);
 		layoutPanel.setWidgetLeftWidth(hprlnkLogOut, 605.0, Unit.PX, 81.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(hprlnkLogOut, 22.0, Unit.PX, 18.0, Unit.PX);
+		
 		
 		tabViewLayoutPanel = new LayoutPanel();
 		layoutPanel.add(tabViewLayoutPanel);
@@ -80,10 +84,7 @@ public class HomePage extends Composite {
 				tabViewLayoutPanel.remove(currentTabView);
 			}
 			
-			
-			//nextTabView = new HomeView();
-			
-			//IsWidget nextTabView = null;
+
 			
 			IsWidget nextTabView = new HomeView();
 			
