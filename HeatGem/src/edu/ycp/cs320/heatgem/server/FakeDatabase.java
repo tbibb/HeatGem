@@ -28,16 +28,19 @@ public class FakeDatabase implements IDatabase {
 		user.setUsername("alice");
 		user.setPassword("abc");
 		user.setHighScore(200);
+		user.setId(1);
 		
 		User user2 = new User();
 		user2.setUsername("bob");
 		user2.setPassword("xyz");
 		user.setHighScore(100);
+		user.setId(2);
 		
 		User user3 = new User();
 		user3.setUsername("tbibb1");
 		user3.setPassword("pass");
 		user.setHighScore(300);
+		user.setId(3);
 		
 		doAddUser(user);
 		doAddUser(user2);
@@ -50,9 +53,10 @@ public class FakeDatabase implements IDatabase {
 		
 		// Set up a default profile for this user
 		UserProfile profile = new UserProfile();
-		profile.setName("New user");
+		profile.setName(user.getUsername());
 		profile.setLevel(1);
 		profile.setUserId(user.getId());
+		profile.setHighScore(user.getHighScore());
 		userProfileList.add(profile);
 	}
 
