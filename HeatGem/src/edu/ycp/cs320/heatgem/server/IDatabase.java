@@ -1,6 +1,7 @@
 package edu.ycp.cs320.heatgem.server;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import edu.ycp.cs320.heatgem.shared.UserProfile;
 
 public interface IDatabase {
 	/**
@@ -14,4 +15,8 @@ public interface IDatabase {
 	
 	public void addUser(String username, String password, String confirmPassword,
 			String email);
+	
+	public UserProfile getUserProfile(String username);
+	
+	public boolean updateUserProfile(String username, UserProfile updatedProfile);
 }

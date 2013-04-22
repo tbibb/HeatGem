@@ -8,17 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import edu.ycp.cs320.heatgem.shared.UserProfile;
 import edu.ycp.cs320.heatgem.server.DB;
 import edu.ycp.cs320.heatgem.server.ITransaction;
 import edu.ycp.cs320.heatgem.server.FakeDatabase;
 
 public class FakeDatabase implements IDatabase {
 	private List<User> userList;
+	private List<UserProfile> userProfileList;
 	
-	private static final String DATASTORE = "/home/kpike/heatgemdb";
+	private static final String DATASTORE = "/home/heatgemdb";
 	
 	public FakeDatabase() {
 		userList = new ArrayList<User>();
+		userProfileList = new ArrayList<UserProfile>();
 		
 		// Create example users
 		User user = new User();
@@ -29,8 +32,25 @@ public class FakeDatabase implements IDatabase {
 		user2.setUsername("bob");
 		user2.setPassword("xyz");
 		
+		User user3 = new User();
+		user3.setUsername("tbibb1");
+		user3.setPassword("pass");
+		
+		doAddUser(user);
+		doAddUser(user2);
+		doAddUser(user3);
+	}
+
+	private void doAddUser(User user) {
 		userList.add(user);
-		userList.add(user2);
+		user.setId(userList.size());
+		
+		// Set up a default profile for this suer
+		UserProfile profile = new UserProfile();
+		profile.setName("New user");
+		profile.setLevel(1);
+		profile.setUserId(user.getId());
+		userProfileList.add(profile);
 	}
 
 	@Override
@@ -45,10 +65,14 @@ public class FakeDatabase implements IDatabase {
 	
 	@Override
 	public void addUser(String username, String password,String confirmPassword, String email) {
-		// TODO: implement
-		
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		// email?
+		doAddUser(user);
 	}
 
+	/*
 	private class DatabaseConnection {
 		public Connection conn;
 		public int refCount;
@@ -129,7 +153,60 @@ public class FakeDatabase implements IDatabase {
 				}
 			});
 		}
+		*/
+	@Override
+	public UserProfile getUserProfile(String username) {
+		// Find the user
+		User user = findUserByUsername(username);
+		if (user == null) {
+			return null;
+		}
 		
-		
+		// Find the profile for this user
+		return findUserProfileByUserId(user.getId());
 	}
+	
+	private UserProfile findUserProfileByUserId(int id) {
+		for (UserProfile up : userProfileList) {
+			if (up.getUserId() == id) {
+				return up;
+			}
+		}
+		return null;
+	}
+
+	private User findUserByUsername(String username) {
+		for (User u : userList) {
+			if (u.getUsername().equals(username)) {
+				return u;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean updateUserProfile(String username, UserProfile updatedProfile) {
+		User user = findUserByUsername(username);
+		if (user == null) {
+			return false; // no such user
+		}
+		
+		// Find user profile
+		UserProfile profile = findUserProfileByUserId(user.getId());
+		if (profile == null) {
+			// should not happen
+			System.err.println("No user profile for user id=" + user.getId());
+			return false;
+		}
+		
+		// remove old profile
+		userProfileList.remove(profile);
+		
+		// add new profile (setting its user id appropriately)
+		updatedProfile.setUserId(user.getId());
+		userProfileList.add(updatedProfile);
+		return true;
+	}
+		
+}
 

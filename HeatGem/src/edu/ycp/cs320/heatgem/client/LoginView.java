@@ -4,6 +4,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.SimpleCheckBox;
@@ -21,6 +22,7 @@ public class LoginView extends Composite {
 	private TextBox usernameTextBox;
 	private TextBox passwordTextBox;
 	private Label errorLabel;
+	private SimpleCheckBox simpleCheckBox;	
 	public LoginView() {
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -55,11 +57,18 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetLeftWidth(passwordTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(passwordTextBox, 97.0, Unit.PX, 34.0, Unit.PX);
 		
-		SimpleCheckBox simpleCheckBox = new SimpleCheckBox();
+		simpleCheckBox = new SimpleCheckBox();
 		layoutPanel.add(simpleCheckBox);
+		
 		
 		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 55.0, Unit.PX, 20.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(simpleCheckBox, 226.0, Unit.PX, 19.0, Unit.PX);
+		
+		if (simpleCheckBox.getValue() == true) {
+			GWT.log("Checkbox is checked");
+			System.out.println("Hi");
+		
+		}
 		
 		InlineLabel rememberMeNextLabel = new InlineLabel("Remember me next time.");
 		layoutPanel.add(rememberMeNextLabel);
