@@ -10,6 +10,7 @@ public class User implements Serializable {
 	private int id;
 	private String username;
 	private String password;
+	private String email;
 	
 	public User() {
 		
@@ -39,4 +40,11 @@ public class User implements Serializable {
 		return password;
 	}
 	
+	public void setEmail(String email){
+		this.email = email;
+	}
+	
+	public String getEmail(){
+		return email;
+	}
 }
