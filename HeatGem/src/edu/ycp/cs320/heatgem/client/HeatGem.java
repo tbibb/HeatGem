@@ -31,7 +31,9 @@ public class HeatGem implements EntryPoint {
 		"TBAR.jpg",
 		"UserInfo.png",
 		"Victory.png",
-		"YellowHealth.png"
+		"YellowHealth.png",
+		"AttackSelected.png",
+		"HealSelected.png"
 	};
 	private static Map<String, Image> imageMap = new HashMap<String, Image>();
 	
@@ -74,4 +76,4 @@ public class HeatGem implements EntryPoint {
 		return image;
 	}
 }
-// hi
+
