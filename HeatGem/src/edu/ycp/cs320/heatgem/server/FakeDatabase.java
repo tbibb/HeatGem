@@ -207,6 +207,11 @@ public class FakeDatabase implements IDatabase {
 		userProfileList.add(updatedProfile);
 		return true;
 	}
+
+	public void createTables() {
+		// TODO Auto-generated method stub
+		
+	}
 		
 }
 
