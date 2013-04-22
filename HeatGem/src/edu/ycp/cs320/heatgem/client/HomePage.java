@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.user.client.ui.Hyperlink;
+import com.google.gwt.widget.client.TextButton;
 
 
 public class HomePage extends Composite {
@@ -62,6 +63,8 @@ public class HomePage extends Composite {
 		layoutPanel.setWidgetLeftRight(tabViewLayoutPanel, 0.0, Unit.PX, -91.0, Unit.PX);
 		layoutPanel.setWidgetTopBottom(tabViewLayoutPanel, 88.0, Unit.PX, 0.0, Unit.PX);
 		
+
+		
 	}
 	
 	public void activate() {
@@ -89,6 +92,7 @@ public class HomePage extends Composite {
 			//Game Tab
 			if (tabCurrentSelection == 2){
 				nextTabView = new GameUI();
+
 			}
 			
 			//Home Tab

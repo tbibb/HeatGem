@@ -27,6 +27,8 @@ public class Game {
     public static int introMenu = 0, gameRunning = 1, gameWin = 2, gameLoss = 3;
     private int count;
     
+    private int MLocX, MLocY;
+    
     public Player player1;
     public Player player2;
     
@@ -36,10 +38,13 @@ public class Game {
 	private static double pX;
 	private static double pY;
 	
+	
+	
 	//Health Bars
+	public void RunGame() {
+		//MLocX = ;
 
-
-    
+	}
     
 	
     //What time? Game Time...
