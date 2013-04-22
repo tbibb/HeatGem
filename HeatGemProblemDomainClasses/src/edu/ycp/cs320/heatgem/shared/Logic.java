@@ -1,7 +1,7 @@
 package edu.ycp.cs320.heatgem.shared;
 
 public class Logic {
-	 public void doBattle(Player Player1, Player Player2)
+	 public static void doBattle(Player Player1, Player Player2)
      {
          Player Monster = new Player("Monster");
          Battle skirmish = new Battle(Player1, Monster);

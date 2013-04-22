@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
@@ -34,6 +35,8 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.widget.client.TextButton;
 
 import edu.ycp.cs320.heatgem.shared.Game;
+import edu.ycp.cs320.heatgem.shared.Logic;
+import edu.ycp.cs320.heatgem.shared.Player;
 
 
 public class GameUI extends Composite {
@@ -56,6 +59,8 @@ public class GameUI extends Composite {
 	private Image Heal;
 	private Image HealSelected;
 	private Image Defeat;
+	private Player player1;
+	private Player player2;
 	
 	// The game object contains all of the game state data.
 	private Game game;
@@ -90,48 +95,27 @@ public class GameUI extends Composite {
 			@Override
 			public void run() {
 				Draw();
-				//onMouseMove(panel, MouseX, MouseY);
-				//onClick(panel, MouseX, MouseY);
-				//System.out.println(MouseX);
-				//System.out.println(MouseY);
 			}
 		};
 		
-		canvas.addMouseMoveHandler(new MouseMoveHandler() {
-			
+		canvas.addMouseMoveHandler(new MouseMoveHandler() {	
 			@Override
 			public void onMouseMove(MouseMoveEvent event) {
 				GWT.log("Mouse moved: x="+ event.getX()+ ", y=" + event.getY());
 				MouseX = event.getX();
 				MouseY = event.getY();
 			}
+			
+
 		});
 		
-//		panel.addMouseListener(new MouseListener() {
-		
-			
-		
-//		TextButton ATK = new TextButton("Attack");
-//		layoutPanel.add(ATK);
-//		ATK.setSize("75", "30");
-//		layoutPanel.setWidgetLeftWidth(ATK, 380.0, Unit.PX, 84.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(ATK, 360.0, Unit.PX, 30.0, Unit.PX);
-//		ATK.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				System.out.println("CLICK ATK");
-//			}
-//		});
-//		
-//		TextButton HEAL = new TextButton("Heal");
-//		layoutPanel.add(HEAL);
-//		HEAL.setSize("75", "30");
-//		layoutPanel.setWidgetLeftWidth(HEAL, 380.0, Unit.PX, 84.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(HEAL, 410.0, Unit.PX, 30.0, Unit.PX);
-//		HEAL.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				System.out.println("CLICK HEAL");
-//			}
-//		});
+		canvas.addMouseDownHandler(new MouseDownHandler() {
+			@Override
+			public void onMouseDown(MouseDownEvent event) {
+				GWT.log("Health" + player2.getHealth());
+				Logic.doBattle(player1, player2);
+			}
+		});
 
 	}
 	
@@ -147,12 +131,7 @@ public class GameUI extends Composite {
     {
         
     }
-    public void onClick(Widget sender, int x, int y)
-    {
-    	x = MouseX;
-    	y = MouseY;
 
-    }
     public void onMouseUp(Widget sender, int x, int y)
     {
        
