@@ -79,7 +79,6 @@ public class FakeDatabase implements IDatabase {
 		doAddUser(user);
 	}
 
-<<<<<<< HEAD
 	/*
 	private class DatabaseConnection {
 		public Connection conn;
@@ -162,7 +161,6 @@ public class FakeDatabase implements IDatabase {
 			});
 		}
 		*/
-=======
 	private class DatabaseConnection {
 		public Connection conn;
 		public int refCount;
@@ -244,7 +242,6 @@ public class FakeDatabase implements IDatabase {
 		}
 		
 		
->>>>>>> refs/remotes/kpike1Fetch/master
 	@Override
 	public UserProfile getUserProfile(String username) {
 		// Find the user
@@ -297,12 +294,6 @@ public class FakeDatabase implements IDatabase {
 		updatedProfile.setUserId(user.getId());
 		userProfileList.add(updatedProfile);
 		return true;
-	}
-
-	public void createTables() {
-		// TODO Auto-generated method stub
-		
-	}
-		
+	}	
 }
 
