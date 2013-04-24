@@ -11,6 +11,7 @@ public class User implements Serializable {
 	private String username;
 	private String password;
 	private int highScore;
+	private String email;
 	
 	public User() {
 		
@@ -47,5 +48,11 @@ public class User implements Serializable {
 	public int getHighScore() {
 		return highScore;
 	}
+	public void setEmail(String email){
+		this.email = email;
+	}
 	
+	public String getEmail(){
+		return email;
+	}
 }
