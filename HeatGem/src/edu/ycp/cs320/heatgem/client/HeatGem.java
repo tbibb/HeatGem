@@ -31,7 +31,8 @@ public class HeatGem implements EntryPoint {
 		"TBAR.jpg",
 		"UserInfo.png",
 		"Victory.png",
-		"YellowHealth.png"
+		"YellowHealth.png",
+		"fireRuby1.gif"
 	};
 	private static Map<String, Image> imageMap = new HashMap<String, Image>();
 	

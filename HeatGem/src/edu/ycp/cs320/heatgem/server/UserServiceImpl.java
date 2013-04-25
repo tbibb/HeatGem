@@ -34,5 +34,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	@Override
 	public Boolean updateUserProfile(String username, UserProfile updatedProfile) {
 		return DB.instance().updateUserProfile(username, updatedProfile);
+		
+	
 	}
 }

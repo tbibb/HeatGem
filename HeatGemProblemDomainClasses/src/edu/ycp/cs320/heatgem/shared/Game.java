@@ -20,15 +20,18 @@ public class Game {
 	public static final int Width = 800;
 	public static final int Height = 480;
 	
-	boolean collision;
 
     //Game states
     public int gameState;
     public static int introMenu = 0, gameRunning = 1, gameWin = 2, gameLoss = 3;
     private int count;
     
+    
+    private int MLocX, MLocY;
+    
     public Player player1;
     public Player player2;
+    public Battle battleState;
     
     //Variables to store rectangle positions/size
     private static double width;
@@ -36,10 +39,15 @@ public class Game {
 	private static double pX;
 	private static double pY;
 	
+	
+	
 	//Health Bars
-
-
-    
+	public void RunGame() {
+		player1 = new Player("Player");
+		player2 = new Player("Enemy");	
+		player1.setHealth(100);
+		player2.setHealth(100);
+	}
     
 	
     //What time? Game Time...
