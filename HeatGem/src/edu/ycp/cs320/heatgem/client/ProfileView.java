@@ -39,7 +39,7 @@ public class ProfileView extends Composite {
 		layoutPanel.setWidgetLeftWidth(lblProfileView, 244.0, Unit.PX, 99.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblProfileView, 23.0, Unit.PX, 18.0, Unit.PX);
 		
-		//Image image = new Image("Defeat.png");
+		
 		UserFace = HeatGem.getImage("Defeat.png");
 		
 		UserFace.setAltText("you");
@@ -47,7 +47,7 @@ public class ProfileView extends Composite {
 		layoutPanel.setWidgetLeftWidth(UserFace, 337.0, Unit.PX, 179.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(UserFace, 81.0, Unit.PX, 197.0, Unit.PX);
 		
-		Label lblName = new Label("Alice");
+		Label lblName = new Label("Name");
 		layoutPanel.add(lblName);
 		layoutPanel.setWidgetLeftWidth(lblName, 20.0, Unit.PX, 56.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblName, 81.0, Unit.PX, 18.0, Unit.PX);
@@ -82,9 +82,10 @@ public class ProfileView extends Composite {
 		layoutPanel.setWidgetLeftWidth(experienceLabel, 105.0, Unit.PX, 131.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(experienceLabel, 181.0, Unit.PX, 18.0, Unit.PX);
 		
-		nameProfileLabel = new Label("New label");
+		
+		nameProfileLabel = new Label("Alice");
 		layoutPanel.add(nameProfileLabel);
-		layoutPanel.setWidgetLeftWidth(nameProfileLabel, 105.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(nameProfileLabel, 105.0, Unit.PX, 81.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(nameProfileLabel, 81.0, Unit.PX, 18.0, Unit.PX);
 		
 		NumberLabel<Integer> winsLabel = new NumberLabel<Integer>();

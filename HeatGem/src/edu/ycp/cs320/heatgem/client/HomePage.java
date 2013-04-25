@@ -10,6 +10,11 @@ import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.user.client.ui.Hyperlink;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
 
 
 
@@ -51,16 +56,25 @@ public class HomePage extends Composite {
 		layoutPanel.setWidgetLeftWidth(WelcomeLabel, 13.0, Unit.PX, 305.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(WelcomeLabel, 51.0, Unit.PX, 18.0, Unit.PX);
 		
-		Hyperlink hprlnkLogOut = new Hyperlink("Log out!", false, "newHistoryToken");
-		layoutPanel.add(hprlnkLogOut);
-		layoutPanel.setWidgetLeftWidth(hprlnkLogOut, 605.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(hprlnkLogOut, 22.0, Unit.PX, 18.0, Unit.PX);
-		
 		tabViewLayoutPanel = new LayoutPanel();
 		layoutPanel.add(tabViewLayoutPanel);
 		tabViewLayoutPanel.setSize("800", "480");
 		layoutPanel.setWidgetLeftRight(tabViewLayoutPanel, 0.0, Unit.PX, -91.0, Unit.PX);
 		layoutPanel.setWidgetTopBottom(tabViewLayoutPanel, 88.0, Unit.PX, 0.0, Unit.PX);
+		
+		Label lblLogOut = new Label("Log out!!");
+		lblLogOut.addMouseMoveHandler(new MouseMoveHandler() {
+			public void onMouseMove(MouseMoveEvent event) {
+			}
+		});
+		lblLogOut.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				handleLogOut();
+			}
+		});
+		layoutPanel.add(lblLogOut);
+		layoutPanel.setWidgetLeftWidth(lblLogOut, 596.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblLogOut, 17.0, Unit.PX, 18.0, Unit.PX);
 		
 
 		
@@ -68,6 +82,11 @@ public class HomePage extends Composite {
 	
 	public void activate() {
 		decoratedTabBar.selectTab(0);
+	}
+	
+	public void handleLogOut(){
+		LoginView view = new LoginView();
+		HeatGem.setView(view);
 	}
 	
 	protected void handleTabSelection(SelectionEvent<Integer> event) {
@@ -125,4 +144,3 @@ public class HomePage extends Composite {
 		}
 	}
 }
-//hi
