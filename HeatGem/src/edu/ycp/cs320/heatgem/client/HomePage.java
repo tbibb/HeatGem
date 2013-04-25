@@ -1,7 +1,6 @@
 package edu.ycp.cs320.heatgem.client;
 
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.core.client.GWT;
@@ -11,7 +10,7 @@ import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.user.client.ui.Hyperlink;
-import com.google.gwt.widget.client.TextButton;
+
 
 
 public class HomePage extends Composite {

@@ -12,7 +12,6 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
-import edu.ycp.cs320.heatgem.shared.User;
 
 public class RegisterView extends Composite {
 	private TextBox registerUsernameTextBox;

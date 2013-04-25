@@ -1,33 +1,16 @@
 package edu.ycp.cs320.heatgem.client;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.SimpleCheckBox;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.user.cellview.client.CellList;
-import com.google.gwt.cell.client.AbstractCell;
-import com.google.gwt.cell.client.Cell.Context;
-import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.IntegerBox;
-import com.google.gwt.user.client.ui.LongBox;
-
-import edu.ycp.cs320.heatgem.shared.User;
-import edu.ycp.cs320.heatgem.shared.UserProfile;
 import com.google.gwt.user.client.ui.NumberLabel;
 
 public class ProfileView extends Composite {
 	
 	private Image UserFace;
-	
-	private UserProfile model;
 	private NumberLabel<Integer> numberLevelLabel;
 	private NumberLabel<Integer> experienceLabel;
 	private Label nameProfileLabel;

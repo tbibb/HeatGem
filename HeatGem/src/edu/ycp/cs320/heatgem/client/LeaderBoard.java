@@ -1,6 +1,6 @@
 package edu.ycp.cs320.heatgem.client;
 
-import java.util.List;
+//import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
@@ -9,12 +9,10 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Label;
 
-import edu.ycp.cs320.heatgem.server.FakeDatabase;
-import edu.ycp.cs320.heatgem.shared.User;
 import edu.ycp.cs320.heatgem.shared.UserProfile;
 
 public class LeaderBoard extends Composite {
-	private List<UserProfile> highScoreList;
+	//private List<UserProfile> highScoreList;
 
 	public LeaderBoard(){
 		
@@ -26,7 +24,7 @@ public class LeaderBoard extends Composite {
 		layoutPanel.setWidgetLeftWidth(t, 32.0, Unit.PX, 325.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(t, 14.0, Unit.PX, 70.0, Unit.PX);
 		
-		updateHighScoreList();
+		
 	    t.setText(0, 0, "Username");
 	    t.setText(0, 1, "High Score");
 	    t.setText(0, 2, "Time");
@@ -35,6 +33,7 @@ public class LeaderBoard extends Composite {
 	    t.setText(0, 5, "Wins");
 	    t.setText(0, 6, "Losses ");
 	    t.setText(1, 0, "Alice");
+	    updateHighScoreList();
 	    t.setBorderWidth(1);
 	    
 	    // DEBUG testing values to be deleted later
