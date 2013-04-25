@@ -21,12 +21,13 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
 import edu.ycp.cs320.heatgem.shared.User;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.InlineHyperlink;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class LoginView extends Composite {
 	private TextBox usernameTextBox;
-	private TextBox passwordTextBox;
 	private Label errorLabel;
 	private SimpleCheckBox simpleCheckBox;	
+	private PasswordTextBox passwordLoginTextBox;
 	public LoginView() {
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -47,19 +48,6 @@ public class LoginView extends Composite {
 		layoutPanel.add(passwordLabel);
 		layoutPanel.setWidgetLeftWidth(passwordLabel, 24.0, Unit.PX, 90.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(passwordLabel, 108.0, Unit.PX, 18.0, Unit.PX);
-		
-		passwordTextBox = new TextBox();
-		passwordTextBox.addKeyPressHandler(new KeyPressHandler() {
-			@Override
-			public void onKeyPress(KeyPressEvent event) {
-				if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER) {
-					handleLogin();
-				}
-			}
-		});
-		layoutPanel.add(passwordTextBox);
-		layoutPanel.setWidgetLeftWidth(passwordTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordTextBox, 97.0, Unit.PX, 34.0, Unit.PX);
 		
 		simpleCheckBox = new SimpleCheckBox();
 		layoutPanel.add(simpleCheckBox);
@@ -111,6 +99,11 @@ public class LoginView extends Composite {
 		layoutPanel.add(lblNewUserClick);
 		layoutPanel.setWidgetLeftWidth(lblNewUserClick, 120.0, Unit.PX, 193.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblNewUserClick, 250.0, Unit.PX, 18.0, Unit.PX);
+		
+		passwordLoginTextBox = new PasswordTextBox();
+		layoutPanel.add(passwordLoginTextBox);
+		layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 94.0, Unit.PX, 34.0, Unit.PX);
 		lblNewUserClick.addMouseMoveHandler(new MouseMoveHandler() {
 			public void onMouseMove(MouseMoveEvent event) {
 				//change color of text for when mouse hovers over link
@@ -132,7 +125,7 @@ public class LoginView extends Composite {
 
 	protected void handleLogin() {
 		String username = this.usernameTextBox.getText();
-		String password = this.passwordTextBox.getText();
+		String password = this.passwordLoginTextBox.getText();
 		
 		RPC.userService.logIn(username, password, new AsyncCallback<User>() {
 			@Override

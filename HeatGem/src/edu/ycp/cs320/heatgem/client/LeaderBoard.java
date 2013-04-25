@@ -10,6 +10,7 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Label;
 
 import edu.ycp.cs320.heatgem.server.FakeDatabase;
+import edu.ycp.cs320.heatgem.shared.User;
 import edu.ycp.cs320.heatgem.shared.UserProfile;
 
 public class LeaderBoard extends Composite {
@@ -25,13 +26,15 @@ public class LeaderBoard extends Composite {
 		layoutPanel.setWidgetLeftWidth(t, 32.0, Unit.PX, 325.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(t, 14.0, Unit.PX, 70.0, Unit.PX);
 		
-		// Put some text at the table's extremes.  This forces the table to be
-	    // 3 by 3.
-		
 		updateHighScoreList();
 	    t.setText(0, 0, "Username");
-	    t.setText(0, 1, "Score");
+	    t.setText(0, 1, "High Score");
 	    t.setText(0, 2, "Time");
+	    t.setText(0, 3, "Experience");
+	    t.setText(0, 4, "Level");
+	    t.setText(0, 5, "Wins");
+	    t.setText(0, 6, "Losses ");
+	    t.setText(1, 0, "Alice");
 	    t.setBorderWidth(1);
 	    
 	    // DEBUG testing values to be deleted later
@@ -47,9 +50,10 @@ public class LeaderBoard extends Composite {
 		
 	}
 	
+	
 	// DEBUG for those not named Nick, ignore this function for now
 	private void updateHighScoreList() {
-		RPC.userService.getUserProfile("alice", new AsyncCallback<UserProfile>() {
+		RPC.userService.leaderBoard("alice", 21, 25234, 35, 432, 200, new AsyncCallback<UserProfile>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

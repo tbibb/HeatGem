@@ -14,7 +14,9 @@ public interface UserService extends RemoteService {
 	
 	public void deleteUserAccount(String username);
 	
-	public UserProfile getUserProfile(String username);
+	public UserProfile getUserProfile(String username, String password, String email, int level, int experience, int losses, int wins, int highScore);
 	
 	public Boolean updateUserProfile(String username, UserProfile updatedProfile);
+	
+	public UserProfile leaderBoard(String username, int level, int experience, int losses, int wins, int highScore);
 }

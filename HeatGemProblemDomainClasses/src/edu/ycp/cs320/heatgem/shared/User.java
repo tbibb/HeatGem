@@ -12,7 +12,12 @@ public class User implements Serializable {
 	private String password;
 	private int highScore;
 	private String email;
+	private int experience;
+	private int level;
+	private int wins;
+	private int losses;
 	
+
 	public User() {
 		
 	}
@@ -55,4 +60,38 @@ public class User implements Serializable {
 	public String getEmail(){
 		return email;
 	}
+	
+	public void setExperience(int experience){
+		this.experience = experience;
+	}
+	
+	public int getExperience(){
+		return experience;
+	}
+	
+	public void setLevel(int level){
+		this.level = level;
+	}
+	
+	public int getLevel(){
+		return level;
+	}
+	
+	public void setWins(int wins){
+		this.wins = wins;
+	}
+	
+	public int getWins(){
+		return wins;
+	}
+	
+	public void setLosses(int losses){
+		this.losses = losses;
+	}
+	
+	public int getLosses(){
+		return losses;
+	}
+	
+	
 }

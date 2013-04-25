@@ -28,19 +28,24 @@ public class FakeDatabase implements IDatabase {
 		user.setUsername("alice");
 		user.setPassword("abc");
 		user.setHighScore(200);
+		user.setEmail("alIsonInwonderland@comcast.net");
+		user.setExperience(25234);
+		user.setLevel(21);
+		user.setLosses(35);
+		user.setWins(432);
 		user.setId(1);
 		
 		User user2 = new User();
 		user2.setUsername("bob");
 		user2.setPassword("xyz");
-		user.setHighScore(100);
-		user.setId(2);
+		user2.setHighScore(100);
+		user2.setId(2);
 		
 		User user3 = new User();
 		user3.setUsername("tbibb1");
 		user3.setPassword("pass");
-		user.setHighScore(300);
-		user.setId(3);
+		user3.setHighScore(300);
+		user3.setId(3);
 		
 		doAddUser(user);
 		doAddUser(user2);

@@ -14,10 +14,14 @@ public interface UserServiceAsync {
 
 	void deleteUserAccount(String username, AsyncCallback<Void> callback);
 
-	void getUserProfile(String username, AsyncCallback<UserProfile> callback);
+	void getUserProfile(String username, String password, String email, int level, int experience, int losses, int wins, int highScore, AsyncCallback<UserProfile> callback);
 
 	void updateUserProfile(String username, UserProfile updatedProfile,
 			AsyncCallback<Boolean> callback);
+
+	void leaderBoard(String username, int level, int experience,
+			int losses, int wins, int highScore,
+			AsyncCallback<UserProfile> callback);
 	
 	//void updateBoard();
 
