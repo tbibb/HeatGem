@@ -52,7 +52,7 @@ public class LeaderBoard extends Composite {
 	
 	// DEBUG for those not named Nick, ignore this function for now
 	private void updateHighScoreList() {
-		RPC.userService.leaderBoard("alice", 21, 25234, 35, 432, 200, new AsyncCallback<UserProfile>() {
+		RPC.userService.getUserProfile("alice", new AsyncCallback<UserProfile>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

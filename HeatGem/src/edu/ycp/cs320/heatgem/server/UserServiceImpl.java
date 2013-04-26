@@ -24,13 +24,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 //	public void updateBoard() {
 //		
 //	}
-	
-	@Override
-	public UserProfile leaderBoard(String username, int level, int experience,
-			int losses, int wins, int highScore) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public UserServiceImpl() {
 		// TODO Auto-generated constructor stub
@@ -44,7 +37,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	}
 	
 	@Override
-	public UserProfile getUserProfile(String username, String password, String email, int level, int experience, int losses, int wins, int highScore) {
+	public UserProfile getUserProfile(String username) {
 		return DB.instance().getUserProfile(username);
 	}
 	
