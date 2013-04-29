@@ -16,13 +16,13 @@ import edu.ycp.cs320.heatgem.server.FakeDatabase;
 public class FakeDatabase implements IDatabase {
 	private List<User> userList;
 	private List<UserProfile> userProfileList;
-	
+
 	private static final String DATASTORE = "/home/heatgemdb";
-	
+
 	public FakeDatabase() {
 		userList = new ArrayList<User>();
 		userProfileList = new ArrayList<UserProfile>();
-		
+
 		// Create example users
 		User user = new User();
 		user.setUsername("alice");
@@ -34,19 +34,19 @@ public class FakeDatabase implements IDatabase {
 		user.setLosses(35);
 		user.setWins(432);
 		user.setId(1);
-		
+
 		User user2 = new User();
 		user2.setUsername("bob");
 		user2.setPassword("xyz");
 		user2.setHighScore(100);
 		user2.setId(2);
-		
+
 		User user3 = new User();
 		user3.setUsername("tbibb1");
 		user3.setPassword("pass");
 		user3.setHighScore(300);
 		user3.setId(3);
-		
+
 		doAddUser(user);
 		doAddUser(user2);
 		doAddUser(user3);
@@ -55,7 +55,7 @@ public class FakeDatabase implements IDatabase {
 	private void doAddUser(User user) {
 		userList.add(user);
 		user.setId(userList.size());
-		
+
 		// Set up a default profile for this user
 		UserProfile profile = new UserProfile();
 		profile.setName(user.getUsername());
@@ -74,7 +74,7 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public void addUser(String username, String password,String confirmPassword, String email) {
 		User user = new User();
@@ -170,9 +170,9 @@ public class FakeDatabase implements IDatabase {
 		public Connection conn;
 		public int refCount;
 	}
-	
+
 	private final ThreadLocal<DatabaseConnection> connHolder = new ThreadLocal<DatabaseConnection>();
-	
+
 	private DatabaseConnection getConnection() throws SQLException {
 		DatabaseConnection dbConn = connHolder.get();
 		if (dbConn == null) {
@@ -184,7 +184,7 @@ public class FakeDatabase implements IDatabase {
 		dbConn.refCount++;
 		return dbConn;
 	}
-	
+
 	private void releaseConnection(DatabaseConnection dbConn) throws SQLException {
 		dbConn.refCount--;
 		if (dbConn.refCount == 0) {
@@ -195,18 +195,18 @@ public class FakeDatabase implements IDatabase {
 			}
 		}
 	}
-	
-	
+
+
 	private<E> E databaseRun(ITransaction<E> transaction) throws SQLException {
 		// FIXME: retry if transaction times out due to deadlock
-		
+
 		DatabaseConnection dbConn = getConnection();
-		
+
 		try {
 			boolean origAutoCommit = dbConn.conn.getAutoCommit();
 			try {
 				dbConn.conn.setAutoCommit(false);
-				
+
 				E result = transaction.run(dbConn.conn);
 				dbConn.conn.commit();
 				return result;
@@ -218,35 +218,35 @@ public class FakeDatabase implements IDatabase {
 			releaseConnection(dbConn);
 		}
 	}
-	
-	
+
+
 	public void createTables() throws SQLException {
-		
+
 			databaseRun(new ITransaction<Boolean>() {
 				@Override
 				public Boolean run(Connection conn) throws SQLException {
-					
+
 					PreparedStatement stmt = null;
-					
+
 					try {
 						stmt = conn.prepareStatement(
 								//FIX ME
-								
+
 								"create table add_user (" + "id INTEGER NOT NULL GENERATED AS IDENTITY (START WITH 1, INCREMENT BY 1)," + 
 								"username VARCHAR(50) NOT NULL," + "password VARCHAR(50) NOT NULL, " + "email VARCHAR(50) NOT NULL" 	
 						);
-						
+
 						stmt.executeUpdate();
 					} finally {
 						DB.closeQuietly(stmt);
 					}
-					
+
 					return true;
 				}
 			});
 		}
-		
-		
+
+
 	@Override
 	public UserProfile getUserProfile(String username) {
 		// Find the user
@@ -254,18 +254,24 @@ public class FakeDatabase implements IDatabase {
 		if (user == null) {
 			return null;
 		}
-		
+
 		// Find the profile for this user
 		return findUserProfileByUserId(user.getId());
 	}
-	
-	private UserProfile findUserProfileByUserId(int id) {
+
+	@Override
+	public UserProfile findUserProfileByUserId(int id) {
 		for (UserProfile up : userProfileList) {
 			if (up.getUserId() == id) {
 				return up;
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public int getAmountUsers() {
+		return userProfileList.size();
 	}
 
 	private User findUserByUsername(String username) {
@@ -283,7 +289,7 @@ public class FakeDatabase implements IDatabase {
 		if (user == null) {
 			return false; // no such user
 		}
-		
+
 		// Find user profile
 		UserProfile profile = findUserProfileByUserId(user.getId());
 		if (profile == null) {
@@ -291,14 +297,13 @@ public class FakeDatabase implements IDatabase {
 			System.err.println("No user profile for user id=" + user.getId());
 			return false;
 		}
-		
+
 		// remove old profile
 		userProfileList.remove(profile);
-		
+
 		// add new profile (setting its user id appropriately)
 		updatedProfile.setUserId(user.getId());
 		userProfileList.add(updatedProfile);
 		return true;
 	}	
 }
-

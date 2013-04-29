@@ -18,7 +18,6 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.LongBox;
-
 import edu.ycp.cs320.heatgem.shared.UserProfile;
 
 public class ProfileView extends Composite {
