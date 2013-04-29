@@ -19,4 +19,8 @@ public interface IDatabase {
 	public UserProfile getUserProfile(String username);
 	
 	public boolean updateUserProfile(String username, UserProfile updatedProfile);
+
+	UserProfile findUserProfileByUserId(int id);
+
+	int getAmountUsers();
 }

@@ -16,5 +16,9 @@ public interface UserService extends RemoteService {
 	
 	public UserProfile getUserProfile(String username);
 	
+	public UserProfile findUserProfileByUserId(int id);
+	
+	int getAmountUsers();
+	
 	public Boolean updateUserProfile(String username, UserProfile updatedProfile);
 }

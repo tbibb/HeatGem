@@ -14,6 +14,8 @@ import edu.ycp.cs320.heatgem.shared.UserProfile;
 public class LeaderBoard extends Composite {
 	//private List<UserProfile> highScoreList;
 
+	UserProfile[] list = new UserProfile[10];
+	int size;
 	public LeaderBoard(){
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -52,21 +54,64 @@ public class LeaderBoard extends Composite {
 	
 	// DEBUG for those not named Nick, ignore this function for now
 	private void updateHighScoreList() {
-		RPC.userService.getUserProfile("alice", new AsyncCallback<UserProfile>() {
-
+		
+		RPC.userService.getAmountUsers(new AsyncCallback<Integer>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				System.out.println("ERROR alice");
-			}
-
-			@Override
-			public void onSuccess(UserProfile result) {
-				// TODO Auto-generated method stub
-				System.out.println(result.getHighScore());
-				System.out.println(result.getName());
+				System.out.println("ERROR getAmountUsers");
 			}
 			
+			@Override
+			public void onSuccess(Integer result) {
+				size = result;
+				System.out.println("Size = " + size);
+				System.out.println("Result = " + result);
+			}
 		});
+		
+//		RPC.userService.findUserProfileByUserId(i, new AsyncCallback<UserProfile>() {
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				// TODO Auto-generated method stub
+//				System.out.println("ERROR findUserProfileByUserId, i = " + i);
+//			}
+//
+//			@Override
+//			public void onSuccess(UserProfile result) {
+//				// TODO Auto-generated method stub
+//				list[i] = result;
+//				
+//				System.out.println("i = " + i);
+//
+//				System.out.println(list[i].getHighScore());
+//				System.out.println(list[i].getName());
+//				System.out.println(list[i].getLevel());
+//				System.out.println(list[i].getUserId());
+//			}
+//			
+//		});
+		
 	}
+	
+//	// DEBUG for those not named Nick, ignore this function for now
+//	private void updateHighScoreList() {
+//		RPC.userService.getUserProfile("alice", new AsyncCallback<UserProfile>() {
+//
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				// TODO Auto-generated method stub
+//				System.out.println("ERROR alice");
+//			}
+//
+//			@Override
+//			public void onSuccess(UserProfile result) {
+//				// TODO Auto-generated method stub
+//				System.out.println(result.getHighScore());
+//				System.out.println(result.getName());
+//				System.out.println(result.getLevel());
+//				System.out.println(result.getUserId());
+//			}
+//			
+//		});
+//	}
 }
