@@ -259,13 +259,19 @@ public class FakeDatabase implements IDatabase {
 		return findUserProfileByUserId(user.getId());
 	}
 	
-	private UserProfile findUserProfileByUserId(int id) {
+	@Override
+	public UserProfile findUserProfileByUserId(int id) {
 		for (UserProfile up : userProfileList) {
 			if (up.getUserId() == id) {
 				return up;
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public int getAmountUsers() {
+		return userProfileList.size();
 	}
 
 	private User findUserByUsername(String username) {

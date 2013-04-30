@@ -15,6 +15,10 @@ public interface UserServiceAsync {
 	void deleteUserAccount(String username, AsyncCallback<Void> callback);
 
 	void getUserProfile(String username, AsyncCallback<UserProfile> callback);
+	
+	void findUserProfileByUserId(int id, AsyncCallback<UserProfile> callback);
+
+	void getAmountUsers(AsyncCallback<Integer> callback);
 
 	void updateUserProfile(String username, UserProfile updatedProfile,
 			AsyncCallback<Boolean> callback);

@@ -45,4 +45,15 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public Boolean updateUserProfile(String username, UserProfile updatedProfile) {
 		return DB.instance().updateUserProfile(username, updatedProfile);
 	}
+
+	@Override
+	public UserProfile findUserProfileByUserId(int id) {
+		return DB.instance().findUserProfileByUserId(id);
+	}
+
+	@Override
+	public int getAmountUsers() {
+		// TODO Auto-generated method stub
+		return DB.instance().getAmountUsers();
+	}
 }
