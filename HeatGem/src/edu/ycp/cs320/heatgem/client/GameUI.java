@@ -62,6 +62,8 @@ public class GameUI extends Composite {
 	private Image Defeat;
 	private Player player1;
 	private Player player2;
+	private Game Game1;
+	private int p1Health, p2Health;
 
 	// The game object contains all of the game state data.
 	private Game game;
@@ -91,17 +93,21 @@ public class GameUI extends Composite {
 
 		initWidget(panel);		
 
+
+
 		this.timer = new Timer() {
 			@Override
 			public void run() {
 				Draw();
+				p1Health = player1.getHealth();
+				p2Health = player2.getHealth();
 			}
 		};
 
 		canvas.addMouseMoveHandler(new MouseMoveHandler() {	
 			@Override
 			public void onMouseMove(MouseMoveEvent event) {
-				GWT.log("Mouse moved: x="+ event.getX()+ ", y=" + event.getY());
+				//GWT.log("Mouse moved: x="+ event.getX()+ ", y=" + event.getY());
 				MouseX = event.getX();
 				MouseY = event.getY();
 			}
@@ -116,6 +122,14 @@ public class GameUI extends Composite {
 				{
 					Logic.doBattle(player1, player2);
 					GWT.log("Health:" + player2.getHealth());
+					System.out.println(p1Health);
+					System.out.println(p2Health);
+				}
+				else if ((MouseX > 380 && MouseX < 455) && (MouseY > 410 && MouseY < 440)){
+					Logic.doHeal(player1, player2);
+					GWT.log("Health:" + player2.getHealth());
+					System.out.println(p1Health);
+					System.out.println(p2Health);
 				}
 			}
 		});
@@ -158,6 +172,10 @@ public class GameUI extends Composite {
 		Defeat = HeatGem.getImage("Defeat.png");
 		AttackSelected = HeatGem.getImage("AttackSelected.png");
 		HealSelected = HeatGem.getImage("HealSelected.png");
+
+		Game1 = new Game();
+		player1 = new Player("Player");
+		player2 = new Player("Monster");
 
 		// Add a listener for mouse motion.
 		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
@@ -229,8 +247,13 @@ public class GameUI extends Composite {
 					410);
 		}
 
+		bufCtx.setFont("sans-serif");
+		bufCtx.fillText((p1Health + " / 100") , 30, 430);
+		bufCtx.fillText(p2Health + " / 100", 450, 35);
+
 		// Copy buffer onto main canvas
 		ctx.drawImage((CanvasElement) buffer.getElement().cast(), 0, 0);
+
 
 	}
 
