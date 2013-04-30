@@ -12,61 +12,47 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyPressEvent;
-import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseMoveHandler;
 
 import edu.ycp.cs320.heatgem.shared.User;
-import com.google.gwt.user.client.ui.Hyperlink;
-import com.google.gwt.user.client.ui.InlineHyperlink;
+import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.Image;
 
 public class LoginView extends Composite {
 	private TextBox usernameTextBox;
-	private TextBox passwordTextBox;
 	private Label errorLabel;
 	private SimpleCheckBox simpleCheckBox;	
+	private PasswordTextBox passwordLoginTextBox;
+	private Image h_gem;
 	public LoginView() {
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
+		layoutPanel.setSize("442px", "619px");
 		
 		InlineLabel usernameLabel = new InlineLabel("Username:");
 		layoutPanel.add(usernameLabel);
-		layoutPanel.setWidgetLeftWidth(usernameLabel, 24.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(usernameLabel, 54.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(usernameLabel, 55.0, Unit.PX, 90.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(usernameLabel, 304.0, Unit.PX, 18.0, Unit.PX);
 		
 		usernameTextBox = new TextBox();
 		layoutPanel.add(usernameTextBox);
-		layoutPanel.setWidgetLeftWidth(usernameTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(usernameTextBox, 43.0, Unit.PX, 34.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(usernameTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(usernameTextBox, 293.0, Unit.PX, 34.0, Unit.PX);
 		//String username =  usernameTextBox.toString();
 		
 		InlineLabel passwordLabel = new InlineLabel("Password");
 		layoutPanel.add(passwordLabel);
-		layoutPanel.setWidgetLeftWidth(passwordLabel, 24.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordLabel, 108.0, Unit.PX, 18.0, Unit.PX);
-		
-		passwordTextBox = new TextBox();
-		passwordTextBox.addKeyPressHandler(new KeyPressHandler() {
-			@Override
-			public void onKeyPress(KeyPressEvent event) {
-				if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER) {
-					handleLogin();
-				}
-			}
-		});
-		layoutPanel.add(passwordTextBox);
-		layoutPanel.setWidgetLeftWidth(passwordTextBox, 120.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordTextBox, 97.0, Unit.PX, 34.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(passwordLabel, 55.0, Unit.PX, 90.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordLabel, 358.0, Unit.PX, 18.0, Unit.PX);
 		
 		simpleCheckBox = new SimpleCheckBox();
 		layoutPanel.add(simpleCheckBox);
 		
 		
-		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 55.0, Unit.PX, 20.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(simpleCheckBox, 226.0, Unit.PX, 19.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 86.0, Unit.PX, 20.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(simpleCheckBox, 476.0, Unit.PX, 19.0, Unit.PX);
 		
 		if (simpleCheckBox.getValue() == true) {
 			GWT.log("Checkbox is checked");
@@ -76,8 +62,8 @@ public class LoginView extends Composite {
 		
 		InlineLabel rememberMeNextLabel = new InlineLabel("Remember me next time.");
 		layoutPanel.add(rememberMeNextLabel);
-		layoutPanel.setWidgetLeftWidth(rememberMeNextLabel, 120.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(rememberMeNextLabel, 226.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(rememberMeNextLabel, 151.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(rememberMeNextLabel, 476.0, Unit.PX, 18.0, Unit.PX);
 		
 		Button loginNewButton = new Button("New button");
 		loginNewButton.addClickHandler(new ClickHandler() {
@@ -93,14 +79,8 @@ public class LoginView extends Composite {
 		
 		loginNewButton.setText("Login!");
 		layoutPanel.add(loginNewButton);
-		layoutPanel.setWidgetLeftWidth(loginNewButton, 133.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(loginNewButton, 174.0, Unit.PX, 30.0, Unit.PX);
-		
-		Label headerLabel = new Label("Login");
-		headerLabel.setStyleName("h1");
-		layoutPanel.add(headerLabel);
-		layoutPanel.setWidgetLeftWidth(headerLabel, 168.0, Unit.PX, 56.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(headerLabel, 19.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(loginNewButton, 164.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(loginNewButton, 424.0, Unit.PX, 30.0, Unit.PX);
 		
 		errorLabel = new Label("");
 		layoutPanel.add(errorLabel);
@@ -109,8 +89,19 @@ public class LoginView extends Composite {
 		
 		Label lblNewUserClick = new Label("New user? Click here to register!");
 		layoutPanel.add(lblNewUserClick);
-		layoutPanel.setWidgetLeftWidth(lblNewUserClick, 120.0, Unit.PX, 193.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(lblNewUserClick, 250.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(lblNewUserClick, 151.0, Unit.PX, 193.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblNewUserClick, 500.0, Unit.PX, 18.0, Unit.PX);
+		
+		passwordLoginTextBox = new PasswordTextBox();
+		layoutPanel.add(passwordLoginTextBox);
+		layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 344.0, Unit.PX, 34.0, Unit.PX);
+		
+		h_gem = HeatGem.getImage("fireRuby1.gif");
+		layoutPanel.add(h_gem);
+		layoutPanel.setWidgetLeftWidth(h_gem, 66.0, Unit.PX, 260.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(h_gem, 15.0, Unit.PX, 245.0, Unit.PX);
+		
 		lblNewUserClick.addMouseMoveHandler(new MouseMoveHandler() {
 			public void onMouseMove(MouseMoveEvent event) {
 				//change color of text for when mouse hovers over link
@@ -132,7 +123,7 @@ public class LoginView extends Composite {
 
 	protected void handleLogin() {
 		String username = this.usernameTextBox.getText();
-		String password = this.passwordTextBox.getText();
+		String password = this.passwordLoginTextBox.getText();
 		
 		RPC.userService.logIn(username, password, new AsyncCallback<User>() {
 			@Override
@@ -150,6 +141,7 @@ public class LoginView extends Composite {
 					// TODO: switch to home page
 					errorLabel.setText("Success! Should switch to home page");
 					HomePage view = new HomePage();
+					view.setUser(result);
 					HeatGem.setView(view);
 					view.activate(); // do any required dynamic initialization
 				}
@@ -157,4 +149,4 @@ public class LoginView extends Composite {
 		});
 	}
 }
-// hi
+// hii

@@ -4,12 +4,18 @@ import java.io.Serializable;
 
 public class UserProfile implements Serializable {
 
-	// comment Aaron's singing<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// fields
 	private int userId;
 	private String name;
 	private int level;
 	private int highScore;
+	private int experience, wins, losses;
+	
 	// etc.
 	
 	private int photoId;
@@ -50,5 +56,29 @@ public class UserProfile implements Serializable {
 
 	public int getHighScore() {
 		return highScore;
+	}
+
+	public int getLosses() {
+		return losses;
+	}
+
+	public void setLosses(int losses) {
+		this.losses = losses;
+	}
+
+	public int getWins() {
+		return wins;
+	}
+
+	public void setWins(int wins) {
+		this.wins = wins;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
 	}
 }

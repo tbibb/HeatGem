@@ -16,6 +16,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 
+import edu.ycp.cs320.heatgem.shared.User;
+
 
 
 public class HomePage extends Composite {
@@ -24,6 +26,7 @@ public class HomePage extends Composite {
 	private LayoutPanel tabViewLayoutPanel;
 	private int tabCurrentSelection= -1;
 	private IsWidget currentTabView;
+	private User user;
 	
 	public HomePage(){
 		
@@ -139,8 +142,16 @@ public class HomePage extends Composite {
 				// FIXME: think of a better way to do this
 				if (nextTabView instanceof GameUI) {
 					((GameUI)nextTabView).startGame();
+				} else if (nextTabView instanceof ProfileView) {
+					ProfileView profileView = (ProfileView) nextTabView;
+					profileView.setUsername(user.getUsername());
+					profileView.activate();
 				}
 			}
 		}
+	}
+
+	public void setUser(User result) {
+		this.user = result;
 	}
 }
