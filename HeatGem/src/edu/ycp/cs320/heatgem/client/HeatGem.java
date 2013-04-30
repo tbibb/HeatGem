@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
  */
 public class HeatGem implements EntryPoint {
 	private static IsWidget currentView;
-	
+
 	// images that will be drawn on a canvas
 	private static String[] SPRITES = {
 		"Attack.png",
@@ -33,20 +33,21 @@ public class HeatGem implements EntryPoint {
 		"Victory.png",
 		"YellowHealth.png",
 		"AttackSelected.png",
-		"HealSelected.png"
+		"HealSelected.png",
+		"fireRuby1.gif"
 	};
 	private static Map<String, Image> imageMap = new HashMap<String, Image>();
-	
+
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		
+
 		FlowPanel imagePanel = new FlowPanel();
 		RootLayoutPanel.get().add(imagePanel);
 		RootLayoutPanel.get().setWidgetRightWidth(imagePanel, 0.0, Unit.PX, 0.0, Unit.PX);
 		RootLayoutPanel.get().setWidgetBottomHeight(imagePanel, 0.0, Unit.PX, 0.0, Unit.PX);
-		
+
 		for (String spriteImage : SPRITES) {
 			Image image = new Image(GWT.getModuleBaseForStaticFiles() + spriteImage);
 			imagePanel.add(image);
@@ -55,19 +56,19 @@ public class HeatGem implements EntryPoint {
 
 		setView(new LoginView());
 	}
-	
+
 	public static void setView(IsWidget view) {
 		if (currentView != null) {
 			RootLayoutPanel.get().remove(currentView);
 		}
-		
+
 		RootLayoutPanel.get().add(view);
 		RootLayoutPanel.get().setWidgetLeftRight(view, 10.0, Unit.PX, 10.0, Unit.PX);
 		RootLayoutPanel.get().setWidgetTopBottom(view, 10.0, Unit.PX, 10.0, Unit.PX);
-		
+
 		currentView = view;
 	}
-	
+
 	public static Image getImage(String spriteImage) {
 		Image image = imageMap.get(spriteImage);
 		if (image == null) {
@@ -76,4 +77,3 @@ public class HeatGem implements EntryPoint {
 		return image;
 	}
 }
-// hi

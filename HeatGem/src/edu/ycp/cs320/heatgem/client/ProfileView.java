@@ -35,14 +35,15 @@ public class ProfileView extends Composite {
 		initWidget(layoutPanel);
 		layoutPanel.setSize("568px", "472px");
 
-		Button btnNewButton = new Button("New button");
+		Button btnNewButton = new Button(" Create New Profile");
+		btnNewButton.setText("Create New Profile");
 		layoutPanel.add(btnNewButton);
-		layoutPanel.setWidgetLeftWidth(btnNewButton, 72.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(btnNewButton, 72.0, Unit.PX, 144.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(btnNewButton, 384.0, Unit.PX, 30.0, Unit.PX);
 
-		Button btnNewButton_1 = new Button("New button");
+		Button btnNewButton_1 = new Button("Delete Profile");
 		layoutPanel.add(btnNewButton_1);
-		layoutPanel.setWidgetLeftWidth(btnNewButton_1, 402.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(btnNewButton_1, 402.0, Unit.PX, 131.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(btnNewButton_1, 384.0, Unit.PX, 30.0, Unit.PX);
 
 		Label lblProfileView = new Label("Profile View");
@@ -58,9 +59,9 @@ public class ProfileView extends Composite {
 		layoutPanel.setWidgetLeftWidth(UserFace, 337.0, Unit.PX, 179.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(UserFace, 81.0, Unit.PX, 197.0, Unit.PX);
 
-		Label lblName = new Label("Alice");
+		Label lblName = new Label("Username");
 		layoutPanel.add(lblName);
-		layoutPanel.setWidgetLeftWidth(lblName, 20.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(lblName, 20.0, Unit.PX, 67.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblName, 81.0, Unit.PX, 18.0, Unit.PX);
 
 		Label lblLevel = new Label("Level");
@@ -93,9 +94,9 @@ public class ProfileView extends Composite {
 		layoutPanel.setWidgetLeftWidth(experienceLabel, 105.0, Unit.PX, 131.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(experienceLabel, 181.0, Unit.PX, 18.0, Unit.PX);
 
-		nameProfileLabel = new Label("New label");
+		nameProfileLabel = new Label("Username");
 		layoutPanel.add(nameProfileLabel);
-		layoutPanel.setWidgetLeftWidth(nameProfileLabel, 105.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(nameProfileLabel, 160.0, Unit.PX, 76.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(nameProfileLabel, 81.0, Unit.PX, 18.0, Unit.PX);
 
 		winsLabel = new NumberLabel<Integer>();

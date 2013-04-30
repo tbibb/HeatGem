@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
@@ -33,7 +34,10 @@ import com.google.gwt.user.client.ui.MouseListener;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.widget.client.TextButton;
 
+import edu.ycp.cs320.heatgem.shared.Battle;
 import edu.ycp.cs320.heatgem.shared.Game;
+import edu.ycp.cs320.heatgem.shared.Logic;
+import edu.ycp.cs320.heatgem.shared.Player;
 
 
 public class GameUI extends Composite {
@@ -56,26 +60,27 @@ public class GameUI extends Composite {
 	private Image Heal;
 	private Image HealSelected;
 	private Image Defeat;
-	
+	private Player player1;
+	private Player player2;
+
 	// The game object contains all of the game state data.
 	private Game game;
-	
-	@SuppressWarnings("deprecation")
+
 	public GameUI() {
-		
+
 		//FocusPanel
 		final FocusPanel panel = new FocusPanel();
 		//LayoutPanel layoutPanel = new LayoutPanel();
 		panel.setSize("800px", "480px");
-		
-		
+
+
 		//"buffer" canvas
 		this.buffer = Canvas.createIfSupported();
 		buffer.setSize(Game.Width + "px", Game.Height + "px");
 		buffer.setCoordinateSpaceWidth(Game.Width);
 		buffer.setCoordinateSpaceHeight(Game.Height);
 		this.bufCtx = buffer.getContext2d();
-		
+
 		// The visible canvas
 		this.canvas = Canvas.createIfSupported();
 		canvas.setSize(Game.Width + "px", Game.Height + "px");
@@ -85,56 +90,38 @@ public class GameUI extends Composite {
 		panel.add(canvas);
 
 		initWidget(panel);		
-		
+
 		this.timer = new Timer() {
 			@Override
 			public void run() {
 				Draw();
-				//onMouseMove(panel, MouseX, MouseY);
-				//onClick(panel, MouseX, MouseY);
-				//System.out.println(MouseX);
-				//System.out.println(MouseY);
 			}
 		};
-		
-		canvas.addMouseMoveHandler(new MouseMoveHandler() {
-			
+
+		canvas.addMouseMoveHandler(new MouseMoveHandler() {	
 			@Override
 			public void onMouseMove(MouseMoveEvent event) {
 				GWT.log("Mouse moved: x="+ event.getX()+ ", y=" + event.getY());
 				MouseX = event.getX();
 				MouseY = event.getY();
 			}
+
+
 		});
-		
-//		panel.addMouseListener(new MouseListener() {
-		
-			
-		
-//		TextButton ATK = new TextButton("Attack");
-//		layoutPanel.add(ATK);
-//		ATK.setSize("75", "30");
-//		layoutPanel.setWidgetLeftWidth(ATK, 380.0, Unit.PX, 84.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(ATK, 360.0, Unit.PX, 30.0, Unit.PX);
-//		ATK.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				System.out.println("CLICK ATK");
-//			}
-//		});
-//		
-//		TextButton HEAL = new TextButton("Heal");
-//		layoutPanel.add(HEAL);
-//		HEAL.setSize("75", "30");
-//		layoutPanel.setWidgetLeftWidth(HEAL, 380.0, Unit.PX, 84.0, Unit.PX);
-//		layoutPanel.setWidgetTopHeight(HEAL, 410.0, Unit.PX, 30.0, Unit.PX);
-//		HEAL.addClickHandler(new ClickHandler() {
-//			public void onClick(ClickEvent event) {
-//				System.out.println("CLICK HEAL");
-//			}
-//		});
+
+		canvas.addMouseDownHandler(new MouseDownHandler() {
+			@Override
+			public void onMouseDown(MouseDownEvent event) {
+				if((MouseX > 380 && MouseX < 455) && (MouseY > 360 && MouseY < 390))
+				{
+					Logic.doBattle(player1, player2);
+					GWT.log("Health:" + player2.getHealth());
+				}
+			}
+		});
 
 	}
-	
+
 	public void onMouseDown(Widget sender, int x, int y)
     {
       
@@ -147,12 +134,7 @@ public class GameUI extends Composite {
     {
         
     }
-    public void onClick(Widget sender, int x, int y)
-    {
-    	x = MouseX;
-    	y = MouseY;
 
-    }
     public void onMouseUp(Widget sender, int x, int y)
     {
        
@@ -162,8 +144,8 @@ public class GameUI extends Composite {
     	x = MouseX;
     	y = MouseY;
     }
-	
-	
+
+
 	public void startGame() {
 		// get background and sprite images that will be used for painting
 		background = HeatGem.getImage("RoughBattle.jpg");
@@ -176,28 +158,28 @@ public class GameUI extends Composite {
 		Defeat = HeatGem.getImage("Defeat.png");
 		AttackSelected = HeatGem.getImage("AttackSelected.png");
 		HealSelected = HeatGem.getImage("HealSelected.png");
-		
+
 		// Add a listener for mouse motion.
 		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
 		// will be called.
 		timer.scheduleRepeating(1000/10);
 	}
-	
+
 
 	protected void handleTimerEvent() {
 		// You should not need to change this method.
 		game.timerTick();
-		
-	}
-	
 
-	
+	}
+
+
+
 	protected void Draw() {
 		// Draw onto buffer
-		
+
 		// Draw background
 
-		
+
 		// Draw background
 		bufCtx.drawImage((ImageElement) background.getElement().cast(),
 				0,
@@ -246,11 +228,11 @@ public class GameUI extends Composite {
 					380,
 					410);
 		}
-		
+
 		// Copy buffer onto main canvas
 		ctx.drawImage((CanvasElement) buffer.getElement().cast(), 0, 0);
 
 	}
 
-	
+
 }
