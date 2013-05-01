@@ -91,7 +91,7 @@ public class DerbyDatabase implements IDatabase {
 							"  password VARCHAR(50) NOT NULL, " +
 							"  highscore INT, " + 
 							"  email VARCHAR(50) NOT NULL, " + 
-							"  experience INT, " + 
+							"  exp INT, " + 
 							"  level INT NOT NULL, " + 
 							"  losses INT, " + 
 							"  wins INT, " +
@@ -109,42 +109,38 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public User logIn(final String username, final String password) {
-//	public User logIn(final String username, final String password) throws SQLException {
-		// idk what i'm doing :D
-//		return databaseRun(new ITransaction<User> () {
-//			@Override
-//			public User run(Connection conn) throws SQLException {
-//				PreparedStatement stmt = null;
-//				ResultSet resultSet = null;
-//				
-//				try {
-//					stmt = conn.prepareStatement("select * from users");
-//					resultSet = stmt.executeQuery();
-//					
-//					User result = new User();
-//					
-//					while (resultSet.next()) {
-//						User current = new User();
-//						
-//						if (username.equals(current)) {
-//							if (password.equals(current)) {
-//								//allow login, return true/valid?
-//								break;
-//							}
-//						}
-//						
-//						result = current;
-//					}
-//					
-//					return result;
-//				} finally {
-//					DB.closeQuietly(stmt);
-//					DB.closeQuietly(resultSet);
-//				}
-//			}
-//		});
-		return null;
+	public User logIn(final String username, final String password) throws SQLException {
+		return databaseRun(new ITransaction<User> () {
+			@Override
+			public User run(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				User result = new User();
+				
+				try {
+					stmt = conn.prepareStatement("select * from users");
+					resultSet = stmt.executeQuery();
+					
+					result.setUsername(resultSet.getString(username));
+					result.setPassword(resultSet.getString(password));
+						
+					if (username.equals(result.getUsername())) {
+						if (password.equals(result.getPassword())) {
+							//successful retrieval of user information
+						} else {
+							//password incorrect
+						}
+					} else {
+						//user name incorrect
+					}
+				} finally {
+					DB.closeQuietly(stmt);
+					DB.closeQuietly(resultSet);
+				}
+				//return user's information
+				return result;
+			}
+		});
 	}
 
 	@Override

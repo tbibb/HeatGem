@@ -11,6 +11,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
 
 
 public class RegisterView extends Composite {
@@ -18,6 +20,7 @@ public class RegisterView extends Composite {
 	private PasswordTextBox confirmationPasswordRegisterTextBox;
 	private TextBox registerEmailTextBox;
 	private PasswordTextBox passwordRegisterTextBox;
+	private Label errorLabel;
 
 	public RegisterView(){
 		
@@ -36,6 +39,11 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetTopHeight(registerHeadingLabel, 23.0, Unit.PX, 18.0, Unit.PX);
 		
 		registerUsernameTextBox = new TextBox();
+		registerUsernameTextBox.addKeyPressHandler(new KeyPressHandler() {
+			public void onKeyPress(KeyPressEvent event) {
+				
+			}
+		});
 		layoutPanel.add(registerUsernameTextBox);
 		layoutPanel.setWidgetLeftWidth(registerUsernameTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(registerUsernameTextBox, 49.0, Unit.PX, 26.0, Unit.PX);
@@ -88,6 +96,11 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetLeftWidth(confirmationPasswordRegisterTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(confirmationPasswordRegisterTextBox, 138.0, Unit.PX, 26.0, Unit.PX);
 		
+		errorLabel = new Label("");
+		layoutPanel.add(errorLabel);
+		layoutPanel.setWidgetLeftWidth(errorLabel, 184.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(errorLabel, 289.0, Unit.PX, 18.0, Unit.PX);
+		
 	}
 	
 	public void handleRegister(){
@@ -95,28 +108,28 @@ public class RegisterView extends Composite {
 		String password = this.passwordRegisterTextBox.getText();
 		String confirmPassword = this.confirmationPasswordRegisterTextBox.getText();
 		String email = this.registerEmailTextBox.getText();
-		
-		
-		RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				// tell user that he/she/it failed to register
-			}
-
-			@Override
-			public void onSuccess(Void result) {
-				// TODO Auto-generated method stub
-				LoginView view = new LoginView();
-				HeatGem.setView(view);
-			}
 			
-			
-			
-			
-		});
-		
-		
+		if (password != confirmPassword) {
+			errorLabel.setText("Invalid username/password/email. Try again.");
+		} else {
+			errorLabel.setText("Yay worked");
+			//add user
+			RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
+	
+				@Override
+				public void onFailure(Throwable caught) {
+					// this is when it can't connect to the server
+					// go to 404 page?
+					// setView 404?
+				}
+	
+				@Override
+				public void onSuccess(Void result) {
+					// TODO Auto-generated method stub
+					LoginView view = new LoginView();
+					HeatGem.setView(view);
+				}
+			});
+		}
 	}
 }

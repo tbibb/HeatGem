@@ -14,8 +14,7 @@ public interface IDatabase {
 	 * @return the User object, or null if there is no such user (or password is incorrect)
 	 * @throws SQLException 
 	 */
-	public User logIn(String username, String password);
-			//throws SQLException;		uncomment this when using DerbyDatabase
+	public User logIn(String username, String password) throws SQLException;
 	
 	public void addUser(String username, String password, String confirmPassword,
 			String email);

@@ -36,39 +36,38 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetLeftWidth(usernameTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(usernameTextBox, 293.0, Unit.PX, 34.0, Unit.PX);
 		
-				passwordLoginTextBox = new PasswordTextBox();
-				layoutPanel.add(passwordLoginTextBox);
-				layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
-				layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 344.0, Unit.PX, 34.0, Unit.PX);
-		
-				Button loginNewButton = new Button("New button");
-				loginNewButton.addClickHandler(new ClickHandler() {
-					public void onClick(ClickEvent event) {
-						//send username and password to server and validate login
+		passwordLoginTextBox = new PasswordTextBox();
+		layoutPanel.add(passwordLoginTextBox);
+		layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 344.0, Unit.PX, 34.0, Unit.PX);
 
-						handleLogin();
+		Button loginNewButton = new Button("New button");
+		loginNewButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				//send username and password to server and validate login
+				handleLogin();
 
-					}		
-				});
+			}		
+		});
 				
 				
 				
-						loginNewButton.setText("Login!");
-						layoutPanel.add(loginNewButton);
-						layoutPanel.setWidgetLeftWidth(loginNewButton, 164.0, Unit.PX, 81.0, Unit.PX);
-						layoutPanel.setWidgetTopHeight(loginNewButton, 424.0, Unit.PX, 30.0, Unit.PX);
+		loginNewButton.setText("Login!");
+		layoutPanel.add(loginNewButton);
+		layoutPanel.setWidgetLeftWidth(loginNewButton, 164.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(loginNewButton, 424.0, Unit.PX, 30.0, Unit.PX);
 		
-				simpleCheckBox = new SimpleCheckBox();
-				layoutPanel.add(simpleCheckBox);
+		simpleCheckBox = new SimpleCheckBox();
+		layoutPanel.add(simpleCheckBox);
 				
 				
-						layoutPanel.setWidgetLeftWidth(simpleCheckBox, 86.0, Unit.PX, 20.0, Unit.PX);
-						layoutPanel.setWidgetTopHeight(simpleCheckBox, 476.0, Unit.PX, 19.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 86.0, Unit.PX, 20.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(simpleCheckBox, 476.0, Unit.PX, 19.0, Unit.PX);
 		
-				InlineLabel usernameLabel = new InlineLabel("Username:");
-				layoutPanel.add(usernameLabel);
-				layoutPanel.setWidgetLeftWidth(usernameLabel, 55.0, Unit.PX, 90.0, Unit.PX);
-				layoutPanel.setWidgetTopHeight(usernameLabel, 304.0, Unit.PX, 18.0, Unit.PX);
+		InlineLabel usernameLabel = new InlineLabel("Username:");
+		layoutPanel.add(usernameLabel);
+		layoutPanel.setWidgetLeftWidth(usernameLabel, 55.0, Unit.PX, 90.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(usernameLabel, 304.0, Unit.PX, 18.0, Unit.PX);
 
 		InlineLabel passwordLabel = new InlineLabel("Password");
 		layoutPanel.add(passwordLabel);

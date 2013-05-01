@@ -1,5 +1,7 @@
 package edu.ycp.cs320.heatgem.client;
 
+import java.sql.SQLException;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
