@@ -29,15 +29,15 @@ public class RegisterView extends Composite {
 		initWidget(layoutPanel);
 		layoutPanel.setSize("450px", "350px");
 		
-		InlineLabel usernameRegisterLabel = new InlineLabel("  Username ");
-		layoutPanel.add(usernameRegisterLabel);
-		layoutPanel.setWidgetLeftWidth(usernameRegisterLabel, 12.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(usernameRegisterLabel, 57.0, Unit.PX, 18.0, Unit.PX);
-		
 		InlineLabel registerHeadingLabel = new InlineLabel("Create A New Account");
 		layoutPanel.add(registerHeadingLabel);
 		layoutPanel.setWidgetLeftWidth(registerHeadingLabel, 146.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(registerHeadingLabel, 23.0, Unit.PX, 18.0, Unit.PX);
+		
+		InlineLabel usernameRegisterLabel = new InlineLabel("  Username ");
+		layoutPanel.add(usernameRegisterLabel);
+		layoutPanel.setWidgetLeftWidth(usernameRegisterLabel, 12.0, Unit.PX, 90.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(usernameRegisterLabel, 57.0, Unit.PX, 18.0, Unit.PX);
 		
 		registerUsernameTextBox = new TextBox();
 		layoutPanel.add(registerUsernameTextBox);
@@ -49,10 +49,20 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetLeftWidth(registerPasswordLabel, 12.0, Unit.PX, 90.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(registerPasswordLabel, 91.0, Unit.PX, 18.0, Unit.PX);
 		
+		passwordRegisterTextBox = new PasswordTextBox();
+		layoutPanel.add(passwordRegisterTextBox);
+		layoutPanel.setWidgetLeftWidth(passwordRegisterTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordRegisterTextBox, 91.0, Unit.PX, 26.0, Unit.PX);
+		
 		InlineLabel ConfirmPassword = new InlineLabel("Confirm Password");
 		layoutPanel.add(ConfirmPassword);
 		layoutPanel.setWidgetLeftWidth(ConfirmPassword, 12.0, Unit.PX, 115.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(ConfirmPassword, 138.0, Unit.PX, 18.0, Unit.PX);
+		
+		confirmationPasswordRegisterTextBox = new PasswordTextBox();
+		layoutPanel.add(confirmationPasswordRegisterTextBox);
+		layoutPanel.setWidgetLeftWidth(confirmationPasswordRegisterTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(confirmationPasswordRegisterTextBox, 138.0, Unit.PX, 26.0, Unit.PX);
 		
 		InlineLabel registerEmailLabel = new InlineLabel("Email");
 		layoutPanel.add(registerEmailLabel);
@@ -88,16 +98,6 @@ public class RegisterView extends Composite {
 		layoutPanel.add(RegisterButton);
 		layoutPanel.setWidgetLeftWidth(RegisterButton, 174.0, Unit.PX, 81.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(RegisterButton, 253.0, Unit.PX, 30.0, Unit.PX);
-		
-		passwordRegisterTextBox = new PasswordTextBox();
-		layoutPanel.add(passwordRegisterTextBox);
-		layoutPanel.setWidgetLeftWidth(passwordRegisterTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordRegisterTextBox, 91.0, Unit.PX, 26.0, Unit.PX);
-		
-		confirmationPasswordRegisterTextBox = new PasswordTextBox();
-		layoutPanel.add(confirmationPasswordRegisterTextBox);
-		layoutPanel.setWidgetLeftWidth(confirmationPasswordRegisterTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(confirmationPasswordRegisterTextBox, 138.0, Unit.PX, 26.0, Unit.PX);
 		
 		errorLabel = new Label("");
 		layoutPanel.add(errorLabel);

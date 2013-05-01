@@ -11,6 +11,8 @@ import com.google.gwt.user.client.ui.NumberLabel;
 
 import edu.ycp.cs320.heatgem.shared.User;
 import edu.ycp.cs320.heatgem.shared.UserProfile;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public class ProfileView extends Composite {
 
@@ -35,9 +37,18 @@ public class ProfileView extends Composite {
 		layoutPanel.setSize("568px", "472px");
 
 		Button btnNewButton_1 = new Button("Delete Profile");
+		btnNewButton_1.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+			
+			
+			//if user clicks delete button, delete profile and table entries in sql database
+			
+			
+			}
+		});
 		layoutPanel.add(btnNewButton_1);
-		layoutPanel.setWidgetLeftWidth(btnNewButton_1, 402.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(btnNewButton_1, 384.0, Unit.PX, 30.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(btnNewButton_1, 262.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(btnNewButton_1, 371.0, Unit.PX, 30.0, Unit.PX);
 
 		Label lblProfileView = new Label("Profile View");
 		layoutPanel.add(lblProfileView);
