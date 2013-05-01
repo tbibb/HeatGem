@@ -23,7 +23,6 @@ public class LeaderBoard extends Composite {
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
 		
-		
 		layoutPanel.add(t);
 		layoutPanel.setWidgetLeftWidth(t, 32.0, Unit.PX, 325.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(t, 14.0, Unit.PX, 70.0, Unit.PX);
@@ -70,8 +69,7 @@ public class LeaderBoard extends Composite {
 			@Override
 			public void onSuccess(Integer result) {
 				// TODO Auto-generated method stub
-				//System.out.println(result.getHighScore());
-				//System.out.println(result.getName());
+				
 				t.setText(1, 0, username);
 				System.out.println("Size = " + size);
 				System.out.println("Result = " + result);

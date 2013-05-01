@@ -11,6 +11,9 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
 
 
 public class RegisterView extends Composite {
@@ -67,6 +70,13 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetTopHeight(WarningMessageLabel, 229.0, Unit.PX, 18.0, Unit.PX);
 		
 		Button RegisterButton = new Button("New button");
+		RegisterButton.addKeyPressHandler(new KeyPressHandler() {
+			public void onKeyPress(KeyPressEvent event) {
+				
+				//pressing enter key to register
+			}       
+		        
+		});
 		RegisterButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				
@@ -91,16 +101,39 @@ public class RegisterView extends Composite {
 		
 		errorLabel = new Label("");
 		layoutPanel.add(errorLabel);
-		layoutPanel.setWidgetLeftWidth(errorLabel, 184.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(errorLabel, 80.0, Unit.PX, 289.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(errorLabel, 289.0, Unit.PX, 18.0, Unit.PX);
+		
+		Label goBackLabel = new Label("Go Back To Login");
+		goBackLabel.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				
+				//implement event handler
+				handleGoBack();
+			}
+		});
+		
+		layoutPanel.add(goBackLabel);
+		layoutPanel.setWidgetLeftWidth(goBackLabel, 12.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(goBackLabel, 11.0, Unit.PX, 18.0, Unit.PX);
 		
 	}
 	
+	public void handleGoBack(){
+		LoginView view = new LoginView();
+		HeatGem.setView(view);
+	}
+	
+	
 	public void handleRegister(){
 		String username = this.registerUsernameTextBox.getText();
-		String password = this.passwordRegisterTextBox.getText();
-		String confirmPassword = this.confirmationPasswordRegisterTextBox.getText();
+		final String password = this.passwordRegisterTextBox.getText();
+		final String confirmPassword = this.confirmationPasswordRegisterTextBox.getText();
 		String email = this.registerEmailTextBox.getText();
+		
+		
+		//TO-DO: prevent registering blank user and other blank text boxes
+		
 		
 		
 		RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
@@ -115,10 +148,10 @@ public class RegisterView extends Composite {
 			@Override
 			public void onSuccess(Void result) {
 				// TODO Auto-generated method stub
-				if (result == null){
-					// show error message
+				if(password != confirmPassword){
+					
 					errorLabel.setText("Incorrect username/password/email. Try again.");
-				} else {
+				} else{
 					//register successful, change to login view
 					
 					LoginView view = new LoginView();

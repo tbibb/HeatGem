@@ -19,6 +19,8 @@ import edu.ycp.cs320.heatgem.shared.User;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.PushButton;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
 
 public class LoginView extends Composite {
 	private TextBox usernameTextBox;
@@ -79,8 +81,18 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetLeftWidth(h_gem, 66.0, Unit.PX, 260.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(h_gem, 15.0, Unit.PX, 245.0, Unit.PX);
 		
-		Button loginNewButton = new Button("New button");
-		loginNewButton.addClickHandler(new ClickHandler() {
+		loginButton = new Button("Login!");
+		loginButton.addKeyPressHandler(new KeyPressHandler() {
+			public void onKeyPress(KeyPressEvent event) {
+				//allow user to press enter after typing in information to login
+				
+			}
+		});
+		layoutPanel.add(loginButton);
+		layoutPanel.setWidgetLeftWidth(loginButton, 192.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(loginButton, 426.0, Unit.PX, 30.0, Unit.PX);
+		
+		loginButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				//send username and password to server and validate login
 
@@ -89,10 +101,7 @@ public class LoginView extends Composite {
 			}		
 		});
 		
-		loginButton = new Button("Login!");
-		layoutPanel.add(loginButton);
-		layoutPanel.setWidgetLeftWidth(loginButton, 192.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(loginButton, 426.0, Unit.PX, 30.0, Unit.PX);
+		
 		
 		
 		Label lblNewUserClick = new Label("New user? Click here to register!");
