@@ -142,15 +142,11 @@ public class HomePage extends Composite {
 				// FIXME: think of a better way to do this
 				if (nextTabView instanceof GameUI) {
 					((GameUI)nextTabView).startGame();
-				} else if (nextTabView instanceof ProfileView) {
-					ProfileView profileView = (ProfileView) nextTabView;
-					profileView.setUsername(user.getUsername());
-					profileView.activate();
 				}
 			}
 		}
 	}
-
+	
 	public void setUser(User result) {
 		this.user = result;
 	}

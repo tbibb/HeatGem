@@ -307,4 +307,3 @@ public class FakeDatabase implements IDatabase {
 		return true;
 	}	
 }
-

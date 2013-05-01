@@ -1,7 +1,7 @@
 package edu.ycp.cs320.heatgem.shared;
 
 public class Logic {
-	 public void doBattle(Player Player1, Player Player2)
+	 public static void doBattle(Player Player1, Player Player2)
      {
          Player Monster = new Player("Monster");
          Battle skirmish = new Battle(Player1, Monster);
@@ -11,10 +11,29 @@ public class Logic {
             // Console.WriteLine("Monster has " + Monster.getHealth() + " health");
              //cUI.waitForAttack();
             // cUI.parseInput();
-             skirmish.turn();
-             Player1.setHealth(skirmish.getHealth(Player1));
-             Monster.setHealth(skirmish.getHealth(Monster));
+             skirmish.Attack();
+             Player1.setHealth(skirmish.getHealth1());
+             Player2.setHealth(skirmish.getHealth2());
              if (skirmish.battleState() != 0)
+                 break;
+         }
+
+     }
+	 
+	 public static void doHeal(Player Player1, Player Player2)
+     {
+         Player Monster = new Player("Monster");
+         Battle Heal = new Battle(Player1, Monster);
+         while (true)
+         {
+             //Console.WriteLine("You have " + Player1.getHealth() + " health");
+            // Console.WriteLine("Monster has " + Monster.getHealth() + " health");
+             //cUI.waitForAttack();
+            // cUI.parseInput();
+             Heal.heal();
+             Player1.setHealth(Heal.getHealth1());
+             Player2.setHealth(Heal.getHealth2());
+             if (Heal.battleState() != 0)
                  break;
          }
 

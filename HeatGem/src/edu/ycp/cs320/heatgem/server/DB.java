@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DB {
-	private static final IDatabase theInstance = new DerbyDatabase();
+	private static IDatabase theInstance = new FakeDatabase();
 	
 	public static IDatabase instance() {
 		return theInstance;
