@@ -133,3 +133,4 @@ public class RegisterView extends Composite {
 		}
 	}
 }
+
