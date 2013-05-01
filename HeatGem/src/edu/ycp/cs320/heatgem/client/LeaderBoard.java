@@ -15,12 +15,15 @@ public class LeaderBoard extends Composite {
 
 	UserProfile[] list = new UserProfile[10];
 	int size;
+	private String username;
+	private FlexTable t = new FlexTable();
+	
 	public LeaderBoard(){
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
 		
-		FlexTable t = new FlexTable();
+		
 		layoutPanel.add(t);
 		layoutPanel.setWidgetLeftWidth(t, 32.0, Unit.PX, 325.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(t, 14.0, Unit.PX, 70.0, Unit.PX);
@@ -33,7 +36,7 @@ public class LeaderBoard extends Composite {
 	    t.setText(0, 4, "Level");
 	    t.setText(0, 5, "Wins");
 	    t.setText(0, 6, "Losses");
-	    t.setText(1, 0, "Alice");
+	 
 	    updateHighScoreList();
 	    t.setBorderWidth(1);
 	    
@@ -50,6 +53,9 @@ public class LeaderBoard extends Composite {
 		
 	}
 	
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	
 	// DEBUG for those not named Nick, ignore this function for now
 	private void updateHighScoreList() {
@@ -66,7 +72,7 @@ public class LeaderBoard extends Composite {
 				// TODO Auto-generated method stub
 				//System.out.println(result.getHighScore());
 				//System.out.println(result.getName());
-				
+				t.setText(1, 0, username);
 				System.out.println("Size = " + size);
 				System.out.println("Result = " + result);
 				

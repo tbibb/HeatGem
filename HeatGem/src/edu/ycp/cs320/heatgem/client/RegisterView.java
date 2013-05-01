@@ -18,6 +18,7 @@ public class RegisterView extends Composite {
 	private PasswordTextBox confirmationPasswordRegisterTextBox;
 	private TextBox registerEmailTextBox;
 	private PasswordTextBox passwordRegisterTextBox;
+	private Label errorLabel;
 
 	public RegisterView(){
 		
@@ -88,6 +89,11 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetLeftWidth(confirmationPasswordRegisterTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(confirmationPasswordRegisterTextBox, 138.0, Unit.PX, 26.0, Unit.PX);
 		
+		errorLabel = new Label("");
+		layoutPanel.add(errorLabel);
+		layoutPanel.setWidgetLeftWidth(errorLabel, 184.0, Unit.PX, 56.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(errorLabel, 289.0, Unit.PX, 18.0, Unit.PX);
+		
 	}
 	
 	public void handleRegister(){
@@ -101,15 +107,23 @@ public class RegisterView extends Composite {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				// tell user that he/she/it failed to register
+				// show error message
+				errorLabel.setText("Could not communicate with server?");
+				
 			}
 
 			@Override
 			public void onSuccess(Void result) {
 				// TODO Auto-generated method stub
-				LoginView view = new LoginView();
-				HeatGem.setView(view);
+				if (result == null){
+					// show error message
+					errorLabel.setText("Incorrect username/password/email. Try again.");
+				} else {
+					//register successful, change to login view
+					
+					LoginView view = new LoginView();
+					HeatGem.setView(view);
+				}
 			}
 			
 			

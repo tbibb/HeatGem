@@ -7,10 +7,7 @@ public class Logic {
          Battle skirmish = new Battle(Player1, Monster);
          while (true)
          {
-             //Console.WriteLine("You have " + Player1.getHealth() + " health");
-            // Console.WriteLine("Monster has " + Monster.getHealth() + " health");
-             //cUI.waitForAttack();
-            // cUI.parseInput();
+             
              skirmish.Attack();
              Player1.setHealth(skirmish.getHealth1());
              Player2.setHealth(skirmish.getHealth2());
@@ -26,10 +23,7 @@ public class Logic {
          Battle Heal = new Battle(Player1, Monster);
          while (true)
          {
-             //Console.WriteLine("You have " + Player1.getHealth() + " health");
-            // Console.WriteLine("Monster has " + Monster.getHealth() + " health");
-             //cUI.waitForAttack();
-            // cUI.parseInput();
+             
              Heal.heal();
              Player1.setHealth(Heal.getHealth1());
              Player2.setHealth(Heal.getHealth2());

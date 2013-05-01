@@ -18,13 +18,15 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
 import edu.ycp.cs320.heatgem.shared.User;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.PushButton;
 
 public class LoginView extends Composite {
 	private TextBox usernameTextBox;
 	private Label errorLabel;
-	private SimpleCheckBox simpleCheckBox;	
-	private PasswordTextBox passwordLoginTextBox;
 	private Image h_gem;
+	private PasswordTextBox passwordLoginTextBox;
+	private Button loginButton;
+	private SimpleCheckBox rememberCheckBox;
 	public LoginView() {
 
 		LayoutPanel layoutPanel = new LayoutPanel();
@@ -45,25 +47,38 @@ public class LoginView extends Composite {
 		layoutPanel.add(passwordLabel);
 		layoutPanel.setWidgetLeftWidth(passwordLabel, 55.0, Unit.PX, 90.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(passwordLabel, 358.0, Unit.PX, 18.0, Unit.PX);
-
-		simpleCheckBox = new SimpleCheckBox();
-		layoutPanel.add(simpleCheckBox);
-
-
-		layoutPanel.setWidgetLeftWidth(simpleCheckBox, 86.0, Unit.PX, 20.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(simpleCheckBox, 476.0, Unit.PX, 19.0, Unit.PX);
-
-		if (simpleCheckBox.getValue() == true) {
-			GWT.log("Checkbox is checked");
-			System.out.println("Hi");
-
-		}
+	
+		passwordLoginTextBox = new PasswordTextBox();
+		layoutPanel.add(passwordLoginTextBox);
+		layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 344.0, Unit.PX, 32.0, Unit.PX);
 
 		InlineLabel rememberMeNextLabel = new InlineLabel("Remember me next time.");
 		layoutPanel.add(rememberMeNextLabel);
 		layoutPanel.setWidgetLeftWidth(rememberMeNextLabel, 151.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(rememberMeNextLabel, 476.0, Unit.PX, 18.0, Unit.PX);
 
+		rememberCheckBox = new SimpleCheckBox();
+		layoutPanel.add(rememberCheckBox);
+		layoutPanel.setWidgetLeftWidth(rememberCheckBox, 101.0, Unit.PX, 20.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(rememberCheckBox, 476.0, Unit.PX, 19.0, Unit.PX);
+		
+		if (rememberCheckBox.getValue() == true) {
+			GWT.log("Checkbox is checked");
+			System.out.println("Hi");
+
+		}
+		
+		errorLabel = new Label("");
+		layoutPanel.add(errorLabel);
+		layoutPanel.setWidgetLeftWidth(errorLabel, 120.0, Unit.PX, 307.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(errorLabel, 259.0, Unit.PX, 18.0, Unit.PX);
+
+		h_gem = HeatGem.getImage("fireRuby1.gif");
+		layoutPanel.add(h_gem);
+		layoutPanel.setWidgetLeftWidth(h_gem, 66.0, Unit.PX, 260.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(h_gem, 15.0, Unit.PX, 245.0, Unit.PX);
+		
 		Button loginNewButton = new Button("New button");
 		loginNewButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -73,33 +88,17 @@ public class LoginView extends Composite {
 
 			}		
 		});
-
-
-
-		loginNewButton.setText("Login!");
-		layoutPanel.add(loginNewButton);
-		layoutPanel.setWidgetLeftWidth(loginNewButton, 164.0, Unit.PX, 81.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(loginNewButton, 424.0, Unit.PX, 30.0, Unit.PX);
-
-		errorLabel = new Label("");
-		layoutPanel.add(errorLabel);
-		layoutPanel.setWidgetLeftWidth(errorLabel, 120.0, Unit.PX, 307.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(errorLabel, 259.0, Unit.PX, 18.0, Unit.PX);
-
+		
+		loginButton = new Button("Login!");
+		layoutPanel.add(loginButton);
+		layoutPanel.setWidgetLeftWidth(loginButton, 192.0, Unit.PX, 81.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(loginButton, 426.0, Unit.PX, 30.0, Unit.PX);
+		
+		
 		Label lblNewUserClick = new Label("New user? Click here to register!");
 		layoutPanel.add(lblNewUserClick);
 		layoutPanel.setWidgetLeftWidth(lblNewUserClick, 151.0, Unit.PX, 193.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(lblNewUserClick, 500.0, Unit.PX, 18.0, Unit.PX);
-
-		passwordLoginTextBox = new PasswordTextBox();
-		layoutPanel.add(passwordLoginTextBox);
-		layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 344.0, Unit.PX, 34.0, Unit.PX);
-
-		h_gem = HeatGem.getImage("fireRuby1.gif");
-		layoutPanel.add(h_gem);
-		layoutPanel.setWidgetLeftWidth(h_gem, 66.0, Unit.PX, 260.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(h_gem, 15.0, Unit.PX, 245.0, Unit.PX);
 
 		lblNewUserClick.addMouseMoveHandler(new MouseMoveHandler() {
 			public void onMouseMove(MouseMoveEvent event) {
@@ -119,7 +118,7 @@ public class LoginView extends Composite {
 		RegisterView view = new RegisterView();
 		HeatGem.setView(view);
 	}
-
+	
 	protected void handleLogin() {
 		String username = this.usernameTextBox.getText();
 		String password = this.passwordLoginTextBox.getText();
@@ -137,8 +136,8 @@ public class LoginView extends Composite {
 					// show error message
 					errorLabel.setText("Unknown username/password");
 				} else {
-					// TODO: switch to home page
-					errorLabel.setText("Success! Should switch to home page");
+					//  switches to home page
+					errorLabel.setText("Success!");
 					HomePage view = new HomePage();
 					view.setUser(result);
 					HeatGem.setView(view);
@@ -147,4 +146,6 @@ public class LoginView extends Composite {
 			}
 		});
 	}
+	
+	
 }
