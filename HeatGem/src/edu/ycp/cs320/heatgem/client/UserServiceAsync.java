@@ -17,7 +17,7 @@ public interface UserServiceAsync {
 	void getUserProfile(String username, AsyncCallback<UserProfile> callback);
 	
 	void findUserProfileByUserId(int id, AsyncCallback<UserProfile> callback);
-	
+
 	void getAmountUsers(AsyncCallback<Integer> callback);
 
 	void updateUserProfile(String username, UserProfile updatedProfile,

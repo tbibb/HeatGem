@@ -62,12 +62,12 @@ public class GameUI extends Composite {
 	private Image Defeat;
 	private Player player1;
 	private Player player2;
+
 	private Game Game1;
 	private int p1Health, p2Health;
-
 	// The game object contains all of the game state data.
 	private Game game;
-
+	
 	public GameUI() {
 
 		//FocusPanel
@@ -92,9 +92,7 @@ public class GameUI extends Composite {
 		panel.add(canvas);
 
 		initWidget(panel);		
-
-
-
+		
 		this.timer = new Timer() {
 			@Override
 			public void run() {
@@ -112,9 +110,7 @@ public class GameUI extends Composite {
 				MouseY = event.getY();
 			}
 
-
 		});
-
 		canvas.addMouseDownHandler(new MouseDownHandler() {
 			@Override
 			public void onMouseDown(MouseDownEvent event) {
@@ -173,10 +169,9 @@ public class GameUI extends Composite {
 		AttackSelected = HeatGem.getImage("AttackSelected.png");
 		HealSelected = HeatGem.getImage("HealSelected.png");
 
-		Game1 = new Game();
+		game = new Game();
 		player1 = new Player("Player");
 		player2 = new Player("Monster");
-
 		// Add a listener for mouse motion.
 		// Each time the mouse is moved, clicked, released, etc. the handleMouseMove method
 		// will be called.
@@ -247,15 +242,15 @@ public class GameUI extends Composite {
 					410);
 		}
 
-		bufCtx.setFont("sans-serif");
+		bufCtx.setFillStyle("red");
+		bufCtx.setFont("bold 16px sans-serif");
 		bufCtx.fillText((p1Health + " / 100") , 30, 430);
 		bufCtx.fillText(p2Health + " / 100", 450, 35);
-
+		
 		// Copy buffer onto main canvas
 		ctx.drawImage((CanvasElement) buffer.getElement().cast(), 0, 0);
 
 
 	}
-
 
 }

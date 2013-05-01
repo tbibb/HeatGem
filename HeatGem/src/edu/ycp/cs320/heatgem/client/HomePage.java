@@ -27,7 +27,6 @@ public class HomePage extends Composite {
 	private int tabCurrentSelection= -1;
 	private IsWidget currentTabView;
 	private User user;
-
 	public HomePage(){
 
 		layoutPanel = new LayoutPanel();

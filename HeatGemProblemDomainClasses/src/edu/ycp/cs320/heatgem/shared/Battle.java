@@ -50,7 +50,7 @@ public class Battle {
 		Random TRandom = new Random();
 		int playerHeal = (int)random.nextInt(10);
 		One.setHealth(One.getHealth() + playerHeal);  //Player is healed
-
+		
 		int MTurn = (int)TRandom.nextInt(2);
 		  if (MTurn == 1){ //Monster heals
 	        	MonsterHeal();
