@@ -83,7 +83,10 @@ public class RegisterView extends Composite {
 		RegisterButton.addKeyPressHandler(new KeyPressHandler() {
 			public void onKeyPress(KeyPressEvent event) {
 				
-				//pressing enter key to register
+				//allow user to press enter key to register
+				
+				
+				
 			}       
 		        
 		});
@@ -133,7 +136,10 @@ public class RegisterView extends Composite {
 		
 		
 		//TO-DO: prevent registering blank user and other blank text boxes
-		
+		//if(registerUsernameTextBox == null || passwordRegisterTextBox == null || 
+		//confirmationPasswordRegisterTextBox == null || registerEmailTextBox == null){
+		//
+		//}
 		
 		
 		RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
@@ -149,11 +155,19 @@ public class RegisterView extends Composite {
 			public void onSuccess(Void result) {
 				// TODO Auto-generated method stub
 				if(password != confirmPassword){
+					//password and confirmation password entered during registration do not match
+					errorLabel.setText("Incorrect password-confirmation password combination. Try again.");
 					
-					errorLabel.setText("Incorrect username/password/email. Try again.");
-				} else{
+				}
+				//else if username entered during registration is already taken by another user in database
+				//else if(username == ){
+					//errorLabel.setText("Username already taken, pick a new one.");
+				//}
+				else{
+					//Create new row in user table of database
+					
+					
 					//register successful, change to login view
-					
 					LoginView view = new LoginView();
 					HeatGem.setView(view);
 				}
