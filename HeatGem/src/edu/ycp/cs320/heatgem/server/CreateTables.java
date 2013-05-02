@@ -12,7 +12,6 @@ public class CreateTables {
 		db.addUser("alice", "abc", "abc", "alice@ycp.edu");
 		
 		System.out.println("Successfully created tables");
-		//le comment
 	}
 
 }

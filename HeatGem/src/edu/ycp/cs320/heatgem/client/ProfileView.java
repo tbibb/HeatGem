@@ -42,8 +42,11 @@ public class ProfileView extends Composite {
 			
 			
 			//if user clicks delete button, delete profile and table entries in sql database
+//				DELETE FROM Customers
+//				WHERE CustomerName='Alfreds Futterkiste' AND ContactName='Maria Anders'
 			
-			
+				
+				
 			}
 		});
 		layoutPanel.add(btnNewButton_1);

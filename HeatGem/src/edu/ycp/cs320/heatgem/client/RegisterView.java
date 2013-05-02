@@ -135,50 +135,52 @@ public class RegisterView extends Composite {
 		
 		
 		//TO-DO: prevent registering blank user and other blank text boxes
-		if(username == null || password == null || confirmPassword == null || email == null){
+		if(username.equals("") || password.equals("") || confirmPassword.equals("") || email.equals("")){
 			errorLabel.setText("Must fill in the above fields. Try again.");
+		} else if(password.equals(confirmPassword)){
+			// add user
+			RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					// show error message
+					errorLabel.setText("Could not communicate with server?");
+					
+				}
+
+				@Override
+				public void onSuccess(Void result) {
+					// TODO Auto-generated method stub
+					
+					
+					// if username entered during registration is already taken by another user in database
+					//else if(username == ){
+						//errorLabel.setText("Username already taken, pick a new one.");
+					//} 
+					
+					//if the email entered during registration is already in use in database, show error message
+					//else if(email == ) {
+						//errorLabel.setText("Email already in use. Try again.");
+					//}
+					
+				
+						//Create new row in user table of database
+						
+						
+						//register successful, change to login view
+						LoginView view = new LoginView();
+						HeatGem.setView(view);
+				
+				}
+				
+			});
+			
+		} else {
+			//password and confirmation password entered during registration do not match
+			errorLabel.setText("Incorrect password-confirmation password combination. Try again.");
+			
 		}
 		
-		
-		RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// show error message
-				errorLabel.setText("Could not communicate with server?");
-				
-			}
-
-			@Override
-			public void onSuccess(Void result) {
-				// TODO Auto-generated method stub
-				if(password != confirmPassword){
-					//password and confirmation password entered during registration do not match
-					errorLabel.setText("Incorrect password-confirmation password combination. Try again.");
-					
-				}
-				
-				// if username entered during registration is already taken by another user in database
-				//else if(username == ){
-					//errorLabel.setText("Username already taken, pick a new one.");
-				//} 
-				
-				//if the email entered during registration is already in use in database, show error message
-				//else if(email == ) {
-					//errorLabel.setText("Email already in use. Try again.");
-				//}
-				
-				else{
-					//Create new row in user table of database
-					
-					
-					//register successful, change to login view
-					LoginView view = new LoginView();
-					HeatGem.setView(view);
-				}
-			}
-			
-		});
 		
 		
 	}
