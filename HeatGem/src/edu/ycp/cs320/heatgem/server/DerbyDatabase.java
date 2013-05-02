@@ -5,14 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.ycp.cs320.heatgem.shared.User;
 import edu.ycp.cs320.heatgem.shared.UserProfile;
 import edu.ycp.cs320.heatgem.server.DB;
 import edu.ycp.cs320.heatgem.server.ITransaction;
-import edu.ycp.cs320.heatgem.server.FakeDatabase;
+
 
 public class DerbyDatabase implements IDatabase {
 	private static final String DATASTORE = "H:/heatgemdb";

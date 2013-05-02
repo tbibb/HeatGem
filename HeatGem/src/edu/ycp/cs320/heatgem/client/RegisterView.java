@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.KeyEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 
@@ -70,6 +70,14 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetTopHeight(registerEmailLabel, 183.0, Unit.PX, 18.0, Unit.PX);
 		
 		registerEmailTextBox = new TextBox();
+		registerEmailTextBox.addKeyPressHandler(new KeyPressHandler() {
+			@Override
+			public void onKeyPress(KeyPressEvent event) {
+				if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER) {
+					handleRegister();
+				}
+			}
+		});
 		layoutPanel.add(registerEmailTextBox);
 		layoutPanel.setWidgetLeftWidth(registerEmailTextBox, 136.0, Unit.PX, 173.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(registerEmailTextBox, 183.0, Unit.PX, 26.0, Unit.PX);
@@ -80,15 +88,6 @@ public class RegisterView extends Composite {
 		layoutPanel.setWidgetTopHeight(WarningMessageLabel, 229.0, Unit.PX, 18.0, Unit.PX);
 		
 		Button RegisterButton = new Button("New button");
-		RegisterButton.addKeyPressHandler(new KeyPressHandler() {
-			public void onKeyPress(KeyPressEvent event) {
-				//allow user to press enter key to register
-				
-				
-				
-			}       
-		        
-		});
 		RegisterButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				
