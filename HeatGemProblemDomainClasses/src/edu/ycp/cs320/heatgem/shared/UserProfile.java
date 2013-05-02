@@ -12,6 +12,7 @@ public class UserProfile implements Serializable {
 	// fields
 	private int userId;
 	private String name;
+	private String email;
 	private int level;
 	private int highScore;
 	private int experience, wins, losses;
@@ -40,6 +41,14 @@ public class UserProfile implements Serializable {
 
 	public String getName() {
 		return name;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 
 	public void setLevel(int level) {

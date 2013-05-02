@@ -139,7 +139,12 @@ public class DerbyDatabase implements IDatabase {
 					result.setId(resultSet.getInt(1));
 					result.setUsername(resultSet.getString(2));
 					result.setPassword(resultSet.getString(3));
-					// etc...
+					result.setHighScore(resultSet.getInt(4));
+					result.setEmail(resultSet.getString(5));
+					result.setExperience(resultSet.getInt(6));
+					result.setLevel(resultSet.getInt(7));
+					result.setLosses(resultSet.getInt(8));
+					result.setWins(resultSet.getInt(9));
 					
 					return result;
 					
@@ -207,21 +212,36 @@ public class DerbyDatabase implements IDatabase {
 				public UserProfile run(Connection conn) throws SQLException {
 					PreparedStatement stmt = null;
 					ResultSet resultSet = null;
-					User result = new User();
+					UserProfile result = new UserProfile();
 					
 					try {
 						stmt = conn.prepareStatement("select * from users where username = ?");
 						stmt.setString(1, username);
 						resultSet = stmt.executeQuery();
 						
-						//return user Profile
+						if (!resultSet.next()) {
+							// no such user
+							return null;
+						}
+						
+						result.setUserId(resultSet.getInt(1));
+						result.setName(resultSet.getString(2));
+						//result.setPassword(resultSet.getString(3));
+						result.setHighScore(resultSet.getInt(4));
+						result.setEmail(resultSet.getString(5));
+						result.setExperience(resultSet.getInt(6));
+						result.setLevel(resultSet.getInt(7));
+						result.setLosses(resultSet.getInt(8));
+						result.setWins(resultSet.getInt(9));
+						
+						return result;
+						
 					} finally {
 						DB.closeQuietly(stmt);
 						DB.closeQuietly(resultSet);
 					}
 					//return user's information
 					//return result;
-					return null;
 				}
 			});
 		} catch (SQLException e) {
