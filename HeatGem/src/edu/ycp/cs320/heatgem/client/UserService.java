@@ -15,7 +15,7 @@ public interface UserService extends RemoteService {
 	
 	public void addUser(String username, String password, String confirmPassword, String email);
 	
-	public void deleteUserAccount(String username);
+	public Boolean deleteUserAccount(String username);
 	
 	public UserProfile getUserProfile(String username);
 	

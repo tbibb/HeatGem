@@ -12,7 +12,7 @@ public interface UserServiceAsync {
 	void addUser(String username, String password, String confirmPassword,
 			String email, AsyncCallback<Void> callback);
 
-	void deleteUserAccount(String username, AsyncCallback<Void> callback);
+	void deleteUserAccount(String username, AsyncCallback<Boolean> asyncCallback);
 
 	void getUserProfile(String username, AsyncCallback<UserProfile> callback);
 	

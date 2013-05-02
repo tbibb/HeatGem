@@ -39,13 +39,10 @@ public class ProfileView extends Composite {
 		Button btnNewButton_1 = new Button("Delete Profile");
 		btnNewButton_1.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-			
-			
-			//if user clicks delete button, delete profile and table entries in sql database
-//				DELETE FROM Customers
-//				WHERE CustomerName='Alfreds Futterkiste' AND ContactName='Maria Anders'
-			
 				
+				deleteUser(username);
+				LoginView view = new LoginView();
+				HeatGem.setView(view);
 				
 			}
 		});
@@ -121,6 +118,27 @@ public class ProfileView extends Composite {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public void deleteUser(final String username) {
+		RPC.userService.deleteUserAccount(username,  new AsyncCallback <Boolean>() {
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// show error message
+				System.out.println("Could not communicate with server?");
+			}
+
+			@Override
+			public void onSuccess(Boolean result) {
+				// TODO Auto-generated method stub
+				if (result == true) {
+					System.out.println("Profile was not deleted!");
+				} else {
+					System.out.println("Profile Deleted!");
+				}
+			}
+		});
 	}
 
 	public void activate() {

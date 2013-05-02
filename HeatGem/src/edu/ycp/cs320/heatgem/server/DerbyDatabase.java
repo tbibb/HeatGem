@@ -221,6 +221,37 @@ public class DerbyDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public boolean deleteUser(final String username) {
+		// delete user - deletes row in SQL database
+		try {
+			databaseRun(new ITransaction<Boolean>() {
+				@Override
+				public Boolean run(Connection conn) throws SQLException {
+					PreparedStatement stmt = null;
+					
+					try {
+						stmt = conn.prepareStatement(
+								"DELETE FROM users " +
+								"WHERE username=?"
+						);
+						stmt.setString(1, username);
+						
+						stmt.executeUpdate();
+						
+						return true;
+					} finally {
+						DB.closeQuietly(stmt);
+					}
+				}
+			});
+		} catch (SQLException e) {
+			throw new RuntimeException("SQLException deleting user", e);
+		}
+		
+		return false;
+	}
 	
 //	@Override
 //	public OrderReceipt placeOrder(final Order order) throws SQLException {

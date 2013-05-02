@@ -305,5 +305,11 @@ public class FakeDatabase implements IDatabase {
 		updatedProfile.setUserId(user.getId());
 		userProfileList.add(updatedProfile);
 		return true;
+	}
+
+	@Override
+	public boolean deleteUser(String username) {
+		// TODO Auto-generated method stub
+		return false;
 	}	
 }

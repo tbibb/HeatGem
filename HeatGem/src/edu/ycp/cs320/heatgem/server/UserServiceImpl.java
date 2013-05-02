@@ -36,13 +36,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	@Override
-	public void deleteUserAccount(String username) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	@Override
 	public UserProfile getUserProfile(String username) {
 		return DB.instance().getUserProfile(username);
@@ -62,6 +55,12 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public int getAmountUsers() {
 		// TODO Auto-generated method stub
 		return DB.instance().getAmountUsers();
+	}
+
+	@Override
+	public Boolean deleteUserAccount(String username) {
+		// TODO Auto-generated method stub
+		return DB.instance().deleteUser(username);
 	}
 }
 

@@ -28,4 +28,6 @@ public interface IDatabase {
 
 	int getAmountUsers();
 
+	public boolean deleteUser(String username);
+
 }
