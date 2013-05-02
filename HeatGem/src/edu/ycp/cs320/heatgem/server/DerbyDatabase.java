@@ -199,8 +199,34 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public UserProfile getUserProfile(String username) {
+	public UserProfile getUserProfile(final String username) {
 		// TODO Auto-generated method stub
+		try {
+			databaseRun(new ITransaction<UserProfile>() {
+				@Override
+				public UserProfile run(Connection conn) throws SQLException {
+					PreparedStatement stmt = null;
+					ResultSet resultSet = null;
+					User result = new User();
+					
+					try {
+						stmt = conn.prepareStatement("select * from users where username = ?");
+						stmt.setString(1, username);
+						resultSet = stmt.executeQuery();
+						
+						//return user Profile
+					} finally {
+						DB.closeQuietly(stmt);
+						DB.closeQuietly(resultSet);
+					}
+					//return user's information
+					//return result;
+					return null;
+				}
+			});
+		} catch (SQLException e) {
+			throw new RuntimeException("SQLException getting UserProfile", e);
+		}
 		return null;
 	}
 
