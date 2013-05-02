@@ -15,7 +15,7 @@ import edu.ycp.cs320.heatgem.server.ITransaction;
 import edu.ycp.cs320.heatgem.server.FakeDatabase;
 
 public class DerbyDatabase implements IDatabase {
-	private static final String DATASTORE = "/home/heatgemdb";
+	private static final String DATASTORE = "H:/heatgemdb";
 	
 	static {
 		try {
@@ -80,10 +80,18 @@ public class DerbyDatabase implements IDatabase {
 		databaseRun(new ITransaction<Boolean>() {
 			@Override
 			public Boolean run(Connection conn) throws SQLException {
-				
+				/*
+							"create table order_receipts (" +
+							"  id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
+							"  userinfo VARCHAR(200) NOT NULL, " +
+							"  price DECIMAL(10,2) " +
+							")"
+				 */
 				PreparedStatement stmt = null;
 				
 				try {
+					// TODO: create a unique index on the username column
+					// to avoid having two users with the same username
 					stmt = conn.prepareStatement(
 							"create table users (" +
 							"  id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
@@ -94,7 +102,7 @@ public class DerbyDatabase implements IDatabase {
 							"  exp INT, " + 
 							"  level INT NOT NULL, " + 
 							"  losses INT, " + 
-							"  wins INT, " +
+							"  wins INT " +
 							")"
 					);
 					
@@ -118,12 +126,27 @@ public class DerbyDatabase implements IDatabase {
 				User result = new User();
 				
 				try {
-					stmt = conn.prepareStatement("select * from users");
+					stmt = conn.prepareStatement("select * from users where username = ? and password = ?");
+					stmt.setString(1, username);
+					stmt.setString(2, password);
 					resultSet = stmt.executeQuery();
 					
-					result.setUsername(resultSet.getString(username));
-					result.setPassword(resultSet.getString(password));
-						
+					if (!resultSet.next()) {
+						// no such user/password
+						return null;
+					}
+					
+					result.setId(resultSet.getInt(1));
+					result.setUsername(resultSet.getString(2));
+					result.setPassword(resultSet.getString(3));
+					// etc...
+					
+					return result;
+					
+					//result.setUsername(resultSet.getString(username));
+					//result.setPassword(resultSet.getString(password));
+					
+					/*
 					if (username.equals(result.getUsername())) {
 						if (password.equals(result.getPassword())) {
 							//successful retrieval of user information
@@ -133,21 +156,46 @@ public class DerbyDatabase implements IDatabase {
 					} else {
 						//user name incorrect
 					}
+					*/
 				} finally {
 					DB.closeQuietly(stmt);
 					DB.closeQuietly(resultSet);
 				}
 				//return user's information
-				return result;
+				//return result;
 			}
 		});
 	}
 
 	@Override
-	public void addUser(String username, String password,
-			String confirmPassword, String email) {
-		// TODO Auto-generated method stub
-		
+	public void addUser(final String username, final String password,
+			final String confirmPassword, final String email) {
+		try {
+			databaseRun(new ITransaction<Boolean>() {
+				@Override
+				public Boolean run(Connection conn) throws SQLException {
+					PreparedStatement stmt = null;
+					
+					try {
+						stmt = conn.prepareStatement(
+								"insert into users(username, password, highscore, email, exp, level, losses, wins) " +
+								"values (?, ?, 0, ?, 0, 1, 0, 0)"
+						);
+						stmt.setString(1, username);
+						stmt.setString(2, password);
+						stmt.setString(3, email);
+						
+						stmt.executeUpdate();
+						
+						return true;
+					} finally {
+						DB.closeQuietly(stmt);
+					}
+				}
+			});
+		} catch (SQLException e) {
+			throw new RuntimeException("SQLException adding user", e);
+		}
 	}
 
 	@Override

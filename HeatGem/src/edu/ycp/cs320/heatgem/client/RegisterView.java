@@ -82,7 +82,6 @@ public class RegisterView extends Composite {
 		Button RegisterButton = new Button("New button");
 		RegisterButton.addKeyPressHandler(new KeyPressHandler() {
 			public void onKeyPress(KeyPressEvent event) {
-				
 				//allow user to press enter key to register
 				
 				
@@ -136,10 +135,9 @@ public class RegisterView extends Composite {
 		
 		
 		//TO-DO: prevent registering blank user and other blank text boxes
-		//if(registerUsernameTextBox == null || passwordRegisterTextBox == null || 
-		//confirmationPasswordRegisterTextBox == null || registerEmailTextBox == null){
-		//
-		//}
+		if(username == null || password == null || confirmPassword == null || email == null){
+			errorLabel.setText("Must fill in the above fields. Try again.");
+		}
 		
 		
 		RPC.userService.addUser(username, password, confirmPassword, email,  new AsyncCallback<Void>() {
@@ -159,10 +157,17 @@ public class RegisterView extends Composite {
 					errorLabel.setText("Incorrect password-confirmation password combination. Try again.");
 					
 				}
-				//else if username entered during registration is already taken by another user in database
+				
+				// if username entered during registration is already taken by another user in database
 				//else if(username == ){
 					//errorLabel.setText("Username already taken, pick a new one.");
+				//} 
+				
+				//if the email entered during registration is already in use in database, show error message
+				//else if(email == ) {
+					//errorLabel.setText("Email already in use. Try again.");
 				//}
+				
 				else{
 					//Create new row in user table of database
 					

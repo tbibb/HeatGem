@@ -14,11 +14,9 @@ import edu.ycp.cs320.heatgem.server.ITransaction;
 import edu.ycp.cs320.heatgem.server.FakeDatabase;
 
 public class FakeDatabase implements IDatabase {
+	private static final String DATASTORE = "/heatgemDB";
 	private List<User> userList;
 	private List<UserProfile> userProfileList;
-
-
-	private static final String DATASTORE = "/home/heatgemdb";
 
 	public FakeDatabase() {
 		userList = new ArrayList<User>();
@@ -167,6 +165,7 @@ public class FakeDatabase implements IDatabase {
 			});
 		}
 		*/
+
 	private class DatabaseConnection {
 		public Connection conn;
 		public int refCount;
