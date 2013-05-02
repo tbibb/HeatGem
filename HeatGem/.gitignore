@@ -2,7 +2,7 @@
 /gwt-unitCache
 /war/heatgem
 /war/WEB-INF/classes
-/war/WEB-INF/lib
+/war/WEB-INF/lib/gwt-servlet.jar
 /war/WEB-INF/deploy
 /test-classes
 /bin
