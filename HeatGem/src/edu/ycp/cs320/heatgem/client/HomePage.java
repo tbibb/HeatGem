@@ -140,7 +140,10 @@ public class HomePage extends Composite {
 
 				// FIXME: think of a better way to do this
 				if (nextTabView instanceof GameUI) {
-					((GameUI)nextTabView).startGame();
+					GameUI gameUI = (GameUI) nextTabView;
+					gameUI.setusername(user.getUsername());
+					gameUI.setProfile(user.getUsername());
+					gameUI.startGame();
 				} else if (nextTabView instanceof ProfileView) {
 					ProfileView profileView = (ProfileView) nextTabView;
 					profileView.setUsername(user.getUsername());
