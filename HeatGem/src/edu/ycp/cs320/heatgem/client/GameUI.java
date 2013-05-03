@@ -1,5 +1,6 @@
 package edu.ycp.cs320.heatgem.client;
 
+
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
@@ -13,16 +14,19 @@ import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.ImageElement;
 
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
+
 
 import edu.ycp.cs320.heatgem.shared.Battle;
 import edu.ycp.cs320.heatgem.shared.Game;
 import edu.ycp.cs320.heatgem.shared.Logic;
 import edu.ycp.cs320.heatgem.shared.Player;
 import edu.ycp.cs320.heatgem.shared.Score;
+import edu.ycp.cs320.heatgem.shared.UserProfile;
 
 public class GameUI extends Composite {
 
@@ -54,9 +58,12 @@ public class GameUI extends Composite {
 	private Game game;
 	private int MilliTime;
 	private int SecondTime;
-	public int TotalTime;
+	public int TotalTime; 
 	private int PScore;
 	private Score score;
+	//NICK: profile retrieval things
+	private String username;
+	private UserProfile profile;
 
 	public GameUI() {
 
@@ -90,24 +97,37 @@ public class GameUI extends Composite {
 					if (BattleState.battleState() == 0) {
 						MilliTime++; // Framerate at 10 frames per second
 						TotalTime++;
-						if (MilliTime % 100 == 0) { // Incrememnt timer by
-													// seconds ONLY if game is
-													// in session
+						if (MilliTime % 100 == 0) { //Increment timer by
+									// seconds ONLY if game is
+									// in session
 							SecondTime++;
 							MilliTime = 0;
 						}
 					} else { // Get Score
-						PScore = (int) score.getScore(TotalTime, player1);
+						PScore = (int) score.getScore(TotalTime,  player1);
+						//timer.cancel();
+						/*
+						//QUESTION
+						//NICK: update database with new score, testing values now, don't work :(
+						//I think it's because the timer is still going, maybe not 
+						profile.setLosses(1);
+						updateScore();
+						GWT.log("updated score perhaps");
 						timer.cancel();
+						 */
 					}
-				} else {
-				} // Do nothing
+				}
+				else { 
+				}	// Do nothing
 			}
 		};
+		
+
 
 		canvas.addMouseMoveHandler(new MouseMoveHandler() {
 			@Override
 			public void onMouseMove(MouseMoveEvent event) {
+
 				MouseX = event.getX();
 				MouseY = event.getY();
 			}
@@ -166,7 +186,8 @@ public class GameUI extends Composite {
 		GameLoss = HeatGem.getImage("BattleLoss.jpg");
 		MediumHealth = HeatGem.getImage("YellowHealth.png");
 		LowHealth = HeatGem.getImage("LowHealth.png");
-		HomePage = HeatGem.getImage("HomepageDif.gif");
+		HomePage = HeatGem.getImage("Homepage.png");
+		//HomePage = HeatGem.getImage("HomePageDif.gif");
 		Play = HeatGem.getImage("Play.png");
 		PlaySelected = HeatGem.getImage("PlaySelected.png");
 
@@ -188,6 +209,52 @@ public class GameUI extends Composite {
 	// game.timerTick();
 	//
 	// }
+	
+
+
+	protected void updateScore() {
+		//NICK
+		RPC.userService.updateUserProfile(username, profile, new AsyncCallback<Boolean>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				System.out.println("GameUI-updateScore Error");
+			}
+
+			@Override
+			public void onSuccess(Boolean result) {
+				// TODO Auto-generated method stub
+				System.out.println("Score sent to database!");
+			}
+			
+			
+		});
+		
+	}
+
+	public void setusername(String username) {
+		//NICK
+		this.username = username;
+	}
+
+	public void setProfile(String username) {
+		//NICK
+		RPC.userService.getUserProfile(username, new AsyncCallback <UserProfile>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// show error message
+				System.out.println("GameUI-getUserProfile Error");
+			}
+
+			@Override
+			public void onSuccess(UserProfile result) {
+					profile = result;
+			}
+		});
+
+	}
 
 	protected void Draw() {
 
@@ -292,7 +359,7 @@ public class GameUI extends Composite {
 						0, 0);
 				bufCtx.setFillStyle("green");
 				bufCtx.setFont("bold 36px sans-serif");
-				bufCtx.fillText("Your Score: " + Integer.toString(PScore), 400,
+				bufCtx.fillText(username + ", Your Score: " + Integer.toString(PScore), 400,
 						200);
 
 				// Draw Sprite for character
@@ -305,7 +372,7 @@ public class GameUI extends Composite {
 						0);
 				bufCtx.setFillStyle("green");
 				bufCtx.setFont("bold 36px sans-serif");
-				bufCtx.fillText("Your Score: " + Integer.toString(PScore), 350,
+				bufCtx.fillText(username + ", Your Score: " + Integer.toString(PScore), 350,
 						250);
 
 				// Draw Sprite for character

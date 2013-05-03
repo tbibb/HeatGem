@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.NumberLabel;
+
 import edu.ycp.cs320.heatgem.shared.UserProfile;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;

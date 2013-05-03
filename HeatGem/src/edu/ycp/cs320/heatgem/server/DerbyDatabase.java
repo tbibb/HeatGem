@@ -77,13 +77,6 @@ public class DerbyDatabase implements IDatabase {
 		databaseRun(new ITransaction<Boolean>() {
 			@Override
 			public Boolean run(Connection conn) throws SQLException {
-				/*
-							"create table order_receipts (" +
-							"  id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
-							"  userinfo VARCHAR(200) NOT NULL, " +
-							"  price DECIMAL(10,2) " +
-							")"
-				 */
 				PreparedStatement stmt = null;
 				
 				try {
@@ -145,26 +138,10 @@ public class DerbyDatabase implements IDatabase {
 					
 					return result;
 					
-					//result.setUsername(resultSet.getString(username));
-					//result.setPassword(resultSet.getString(password));
-					
-					/*
-					if (username.equals(result.getUsername())) {
-						if (password.equals(result.getPassword())) {
-							//successful retrieval of user information
-						} else {
-							//password incorrect
-						}
-					} else {
-						//user name incorrect
-					}
-					*/
 				} finally {
 					DB.closeQuietly(stmt);
 					DB.closeQuietly(resultSet);
 				}
-				//return user's information
-				//return result;
 			}
 		});
 	}
@@ -245,20 +222,37 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public boolean updateUserProfile(String username, UserProfile updatedProfile) {
+	public boolean updateUserProfile(final String username, final UserProfile updatedProfile) {
 		// TODO Auto-generated method stub
-		/*
+		
 		try {
 			databaseRun(new ITransaction<UserProfile>() {
 				@Override
 				public UserProfile run(Connection conn) throws SQLException {
 					PreparedStatement stmt = null;
 					ResultSet resultSet = null;
-					UserProfile result = new UserProfile();
+					UserProfile result = null;
 					
 					try {
-						stmt = conn.prepareStatement("select * from users where username = ?");
-						stmt.setString(1, username);
+//						UPDATE table_name
+//						SET column1=value, column2=value2,...
+//						WHERE some_column=some_value
+//						
+//						stmt = conn.prepareStatement("select * from users where username = ? and password = ?");
+						
+						stmt = conn.prepareStatement(
+								"UPDATE users " +
+								"SET column4=?, column6=?, column7=?, column8=?, column9=? " + 
+								"WHERE username = ?"
+						);
+						
+						stmt.setInt(1, updatedProfile.getHighScore());
+						stmt.setInt(2, updatedProfile.getExperience());
+						stmt.setInt(3, updatedProfile.getLevel());
+						stmt.setInt(4, updatedProfile.getLosses());
+						stmt.setInt(5, updatedProfile.getWins());
+						stmt.setString(6, username);
+						
 						resultSet = stmt.executeQuery();
 						
 						if (!resultSet.next()) {
@@ -266,27 +260,19 @@ public class DerbyDatabase implements IDatabase {
 							return null;
 						}
 						
-						result.setUserId(resultSet.getInt(1));
-						result.setName(resultSet.getString(2));
-						result.setHighScore(resultSet.getInt(4));
-						result.setEmail(resultSet.getString(5));
-						result.setExperience(resultSet.getInt(6));
-						result.setLevel(resultSet.getInt(7));
-						result.setLosses(resultSet.getInt(8));
-						result.setWins(resultSet.getInt(9));
-						
-						return result;
+						result = updatedProfile;
 						
 					} finally {
 						DB.closeQuietly(stmt);
 						DB.closeQuietly(resultSet);
 					}
+					return result;
 				}
 			});
 		} catch (SQLException e) {
 			throw new RuntimeException("SQLException getting UserProfile", e);
 		}
-		*/
+		
 		return false;
 	}
 
