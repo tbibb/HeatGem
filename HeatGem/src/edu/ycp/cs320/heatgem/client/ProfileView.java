@@ -19,6 +19,10 @@ public class ProfileView extends Composite {
 	private NumberLabel<Integer> experienceLabel;
 
 	private String username;
+	private int level;
+	private int exp;
+	private int losses;
+	private int wins;
 
 	private UserProfile model;
 	private NumberLabel<Integer> lossesLabel;
@@ -118,6 +122,22 @@ public class ProfileView extends Composite {
 		this.username = username;
 	}
 	
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
+	public void setLosses(int losses) {
+		this.losses = losses;
+	}
+	
+	public void setWins(int wins) {
+		this.wins = wins;
+	}
+	
 	public void deleteUser(final String username) {
 		RPC.userService.deleteUserAccount(username,  new AsyncCallback <Boolean>() {
 			
@@ -151,7 +171,6 @@ public class ProfileView extends Composite {
 
 			@Override
 			public void onSuccess(UserProfile result) {
-				nameProfileLabel.setText(username);
 					model = result;
 					update();
 			}
@@ -161,10 +180,11 @@ public class ProfileView extends Composite {
 
 	protected void update() {
 		// Use values in model object to update UI components
-		numberLevelLabel.setValue(model.getLevel());
-		experienceLabel.setValue(model.getExperience());
-		lossesLabel.setValue(model.getLosses());
-		winsLabel.setValue(model.getWins());
+		nameProfileLabel.setText(username);
+		numberLevelLabel.setValue(level);
+		experienceLabel.setValue(exp);
+		lossesLabel.setValue(losses);
+		winsLabel.setValue(wins);
 
 	}
 }

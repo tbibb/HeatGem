@@ -2,8 +2,6 @@ package edu.ycp.cs320.heatgem.shared;
 
 import java.io.Serializable;
 
-//comment
-
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

@@ -144,6 +144,10 @@ public class HomePage extends Composite {
 				} else if (nextTabView instanceof ProfileView) {
 					ProfileView profileView = (ProfileView) nextTabView;
 					profileView.setUsername(user.getUsername());
+					profileView.setLevel(user.getLevel());
+					profileView.setExp(user.getExperience());
+					profileView.setLosses(user.getLosses());
+					profileView.setWins(user.getWins());
 					profileView.activate();
 				}
 			}

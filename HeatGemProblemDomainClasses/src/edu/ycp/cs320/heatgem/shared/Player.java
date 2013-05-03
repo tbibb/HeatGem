@@ -2,8 +2,8 @@ package edu.ycp.cs320.heatgem.shared;
 
 public class Player {
 	
-	int health;
-    String playerName;
+	private int health;
+    private String playerName;
     
     public Player(String username)
     {
