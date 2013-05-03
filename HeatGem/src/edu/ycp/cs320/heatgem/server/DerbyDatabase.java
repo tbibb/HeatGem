@@ -226,7 +226,6 @@ public class DerbyDatabase implements IDatabase {
 						
 						result.setUserId(resultSet.getInt(1));
 						result.setName(resultSet.getString(2));
-						//result.setPassword(resultSet.getString(3));
 						result.setHighScore(resultSet.getInt(4));
 						result.setEmail(resultSet.getString(5));
 						result.setExperience(resultSet.getInt(6));
@@ -240,8 +239,6 @@ public class DerbyDatabase implements IDatabase {
 						DB.closeQuietly(stmt);
 						DB.closeQuietly(resultSet);
 					}
-					//return user's information
-					//return result;
 				}
 			});
 		} catch (SQLException e) {
@@ -253,6 +250,46 @@ public class DerbyDatabase implements IDatabase {
 	@Override
 	public boolean updateUserProfile(String username, UserProfile updatedProfile) {
 		// TODO Auto-generated method stub
+		/*
+		try {
+			databaseRun(new ITransaction<UserProfile>() {
+				@Override
+				public UserProfile run(Connection conn) throws SQLException {
+					PreparedStatement stmt = null;
+					ResultSet resultSet = null;
+					UserProfile result = new UserProfile();
+					
+					try {
+						stmt = conn.prepareStatement("select * from users where username = ?");
+						stmt.setString(1, username);
+						resultSet = stmt.executeQuery();
+						
+						if (!resultSet.next()) {
+							// no such user
+							return null;
+						}
+						
+						result.setUserId(resultSet.getInt(1));
+						result.setName(resultSet.getString(2));
+						result.setHighScore(resultSet.getInt(4));
+						result.setEmail(resultSet.getString(5));
+						result.setExperience(resultSet.getInt(6));
+						result.setLevel(resultSet.getInt(7));
+						result.setLosses(resultSet.getInt(8));
+						result.setWins(resultSet.getInt(9));
+						
+						return result;
+						
+					} finally {
+						DB.closeQuietly(stmt);
+						DB.closeQuietly(resultSet);
+					}
+				}
+			});
+		} catch (SQLException e) {
+			throw new RuntimeException("SQLException getting UserProfile", e);
+		}
+		*/
 		return false;
 	}
 
@@ -299,76 +336,4 @@ public class DerbyDatabase implements IDatabase {
 		return false;
 	}
 	
-//	@Override
-//	public OrderReceipt placeOrder(final Order order) throws SQLException {
-//		return databaseRun(new ITransaction<OrderReceipt>() {
-//			@Override
-//			public OrderReceipt run(Connection conn) throws SQLException {
-//				PreparedStatement stmt = null;
-//				ResultSet generatedKeys = null;
-//				
-//				OrderReceipt receipt = new OrderReceipt();
-//				receipt.setUserInfo(order.getUser());
-//				receipt.setPrice(order.getPrice());
-//				
-//				try {
-//					
-//					stmt = conn.prepareStatement(
-//							"insert into order_receipts (userinfo, price) values (?, ?)",
-//							PreparedStatement.RETURN_GENERATED_KEYS
-//					);
-//					
-//					stmt.setString(1, receipt.getUserInfo());
-//					stmt.setBigDecimal(2, receipt.getPrice());
-//					
-//					stmt.executeUpdate();
-//					
-//					generatedKeys = stmt.getGeneratedKeys();
-//					if (!generatedKeys.next()){
-//						throw new SQLException("Could not get generated key for order receipt");
-//					}
-//					receipt.setId(generatedKeys.getInt(1));
-//					
-//					return receipt;
-//					
-//				} finally {
-//					DB.closeQuietly(stmt);
-//				}
-//			}
-//		});
-//	}
-	
-//	@Override
-//	public List<OrderReceipt> getOrderReceipts() throws SQLException {
-//		return databaseRun(new ITransaction<List<OrderReceipt>>() {
-//			@Override
-//			public List<OrderReceipt> run(Connection conn) throws SQLException {
-//				PreparedStatement stmt = null;
-//				ResultSet resultSet = null;
-//				
-//				try {
-//					stmt = conn.prepareStatement("select * from order_receipts");
-//					resultSet = stmt.executeQuery();
-//					
-//					List<OrderReceipt> result = new ArrayList<OrderReceipt>();
-//					
-//					while (resultSet.next()) {
-//						OrderReceipt receipt = new OrderReceipt();
-//						
-//						receipt.setId(resultSet.getInt(1));
-//						receipt.setUserInfo(resultSet.getString(2));
-//						receipt.setPrice(resultSet.getBigDecimal(3));
-//						
-//						result.add(receipt);
-//					}
-//					
-//					
-//					return result;
-//				} finally {
-//					DB.closeQuietly(stmt);
-//					DB.closeQuietly(resultSet);
-//				}
-//			}
-//		});
-//	}
 }
