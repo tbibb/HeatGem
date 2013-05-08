@@ -62,5 +62,11 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		// TODO Auto-generated method stub
 		return DB.instance().deleteUser(username);
 	}
+
+	@Override
+	public Boolean uniqueUser(String username) {
+		// TODO Auto-generated method stub
+		return DB.instance().uniqueUser(username);
+	}
 }
 

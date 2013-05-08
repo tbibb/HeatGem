@@ -311,5 +311,11 @@ public class FakeDatabase implements IDatabase {
 	public boolean deleteUser(String username) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean uniqueUser(String username) {
+		// TODO Auto-generated method stub
+		return false;
 	}	
 }
