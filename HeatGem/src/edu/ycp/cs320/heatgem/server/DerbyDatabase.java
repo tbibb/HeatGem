@@ -160,6 +160,26 @@ public class DerbyDatabase implements IDatabase {
 								"insert into users(username, password, highscore, email, exp, level, losses, wins) " +
 								"values (?, ?, 0, ?, 0, 1, 0, 0)"
 						);
+						
+//						If you need to check for the existence of a user in a particular database before creating them, then you can do this:
+//
+//							USE your_db_name
+//
+//							IF NOT EXISTS
+//							    (SELECT name
+//							     FROM sys.database_principals
+//							     WHERE name = 'Bob')
+//							BEGIN
+//							    CREATE USER [Bob] 
+//							END
+//						
+						//or use this to check if there is a user using that username already
+//						IF NOT EXISTS (SELECT * FROM users WHERE username = @username)
+//					    INSERT INTO users (username) VALUES (@username);
+//					ELSE
+//					    RAISERROR 'whatever';
+//						
+						
 						stmt.setString(1, username);
 						stmt.setString(2, password);
 						stmt.setString(3, email);

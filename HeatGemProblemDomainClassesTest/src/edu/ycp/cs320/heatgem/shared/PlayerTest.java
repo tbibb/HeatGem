@@ -1,7 +1,6 @@
 package edu.ycp.cs320.heatgem.shared;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +18,16 @@ public class PlayerTest {
 		assertTrue(true);
 	}
 
+	@Test
 	public void testGetHealth() {
 		//assertTrue(getHealth("") = 100);
 	}
+	
+	@Test
+    public void testSetHealth( )
+    {
+       
+    }
+	
+	
 }

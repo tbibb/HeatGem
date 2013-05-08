@@ -89,12 +89,6 @@ public class LoginView extends Composite {
 		layoutPanel.setWidgetTopHeight(h_gem, 15.0, Unit.PX, 245.0, Unit.PX);
 		
 		loginButton = new Button("Login!");
-		loginButton.addKeyPressHandler(new KeyPressHandler() {
-			public void onKeyPress(KeyPressEvent event) {
-				//allow user to press enter after typing in information to login
-				
-			}
-		});
 		layoutPanel.add(loginButton);
 		layoutPanel.setWidgetLeftWidth(loginButton, 192.0, Unit.PX, 81.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(loginButton, 426.0, Unit.PX, 30.0, Unit.PX);
@@ -107,8 +101,6 @@ public class LoginView extends Composite {
 
 			}		
 		});
-		
-		
 		
 		
 		Label lblNewUserClick = new Label("New user? Click here to register!");
