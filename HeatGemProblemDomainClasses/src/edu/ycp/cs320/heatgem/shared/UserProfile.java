@@ -23,9 +23,9 @@ public class UserProfile implements Serializable {
 
 	// methods
 
-	public UserProfile() {
-
-	}
+//	public UserProfile() {
+//
+//	}
 
 	public void setUserId(int userId) {
 		this.userId = userId;
