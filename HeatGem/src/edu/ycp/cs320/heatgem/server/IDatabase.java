@@ -30,6 +30,6 @@ public interface IDatabase {
 
 	public boolean deleteUser(String username);
 
-	public boolean uniqueUser(String username);
+//	public boolean uniqueUser(String username);
 
 }

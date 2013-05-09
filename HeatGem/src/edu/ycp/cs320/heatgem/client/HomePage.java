@@ -137,8 +137,6 @@ public class HomePage extends Composite {
 				GWT.log("Adding a " + nextTabView.getClass().getName() + " to the tab view layout panel");
 				tabViewLayoutPanel.add(nextTabView);
 
-
-				// FIXME: think of a better way to do this
 				if (nextTabView instanceof GameUI) {
 					GameUI gameUI = (GameUI) nextTabView;
 					gameUI.setusername(user.getUsername());

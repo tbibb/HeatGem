@@ -23,7 +23,7 @@ public interface UserServiceAsync {
 	void updateUserProfile(String username, UserProfile updatedProfile,
 			AsyncCallback<Boolean> callback);
 
-	void uniqueUser(String username, AsyncCallback<Boolean> asyncCallback);
+//	void uniqueUser(String username, AsyncCallback<Boolean> asyncCallback);
 	
 	//void updateBoard();
 
