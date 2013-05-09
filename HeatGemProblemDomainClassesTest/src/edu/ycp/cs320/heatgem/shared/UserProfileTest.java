@@ -1,11 +1,10 @@
 package edu.ycp.cs320.heatgem.shared;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
+
 
 import org.junit.Before;
 import org.junit.Test;
-import junit.framework.TestCase;
 import edu.ycp.cs320.heatgem.shared.UserProfile;
 
 
