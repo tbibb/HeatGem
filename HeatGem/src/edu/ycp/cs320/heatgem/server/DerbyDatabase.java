@@ -338,5 +338,13 @@ public class DerbyDatabase implements IDatabase {
 		
 		return false;
 	}
+
+	@Override
+	public boolean uniqueUser(String username) {
+		// TODO Auto-generated method stub
+		// pull information from database, compare with given name
+		// return true if user does not exist
+		return false;
+	}
 	
 }
