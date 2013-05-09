@@ -132,24 +132,24 @@ public class RegisterView extends Composite {
 		final String password = this.passwordRegisterTextBox.getText();
 		final String confirmPassword = this.confirmationPasswordRegisterTextBox.getText();
 		String email = this.registerEmailTextBox.getText();
-		unique = false;
+		unique = true;
 
 		//set this to true when username is found to be unique
 		
-		RPC.userService.uniqueUser(username, new AsyncCallback<Boolean>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onSuccess(Boolean result) {
-				// TODO Auto-generated method stub
-				unique = result;
-			}
-		});
+//		RPC.userService.uniqueUser(username, new AsyncCallback<Boolean>() {
+//
+//			@Override
+//			public void onFailure(Throwable caught) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			@Override
+//			public void onSuccess(Boolean result) {
+//				// TODO Auto-generated method stub
+//				unique = result;
+//			}
+//		});
 		
 		//TO-DO: prevent registering blank user and other blank text boxes
 		if(username.equals("") || password.equals("") || confirmPassword.equals("") || email.equals("")){

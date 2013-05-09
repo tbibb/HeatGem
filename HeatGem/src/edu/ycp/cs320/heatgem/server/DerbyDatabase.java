@@ -149,17 +149,39 @@ public class DerbyDatabase implements IDatabase {
 	@Override
 	public void addUser(final String username, final String password,
 			final String confirmPassword, final String email) {
+
 		try {
 			databaseRun(new ITransaction<Boolean>() {
 				@Override
 				public Boolean run(Connection conn) throws SQLException {
 					PreparedStatement stmt = null;
+					PreparedStatement stmt2 = null;
+					ResultSet resultSet = null;
 					
 					try {
-						stmt = conn.prepareStatement(
-								"insert into users(username, password, highscore, email, exp, level, losses, wins) " +
-								"values (?, ?, 0, ?, 0, 1, 0, 0)"
-						);
+						stmt = conn.prepareStatement("select * from users where username = ?");
+						stmt.setString(1, username);
+						resultSet = stmt.executeQuery();
+						
+						if (!resultSet.next()) {
+							// no such user
+							System.out.println("Unique user, add to DB!");
+							stmt2 = conn.prepareStatement(
+									"insert into users(username, password, highscore, email, exp, level, losses, wins) " +
+									"values (?, ?, 0, ?, 0, 1, 0, 0)"
+							);
+
+							stmt2.setString(1, username);
+							stmt2.setString(2, password);
+							stmt2.setString(3, email);
+							stmt2.executeUpdate();
+
+							return true;
+						} else {
+							System.out.println("User already exists!");
+
+							return false;
+						}
 						
 //						If you need to check for the existence of a user in a particular database before creating them, then you can do this:
 //
@@ -178,15 +200,8 @@ public class DerbyDatabase implements IDatabase {
 //					    INSERT INTO users (username) VALUES (@username);
 //					ELSE
 //					    RAISERROR 'whatever';
-//						
 						
-						stmt.setString(1, username);
-						stmt.setString(2, password);
-						stmt.setString(3, email);
-						
-						stmt.executeUpdate();
-						
-						return true;
+						//After an hour, I found out Derby apparently doesn't support IF or RAISERROR :sadface:
 					} finally {
 						DB.closeQuietly(stmt);
 					}
@@ -339,12 +354,35 @@ public class DerbyDatabase implements IDatabase {
 		return false;
 	}
 
-	@Override
-	public boolean uniqueUser(String username) {
-		// TODO Auto-generated method stub
-		// pull information from database, compare with given name
-		// return true if user does not exist
-		return false;
-	}
+//	@Override
+//	public boolean uniqueUser(final String username) {
+//		// TODO Auto-generated method stub
+//		// pull information from database, compare with given name
+//		// return true if user does not exist
+//		
+//		try {
+//			databaseRun(new ITransaction<Boolean>() {
+//				@Override
+//				public Boolean run(Connection conn) throws SQLException {
+//					PreparedStatement stmt = null;
+//					
+//					try {
+//						stmt = conn.prepareStatement("select username from users where username = ?");
+//						stmt.setString(1, username);
+//						
+//						stmt.executeUpdate();
+//						
+//						return true;
+//					} finally {
+//						DB.closeQuietly(stmt);
+//					}
+//				}
+//			});
+//		} catch (SQLException e) {
+//			throw new RuntimeException("SQLException unique user", e);
+//		}
+//		
+//		return false;
+//	}
 	
 }
