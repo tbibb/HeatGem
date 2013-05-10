@@ -20,6 +20,7 @@ public class HomeView extends Composite {
 	private Image candle2;
 	private Image black_box;
 	private Image black_box2;
+	private Image black_boxb;
 	private Image text;
 	
 	
@@ -52,10 +53,15 @@ public class HomeView extends Composite {
 		layoutPanel.setWidgetLeftWidth(black_box2, 0.0, Unit.PX, 200.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(black_box2, 0.0, Unit.PX, 330.0, Unit.PX);
 		
+		black_boxb = new Image();
+		layoutPanel.add(black_boxb);
+		layoutPanel.setWidgetLeftWidth(black_boxb, 200.0, Unit.PX, 400.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(black_boxb, 330.0, Unit.PX, 150.0, Unit.PX);
+		
 		text = new Image();
 		layoutPanel.add(text);
-		layoutPanel.setWidgetLeftWidth(text, 200.0, Unit.PX, 400.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(text, 0.0, Unit.PX, 480.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(text, 107.0, Unit.PX, 586.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(text, 0.0, Unit.PX, 330.0, Unit.PX);
 				
 				this.timer = new Timer() {
 					@Override
@@ -73,6 +79,7 @@ public class HomeView extends Composite {
 					candle2.setUrl(GWT.getModuleBaseForStaticFiles() + "Candle.gif");
 					black_box.setUrl(GWT.getModuleBaseForStaticFiles() + "black_box.png");
 					black_box2.setUrl(GWT.getModuleBaseForStaticFiles() + "black_box.png");
+					black_boxb.setUrl(GWT.getModuleBaseForStaticFiles() + "bottom_black_box.png");
 					text.setUrl(GWT.getModuleBaseForStaticFiles() + "heat_gem_vid.gif");
 					
 

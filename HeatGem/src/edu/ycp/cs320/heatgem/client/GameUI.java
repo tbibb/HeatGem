@@ -385,8 +385,6 @@ public class GameUI extends Composite {
 				// Draw Sprite for character
 				bufCtx.drawImage((ImageElement) Defeat.getElement().cast(), 50,
 						200);
-				
-				//RPC This Data
 
 			} else {
 				// Draw win image
@@ -400,8 +398,6 @@ public class GameUI extends Composite {
 				// Draw Sprite for character
 				bufCtx.drawImage((ImageElement) Victory.getElement().cast(),
 						50, 200);
-				
-				// RPC this data 
 			}
 		}
 		// Copy buffer onto main canvas
