@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Thu May 02 16:21:27 EDT 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013e-66e8-18a0-000002f00da8 
+Thu May 09 19:01:49 EDT 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013e-8b87-7165-000002e597a8 
 on database directory H:\heatgemdb  with class loader sun.misc.Launcher$AppClassLoader@263534c1 
-Loaded from file:/H:/workspace/HeatGem/HeatGem/war/WEB-INF/lib/derby.jar
+Loaded from file:/H:/git/Heat-Gem2/HeatGem/war/WEB-INF/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_07-b11
-user.dir=H:\workspace\HeatGem\HeatGem
+user.dir=H:\git\Heat-Gem2\HeatGem
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

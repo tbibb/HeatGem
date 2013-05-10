@@ -16,9 +16,9 @@ public class User implements Serializable {
 	private int losses;
 	
 
-//	public User() {
-//		
-//	}
+	public User() {
+		
+	}
 	
 	public void setId(int id) {
 		this.id = id;
