@@ -150,6 +150,8 @@ public class HomePage extends Composite {
 					profileView.setLosses(user.getLosses());
 					profileView.setWins(user.getWins());
 					profileView.activate();
+				} else if (nextTabView instanceof HomeView) {
+					((HomeView)nextTabView).startScroll();
 				}
 			}
 		}

@@ -1,40 +1,91 @@
 package edu.ycp.cs320.heatgem.client;
 
-//import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
-
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.ui.Image;
 
-//import com.google.gwt.event.dom.client.ClickHandler;
-//import com.google.gwt.event.dom.client.ClickEvent;
-//import com.google.gwt.user.cellview.client.CellList;
-//import com.google.gwt.cell.client.AbstractCell;
-//import com.google.gwt.cell.client.Cell.Context;
-//import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-//import com.google.gwt.user.client.ui.Image;
-
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.TextBoxBase;
 
 public class HomeView extends Composite {
 
 	/**
 	 * @param args
 	 */
+	
+	
+	private Timer timer;	
+	private Image candle;
+	private Image candle2;
+	private Image black_box;
+	private Image black_box2;
+	private Image text;
+	
+	
 	public HomeView() {
+		
 		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
-		layoutPanel.setSize("629px", "516px");
+		layoutPanel.setSize("800px", "480px");
 		
-		TextArea txtrHeatGemIs = new TextArea();
-		txtrHeatGemIs.setDirectionEstimator(true);
-		txtrHeatGemIs.setTextAlignment(TextBoxBase.ALIGN_CENTER);
-		txtrHeatGemIs.setText("Heat Gem is a great game site, but is currently under construction.\r\n\r\n\r\nMore coming soon....");
-		layoutPanel.add(txtrHeatGemIs);
-		layoutPanel.setWidgetLeftWidth(txtrHeatGemIs, 15.0, Unit.PX, 458.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(txtrHeatGemIs, 28.0, Unit.PX, 346.0, Unit.PX);
 
+		
+		candle = new Image(); 		
+		layoutPanel.add(candle);
+		layoutPanel.setWidgetLeftWidth(candle, 600.0, Unit.PX, 200.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(candle, 330.0, Unit.PX, 150.0, Unit.PX);
+		
+		candle2 = new Image(); 		
+		layoutPanel.add(candle2);
+		layoutPanel.setWidgetLeftWidth(candle2, 000.0, Unit.PX, 200.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(candle2, 330.0, Unit.PX, 150.0, Unit.PX);
+		
+		black_box = new Image();		
+		layoutPanel.add(black_box);
+		layoutPanel.setWidgetLeftWidth(black_box, 600.0, Unit.PX, 200.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(black_box, 0.0, Unit.PX, 330.0, Unit.PX);
+		
+		black_box2 = new Image();
+		layoutPanel.add(black_box2);
+		layoutPanel.setWidgetLeftWidth(black_box2, 0.0, Unit.PX, 200.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(black_box2, 0.0, Unit.PX, 330.0, Unit.PX);
+		
+		text = new Image();
+		layoutPanel.add(text);
+		layoutPanel.setWidgetLeftWidth(text, 200.0, Unit.PX, 400.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(text, 0.0, Unit.PX, 480.0, Unit.PX);
+				
+				this.timer = new Timer() {
+					@Override
+					public void run() {
+						Draw();
+					}
+				}; 
 	}
+	
+				public void startScroll() {
+					GWT.log("setScroll called");
+									
+
+					candle.setUrl(GWT.getModuleBaseForStaticFiles() + "Candle.gif");
+					candle2.setUrl(GWT.getModuleBaseForStaticFiles() + "Candle.gif");
+					black_box.setUrl(GWT.getModuleBaseForStaticFiles() + "black_box.png");
+					black_box2.setUrl(GWT.getModuleBaseForStaticFiles() + "black_box.png");
+					text.setUrl(GWT.getModuleBaseForStaticFiles() + "placeholder.png");
+					
+
+					timer.scheduleRepeating(1000/10);
+				}
+				
+
+				
+				
+				
+
+				protected void Draw() {
+
+				
+				}
 }
