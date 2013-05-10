@@ -73,7 +73,7 @@ public class HomeView extends Composite {
 					candle2.setUrl(GWT.getModuleBaseForStaticFiles() + "Candle.gif");
 					black_box.setUrl(GWT.getModuleBaseForStaticFiles() + "black_box.png");
 					black_box2.setUrl(GWT.getModuleBaseForStaticFiles() + "black_box.png");
-					text.setUrl(GWT.getModuleBaseForStaticFiles() + "placeholder.png");
+					text.setUrl(GWT.getModuleBaseForStaticFiles() + "heat_gem_vid.gif");
 					
 
 					timer.scheduleRepeating(1000/10);
