@@ -46,3 +46,35 @@ table
 	font-family: Courier New;
 	font-weight: bolder;
 }
+.gwt-InlineLabel-redness {
+	color: Maroon;
+	font-stretch: ultra-expanded;
+	font-variant: small-caps;
+	font-size: 18px;
+	font-family: Calibri;
+	font-weight: bolder;
+}
+.gwt-Label-hyperlink {
+	color: Blue;
+	font-stretch: wider;
+	font-variant: small-caps;
+	font-size: 18px;
+	font-style: normal;
+	font-family: Calibri;
+	font-weight: bolder;
+	text-decoration: underline;
+}
+.gwt-Button {
+	background-color: Black;
+}
+.gwt-TextBox-login {
+	border-bottom: groove;
+}
+.gwt-Label-alert {
+	color: Red;
+	font-variant: normal;
+	font-size: 18px;
+	font-style: normal;
+	font-family: Calibri;
+	font-weight: bold;
+}

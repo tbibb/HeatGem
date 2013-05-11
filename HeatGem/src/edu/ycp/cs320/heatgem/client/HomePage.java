@@ -17,6 +17,7 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 
 import edu.ycp.cs320.heatgem.shared.User;
+import com.google.gwt.user.client.ui.Image;
 
 
 
@@ -27,6 +28,8 @@ public class HomePage extends Composite {
 	private int tabCurrentSelection= -1;
 	private IsWidget currentTabView;
 	private User user;
+	private Image smallgem;
+	
 	public HomePage(){
 
 		layoutPanel = new LayoutPanel();
@@ -48,15 +51,11 @@ public class HomePage extends Composite {
 		layoutPanel.setWidgetRightWidth(decoratedTabBar, 0.0, Unit.PX, 300.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(decoratedTabBar, 51.0, Unit.PX, 31.0, Unit.PX);
 
-		InlineLabel HeatGemLabel = new InlineLabel("HEAT GEM");
-		layoutPanel.add(HeatGemLabel);
-		layoutPanel.setWidgetLeftWidth(HeatGemLabel, 13.0, Unit.PX, 145.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(HeatGemLabel, 0.0, Unit.PX, 31.0, Unit.PX);
-
 		InlineLabel WelcomeLabel = new InlineLabel("Welcome to Heat Gem, the interactive game site!");
+		WelcomeLabel.setStyleName("gwt-InlineLabel-redness");
 		layoutPanel.add(WelcomeLabel);
 		layoutPanel.setWidgetLeftWidth(WelcomeLabel, 13.0, Unit.PX, 305.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(WelcomeLabel, 51.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(WelcomeLabel, 58.0, Unit.PX, 18.0, Unit.PX);
 
 		tabViewLayoutPanel = new LayoutPanel();
 		layoutPanel.add(tabViewLayoutPanel);
@@ -65,6 +64,7 @@ public class HomePage extends Composite {
 		layoutPanel.setWidgetTopBottom(tabViewLayoutPanel, 88.0, Unit.PX, 0.0, Unit.PX);
 
 		Label lblLogOut = new Label("Log out!!");
+		lblLogOut.setStyleName("gwt-Label-hyperlink");
 		lblLogOut.addMouseMoveHandler(new MouseMoveHandler() {
 			public void onMouseMove(MouseMoveEvent event) {
 			}
@@ -75,9 +75,14 @@ public class HomePage extends Composite {
 			}
 		});
 		layoutPanel.add(lblLogOut);
-		layoutPanel.setWidgetLeftWidth(lblLogOut, 596.0, Unit.PX, 56.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(lblLogOut, 17.0, Unit.PX, 18.0, Unit.PX);
-
+		layoutPanel.setWidgetLeftWidth(lblLogOut, 596.0, Unit.PX, 99.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblLogOut, 17.0, Unit.PX, 28.0, Unit.PX);
+		
+		smallgem = new Image();
+		layoutPanel.add(smallgem);
+		layoutPanel.setWidgetLeftWidth(smallgem, 0.0, Unit.PX, 70.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(smallgem, 0.0, Unit.PX, 50.0, Unit.PX);
+		smallgem.setUrl(GWT.getModuleBaseForStaticFiles() + "fireRuby_small.gif");
 
 
 	}

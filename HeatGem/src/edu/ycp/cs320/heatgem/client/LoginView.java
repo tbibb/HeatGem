@@ -27,29 +27,34 @@ public class LoginView extends Composite {
 	private Image h_gem;
 	private PasswordTextBox passwordLoginTextBox;
 	private Button loginButton;
-	private SimpleCheckBox rememberCheckBox;
 	public LoginView() {
 
 		LayoutPanel layoutPanel = new LayoutPanel();
+		layoutPanel.setStyleName("gwt-Label-hyperlink");
 		initWidget(layoutPanel);
 		layoutPanel.setSize("442px", "619px");
 
 		InlineLabel usernameLabel = new InlineLabel("Username:");
+		usernameLabel.setStyleName("gwt-InlineLabel-redness");
 		layoutPanel.add(usernameLabel);
 		layoutPanel.setWidgetLeftWidth(usernameLabel, 55.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(usernameLabel, 304.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(usernameLabel, 309.0, Unit.PX, 18.0, Unit.PX);
 
 		usernameTextBox = new TextBox();
+		usernameTextBox.setStyleName("gwt-TextBox-login");
 		layoutPanel.add(usernameTextBox);
-		layoutPanel.setWidgetLeftWidth(usernameTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(usernameTextBox, 293.0, Unit.PX, 34.0, Unit.PX);
+		usernameTextBox.setSize("207", "44");
+		layoutPanel.setWidgetLeftWidth(usernameTextBox, 151.0, Unit.PX, 207.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(usernameTextBox, 309.0, Unit.PX, 55.0, Unit.PX);
 
-		InlineLabel passwordLabel = new InlineLabel("Password");
+		InlineLabel passwordLabel = new InlineLabel("Password:");
+		passwordLabel.setStyleName("gwt-InlineLabel-redness");
 		layoutPanel.add(passwordLabel);
-		layoutPanel.setWidgetLeftWidth(passwordLabel, 55.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordLabel, 358.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(passwordLabel, 55.0, Unit.PX, 207.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordLabel, 358.0, Unit.PX, 55.0, Unit.PX);
 	
 		passwordLoginTextBox = new PasswordTextBox();
+		passwordLoginTextBox.setStyleName("gwt-TextBox-login");
 		passwordLoginTextBox.addKeyPressHandler(new KeyPressHandler() {
 			@Override
 			public void onKeyPress(KeyPressEvent event) {
@@ -59,29 +64,20 @@ public class LoginView extends Composite {
 			}
 		});
 		layoutPanel.add(passwordLoginTextBox);
-		layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 151.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 344.0, Unit.PX, 32.0, Unit.PX);
-
-		InlineLabel rememberMeNextLabel = new InlineLabel("Remember me next time.");
-		layoutPanel.add(rememberMeNextLabel);
-		layoutPanel.setWidgetLeftWidth(rememberMeNextLabel, 151.0, Unit.PX, 173.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(rememberMeNextLabel, 476.0, Unit.PX, 18.0, Unit.PX);
-
-		rememberCheckBox = new SimpleCheckBox();
-		layoutPanel.add(rememberCheckBox);
-		layoutPanel.setWidgetLeftWidth(rememberCheckBox, 101.0, Unit.PX, 20.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(rememberCheckBox, 476.0, Unit.PX, 19.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(passwordLoginTextBox, 151.0, Unit.PX, 207.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(passwordLoginTextBox, 358.0, Unit.PX, 44.0, Unit.PX);
 		
-		if (rememberCheckBox.getValue() == true) {
-			GWT.log("Checkbox is checked");
-			System.out.println("Hi");
-
-		}
+//		if (rememberCheckBox.getValue() == true) {
+//			GWT.log("Checkbox is checked");
+//			System.out.println("Hi");
+//
+//		}
 		
 		errorLabel = new Label("");
+		errorLabel.setStyleName("gwt-Label-alert");
 		layoutPanel.add(errorLabel);
 		layoutPanel.setWidgetLeftWidth(errorLabel, 120.0, Unit.PX, 307.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(errorLabel, 259.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(errorLabel, 259.0, Unit.PX, 30.0, Unit.PX);
 
 		h_gem = HeatGem.getImage("fireRuby1.gif");
 		layoutPanel.add(h_gem);
@@ -105,8 +101,8 @@ public class LoginView extends Composite {
 		
 		Label lblNewUserClick = new Label("New user? Click here to register!");
 		layoutPanel.add(lblNewUserClick);
-		layoutPanel.setWidgetLeftWidth(lblNewUserClick, 151.0, Unit.PX, 193.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(lblNewUserClick, 500.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(lblNewUserClick, 120.0, Unit.PX, 249.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lblNewUserClick, 483.0, Unit.PX, 44.0, Unit.PX);
 
 		lblNewUserClick.addMouseMoveHandler(new MouseMoveHandler() {
 			public void onMouseMove(MouseMoveEvent event) {
