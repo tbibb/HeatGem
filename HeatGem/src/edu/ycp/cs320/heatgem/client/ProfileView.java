@@ -94,32 +94,36 @@ public class ProfileView extends Composite {
 //		layoutPanel.setWidgetTopHeight(lblLosses, 284.0, Unit.PX, 18.0, Unit.PX);
 
 		numberLevelLabel = new NumberLabel<Integer>();
-		numberLevelLabel.setStyleName("h1");
+		numberLevelLabel.setStyleName("gwt-Label-name");
 		layoutPanel.add(numberLevelLabel);
 		//layoutPanel.setPixelSize(25, 25);
-		layoutPanel.setWidgetLeftWidth(numberLevelLabel, 201.0, Unit.PX, 131.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(numberLevelLabel, 131.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(numberLevelLabel, 201.0, Unit.PX, 160.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(numberLevelLabel, 127.0, Unit.PX, 30.0, Unit.PX);
 		
 
 		experienceLabel = new NumberLabel<Integer>();
+		experienceLabel.setStyleName("gwt-Label-name");
 		layoutPanel.add(experienceLabel);
-		layoutPanel.setWidgetLeftWidth(experienceLabel, 201.0, Unit.PX, 131.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(experienceLabel, 212.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(experienceLabel, 201.0, Unit.PX, 160.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(experienceLabel, 200.0, Unit.PX, 30.0, Unit.PX);
 
 		nameProfileLabel = new Label("");
+		nameProfileLabel.setStyleName("gwt-Label-name");
 		layoutPanel.add(nameProfileLabel);
-		layoutPanel.setWidgetLeftWidth(nameProfileLabel, 201.0, Unit.PX, 56.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(nameProfileLabel, 59.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(nameProfileLabel, 201.0, Unit.PX, 131.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(nameProfileLabel, 47.0, Unit.PX, 30.0, Unit.PX);
 
 		winsLabel = new NumberLabel<Integer>();
+		winsLabel.setStyleName("gwt-Label-name");
 		layoutPanel.add(winsLabel);
-		layoutPanel.setWidgetLeftWidth(winsLabel, 201.0, Unit.PX, 131.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(winsLabel, 283.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(winsLabel, 201.0, Unit.PX, 160.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(winsLabel, 276.0, Unit.PX, 25.0, Unit.PX);
 
 		lossesLabel = new NumberLabel<Integer>();
+		lossesLabel.setStyleName("gwt-Label-name");
 		layoutPanel.add(lossesLabel);
-		layoutPanel.setWidgetLeftWidth(lossesLabel, 201.0, Unit.PX, 131.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(lossesLabel, 359.0, Unit.PX, 18.0, Unit.PX);
+		layoutPanel.setWidgetLeftWidth(lossesLabel, 201.0, Unit.PX, 160.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(lossesLabel, 353.0, Unit.PX, 30.0, Unit.PX);
 		
 		namepic = new Image();
 		layoutPanel.add(namepic);

@@ -37,3 +37,12 @@ table
 {
 	border-collapse: collapse;
 }
+.gwt-Label-name {
+	color: Navy;
+	font-stretch: wider;
+	font-variant: normal;
+	font-size: 24px;
+	font-style: normal;
+	font-family: Courier New;
+	font-weight: bolder;
+}
